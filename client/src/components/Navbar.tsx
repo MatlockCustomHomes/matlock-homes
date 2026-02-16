@@ -5,6 +5,7 @@
  */
 import { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
+import { useLocation } from "wouter";
 
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/WSbLUJNfPYsItOKD.png";
 
@@ -14,6 +15,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Our Process", href: "#process" },
   { label: "Projects", href: "#projects" },
+  { label: "Pricing", href: "/pricing", isRoute: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -27,8 +29,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const [, setLocation] = useLocation();
+
+  const handleNavClick = (href: string, isRoute?: boolean) => {
     setMobileOpen(false);
+    if (isRoute) {
+      setLocation(href);
+      return;
+    }
+    // If we're not on the home page, navigate home first then scroll
+    if (window.location.pathname !== "/") {
+      setLocation("/");
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -64,7 +81,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                onClick={(e) => { e.preventDefault(); handleNavClick(link.href, (link as any).isRoute); }}
                 className="text-white/80 hover:text-gold text-sm font-medium tracking-widest uppercase transition-colors duration-300"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
@@ -97,7 +114,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+              onClick={(e) => { e.preventDefault(); handleNavClick(link.href, (link as any).isRoute); }}
               className="text-white text-2xl font-light tracking-widest uppercase transition-all duration-300 hover:text-gold"
               style={{
                 fontFamily: "'DM Serif Display', serif",

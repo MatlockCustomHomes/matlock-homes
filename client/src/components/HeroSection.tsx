@@ -106,23 +106,6 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        {/* Tagline */}
-        <div
-          className="transition-all duration-1000 ease-out"
-          style={{
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(30px)",
-            transitionDelay: "200ms",
-          }}
-        >
-          <p
-            className="text-gold text-sm sm:text-base tracking-[0.3em] uppercase mb-6"
-            style={{ fontFamily: "'Outfit', sans-serif" }}
-          >
-            Premium Quality Custom Home Builder
-          </p>
-        </div>
-
         {/* Main Heading */}
         <h1
           className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight max-w-5xl transition-all duration-1000 ease-out"
