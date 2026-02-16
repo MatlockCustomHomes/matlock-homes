@@ -104,12 +104,6 @@ export default function FAQ() {
               transform: loaded ? "translateY(0)" : "translateY(40px)",
             }}
           >
-            <div className="inline-flex items-center gap-2 bg-charcoal/5 border border-charcoal/10 rounded-full px-5 py-2 mb-8">
-              <HelpCircle className="w-4 h-4 text-charcoal/60" />
-              <span className="text-charcoal/60 text-sm tracking-wider uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                Support
-              </span>
-            </div>
 
             <h1
               className="text-charcoal text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6"
