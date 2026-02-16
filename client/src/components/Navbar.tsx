@@ -44,12 +44,12 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="container flex items-center justify-between h-20 lg:h-24">
+        <div className="container flex items-center justify-between h-20 lg:h-24 mt-2">
           {/* Logo */}
           <a
             href="#home"
             onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 -ml-2 lg:-ml-4"
           >
             <img
               src={LOGO_URL}
