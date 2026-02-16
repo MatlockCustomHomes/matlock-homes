@@ -3,6 +3,7 @@
  * Footer: Dark charcoal, multi-column layout, gold accents.
  */
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useLocation } from "wouter";
 
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/WSbLUJNfPYsItOKD.png";
 
@@ -12,6 +13,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Our Process", href: "#process" },
   { label: "Projects", href: "#projects" },
+  { label: "Pricing", href: "/pricing", isRoute: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -24,7 +26,22 @@ const services = [
 ];
 
 export default function Footer() {
-  const handleNavClick = (href: string) => {
+  const [, setLocation] = useLocation();
+
+  const handleNavClick = (href: string, isRoute?: boolean) => {
+    if (isRoute) {
+      setLocation(href);
+      window.scrollTo(0, 0);
+      return;
+    }
+    if (window.location.pathname !== "/") {
+      setLocation("/");
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -69,7 +86,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href, (link as any).isRoute); }}
                     className="text-white/50 hover:text-gold text-sm transition-colors duration-300"
                     style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
                   >
