@@ -75,13 +75,6 @@ export default function Navbar() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <a
-              href="tel:7279991959"
-              className="hidden sm:flex items-center gap-2 btn-gold px-5 py-2.5 rounded-sm text-sm tracking-wider"
-            >
-              <Phone className="w-4 h-4" />
-              (727) 999-1959
-            </a>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden text-white p-2"
