@@ -14,6 +14,8 @@ const navLinks = [
   { label: "Our Process", href: "#process" },
   { label: "Projects", href: "#projects" },
   { label: "Pricing", href: "/pricing", isRoute: true },
+  { label: "Warranty", href: "/warranty", isRoute: true },
+  { label: "FAQs", href: "/faq", isRoute: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -79,7 +81,7 @@ export default function Footer() {
           {/* Navigation */}
           <div>
             <h4 className="text-gold text-sm tracking-[0.2em] uppercase mb-5" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
-              Navigation
+              Quick Links
             </h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
