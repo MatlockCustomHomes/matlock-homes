@@ -1,6 +1,7 @@
 /*
  * DESIGN: Florida Coastal Luxury
  * Footer: Dark charcoal, multi-column layout, gold accents.
+ * Services now link to individual service pages.
  */
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useLocation } from "wouter";
@@ -20,11 +21,11 @@ const navLinks = [
 ];
 
 const services = [
-  "Custom Home Building",
-  "Home Renovations",
-  "Kitchen Remodeling",
-  "Bathroom Renovations",
-  "Demolition Services",
+  { label: "Custom Home Building", href: "/services/custom-home-building" },
+  { label: "Home Renovations", href: "/services/home-renovations" },
+  { label: "Kitchen Remodeling", href: "/services/kitchen-remodeling" },
+  { label: "Bathroom Renovations", href: "/services/bathroom-renovations" },
+  { label: "Demolition Services", href: "/services/demolition-services" },
 ];
 
 export default function Footer() {
@@ -46,6 +47,11 @@ export default function Footer() {
     }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleServiceClick = (href: string) => {
+    setLocation(href);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -78,7 +84,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navigation */}
+          {/* Quick Links */}
           <div>
             <h4 className="text-gold text-sm tracking-[0.2em] uppercase mb-5" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
               Quick Links
@@ -88,7 +94,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href, (link as any).isRoute); }}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isRoute); }}
                     className="text-white/50 hover:text-gold text-sm transition-colors duration-300"
                     style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
                   >
@@ -106,10 +112,15 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service}>
-                  <span className="text-white/50 text-sm" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
-                    {service}
-                  </span>
+                <li key={service.href}>
+                  <a
+                    href={service.href}
+                    onClick={(e) => { e.preventDefault(); handleServiceClick(service.href); }}
+                    className="text-white/50 hover:text-gold text-sm transition-colors duration-300"
+                    style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                  >
+                    {service.label}
+                  </a>
                 </li>
               ))}
             </ul>

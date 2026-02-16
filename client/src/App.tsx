@@ -4,10 +4,16 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import LiveChat from "./components/LiveChat";
 import Home from "./pages/Home";
 import Pricing from "./pages/Pricing";
 import Warranty from "./pages/Warranty";
 import FAQ from "./pages/FAQ";
+import CustomHomeBuilding from "./pages/services/CustomHomeBuilding";
+import HomeRenovations from "./pages/services/HomeRenovations";
+import KitchenRemodeling from "./pages/services/KitchenRemodeling";
+import BathroomRenovations from "./pages/services/BathroomRenovations";
+import DemolitionServices from "./pages/services/DemolitionServices";
 
 function Router() {
   return (
@@ -16,6 +22,11 @@ function Router() {
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/warranty"} component={Warranty} />
       <Route path={"/faq"} component={FAQ} />
+      <Route path={"/services/custom-home-building"} component={CustomHomeBuilding} />
+      <Route path={"/services/home-renovations"} component={HomeRenovations} />
+      <Route path={"/services/kitchen-remodeling"} component={KitchenRemodeling} />
+      <Route path={"/services/bathroom-renovations"} component={BathroomRenovations} />
+      <Route path={"/services/demolition-services"} component={DemolitionServices} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -29,6 +40,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <LiveChat />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
