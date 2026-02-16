@@ -13,10 +13,12 @@ import ProjectsSection from "@/components/ProjectsSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import MobileIntakePopup from "@/components/MobileIntakePopup";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <MobileIntakePopup />
       <Navbar />
       <main>
         <HeroSection />
