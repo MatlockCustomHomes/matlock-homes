@@ -1,7 +1,7 @@
 /*
- * DESIGN: Florida Coastal Luxury
- * FAQ Page: Accordion-style frequently asked questions.
- * Dark background, gold accents, expandable answers.
+ * DESIGN: Florida Coastal Luxury — FAQ Page (Bright variant)
+ * Light background with warm tones so questions stand out.
+ * Full title: "Frequently Asked Questions"
  */
 import { useEffect, useState } from "react";
 import { HelpCircle, ChevronDown, Phone } from "lucide-react";
@@ -95,8 +95,8 @@ export default function FAQ() {
       <Navbar />
 
       <main className="flex-1 pt-24 lg:pt-28">
-        {/* Hero */}
-        <section className="relative py-20 lg:py-28 px-4">
+        {/* Hero — light warm background */}
+        <section className="relative py-20 lg:py-28 px-4" style={{ background: "linear-gradient(180deg, #FAF7F2 0%, #F3EDE4 100%)" }}>
           <div
             className="max-w-4xl mx-auto text-center transition-all duration-1000"
             style={{
@@ -104,24 +104,24 @@ export default function FAQ() {
               transform: loaded ? "translateY(0)" : "translateY(40px)",
             }}
           >
-            <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-5 py-2 mb-8">
-              <HelpCircle className="w-4 h-4 text-gold" />
-              <span className="text-gold text-sm tracking-wider uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                FAQ
+            <div className="inline-flex items-center gap-2 bg-charcoal/5 border border-charcoal/10 rounded-full px-5 py-2 mb-8">
+              <HelpCircle className="w-4 h-4 text-charcoal/60" />
+              <span className="text-charcoal/60 text-sm tracking-wider uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                Support
               </span>
             </div>
 
             <h1
-              className="text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6"
+              className="text-charcoal text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              Answers to Your
+              Frequently Asked
               <br />
-              <span className="text-gold italic">Custom Home Questions</span>
+              <span className="italic" style={{ color: "#9A7B3C" }}>Questions</span>
             </h1>
 
             <p
-              className="text-white/50 text-lg sm:text-xl max-w-2xl mx-auto"
+              className="text-charcoal/60 text-lg sm:text-xl max-w-2xl mx-auto"
               style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
             >
               Home construction can be confusing, but it doesn't have to be. Here are answers to the questions we hear most often.
@@ -129,22 +129,21 @@ export default function FAQ() {
           </div>
         </section>
 
-        {/* FAQ Accordion */}
-        <section className="py-8 lg:py-16 px-4">
+        {/* FAQ Accordion — light background */}
+        <section className="py-12 lg:py-20 px-4" style={{ background: "linear-gradient(180deg, #F3EDE4 0%, #EDE7DC 100%)" }}>
           <div className="max-w-3xl mx-auto">
-            <div className="space-y-3">
+            <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`border rounded-xl overflow-hidden transition-all duration-500 ${
-                    openIndex === index
-                      ? "border-gold/30 bg-gold/[0.05]"
-                      : "border-white/10 bg-white/[0.02] hover:border-white/20"
-                  }`}
+                  className="rounded-xl overflow-hidden transition-all duration-500"
                   style={{
                     opacity: loaded ? 1 : 0,
                     transform: loaded ? "translateY(0)" : "translateY(20px)",
                     transitionDelay: `${100 + index * 50}ms`,
+                    background: openIndex === index ? "#FFFFFF" : "rgba(255,255,255,0.7)",
+                    border: openIndex === index ? "1px solid rgba(154,123,60,0.3)" : "1px solid rgba(0,0,0,0.06)",
+                    boxShadow: openIndex === index ? "0 8px 30px rgba(154,123,60,0.08)" : "0 2px 8px rgba(0,0,0,0.03)",
                   }}
                 >
                   <button
@@ -152,17 +151,21 @@ export default function FAQ() {
                     className="w-full flex items-center justify-between p-5 lg:p-6 text-left"
                   >
                     <h3
-                      className={`text-base lg:text-lg pr-4 transition-colors duration-300 ${
-                        openIndex === index ? "text-gold" : "text-white/80"
-                      }`}
-                      style={{ fontFamily: "'DM Serif Display', serif" }}
+                      className="text-base lg:text-lg pr-4 transition-colors duration-300"
+                      style={{
+                        fontFamily: "'DM Serif Display', serif",
+                        color: openIndex === index ? "#9A7B3C" : "#2A2520",
+                      }}
                     >
                       {faq.question}
                     </h3>
                     <ChevronDown
-                      className={`w-5 h-5 flex-shrink-0 transition-all duration-300 ${
-                        openIndex === index ? "text-gold rotate-180" : "text-white/30"
-                      }`}
+                      className="w-5 h-5 flex-shrink-0 transition-all duration-300"
+                      style={{
+                        color: openIndex === index ? "#9A7B3C" : "#2A2520",
+                        opacity: openIndex === index ? 1 : 0.35,
+                        transform: openIndex === index ? "rotate(180deg)" : "rotate(0deg)",
+                      }}
                     />
                   </button>
 
@@ -174,10 +177,10 @@ export default function FAQ() {
                     }}
                   >
                     <div className="px-5 lg:px-6 pb-5 lg:pb-6">
-                      <div className="w-12 h-px bg-gold/30 mb-4" />
+                      <div className="w-12 h-px mb-4" style={{ background: "rgba(154,123,60,0.3)" }} />
                       <p
-                        className="text-white/50 text-sm lg:text-base leading-relaxed"
-                        style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                        className="text-sm lg:text-base leading-relaxed"
+                        style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
                       >
                         {faq.answer}
                       </p>
@@ -189,19 +192,25 @@ export default function FAQ() {
           </div>
         </section>
 
-        {/* Still Have Questions CTA */}
-        <section className="py-16 lg:py-24 px-4">
+        {/* Still Have Questions CTA — warm accent */}
+        <section className="py-16 lg:py-24 px-4" style={{ background: "#EDE7DC" }}>
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white/[0.03] border border-gold/20 rounded-2xl p-8 lg:p-12 text-center">
+            <div
+              className="rounded-2xl p-8 lg:p-12 text-center"
+              style={{
+                background: "linear-gradient(135deg, #2A2520 0%, #3A3530 100%)",
+                border: "1px solid rgba(154,123,60,0.25)",
+              }}
+            >
               <h2
                 className="text-white text-2xl sm:text-3xl mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Still Have <span className="text-gold italic">Questions?</span>
+                Still Have <span className="italic" style={{ color: "#C5A55A" }}>Questions?</span>
               </h2>
               <p
-                className="text-white/50 text-base mb-8 max-w-lg mx-auto"
-                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                className="text-base mb-8 max-w-lg mx-auto"
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "rgba(255,255,255,0.55)" }}
               >
                 We're here to help. Reach out to our team and we'll be happy to answer any questions about your upcoming project.
               </p>
