@@ -116,7 +116,7 @@ export default function DemolitionServices() {
       title="Demolition Services"
       subtitle="Commercial & Residential"
       heroDescription="Professional demolition with precision and safety. From site assessment to debris removal, we efficiently dismantle structures for new developments."
-      heroImage="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80"
+      heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/sMmmGpfmFMxURfnJ.png"
       features={features}
       processSteps={processSteps}
       additionalContent={<AdditionalContent />}
