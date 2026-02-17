@@ -12,14 +12,14 @@ const services = [
   {
     icon: Home,
     title: "Custom Home Building",
-    description: "We specialize in building custom, high-quality new homes designed to fit your lifestyle and vision. From the first blueprint to the final walk-through, every step is guided by craftsmanship and exceptional service.",
+    description: "Your vision starts here. We create thoughtfully designed custom homes built around your lifestyle, guiding you seamlessly from concept to completion with clarity, precision, and personal attention.",
     number: "01",
     href: "/services/custom-home-building",
   },
   {
     icon: Hammer,
     title: "Home Renovations",
-    description: "Taking what is already there and customizing it exactly to your liking. We take the old and make it modern, fix what is broken and make it new, and bring your ideas to reality.",
+    description: "Love where you live again. We update, repair, and reimagine your space—turning yesterday's home into a modern reflection of your lifestyle.",
     number: "02",
     href: "/services/home-renovations",
   },
