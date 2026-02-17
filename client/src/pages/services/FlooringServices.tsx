@@ -54,8 +54,8 @@ export default function FlooringServices() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="group relative overflow-hidden rounded-xl" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800&q=80"
-                  alt="Close-up of rich hardwood floor planks with natural grain"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/WBnoxFNkmjzhAvfb.png"
+                  alt="Beautiful hardwood flooring in a modern kitchen"
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -67,8 +67,8 @@ export default function FlooringServices() {
 
               <div className="group relative overflow-hidden rounded-xl" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1619221882220-947b3d3c8861?w=800&q=80"
-                  alt="Close-up of elegant tile and stone flooring pattern"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/yyZjyxlVTFSvwAdB.png"
+                  alt="Elegant marble tile flooring in a luxury bathroom"
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -80,8 +80,8 @@ export default function FlooringServices() {
 
               <div className="group relative overflow-hidden rounded-xl" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=800&q=80"
-                  alt="Close-up of luxury vinyl plank flooring with wood-look texture"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/WUUmRXvmpYWSKOyx.png"
+                  alt="Luxury vinyl plank flooring in a kitchen with island"
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
