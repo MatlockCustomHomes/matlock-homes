@@ -1,8 +1,8 @@
 /*
- * DESIGN: Florida Coastal Luxury
- * Services: Dark charcoal background, service cards with hover effects.
- * Features: Custom Homes, Renovations, Kitchen, Bathroom, Demolition.
- * Learn More links now route to individual service pages.
+ * DESIGN: Florida Coastal Luxury — Bright tone
+ * Services: Light warm background, service cards with hover effects.
+ * Features: Custom Homes, Renovations, Kitchen, Bathroom, Demolition, Flooring.
+ * Learn More links route to individual service pages.
  */
 import { useEffect, useRef, useState } from "react";
 import { Home, Hammer, ChefHat, Bath, Building2, Layers, ArrowRight } from "lucide-react";
@@ -70,32 +70,37 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section id="services" ref={ref} className="relative bg-charcoal py-24 lg:py-32 overflow-hidden">
+    <section
+      id="services"
+      ref={ref}
+      className="relative py-24 lg:py-32 overflow-hidden"
+      style={{ background: "#F3EDE4" }}
+    >
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A55A' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A55A' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
 
       <div className="container relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <p
-            className="text-gold text-sm tracking-[0.3em] uppercase mb-3 transition-all duration-700"
-            style={{ fontFamily: "'Outfit', sans-serif", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)" }}
+            className="text-sm tracking-[0.3em] uppercase mb-3 transition-all duration-700"
+            style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)" }}
           >
             Our Services
           </p>
           <h2
-            className="text-white text-3xl sm:text-4xl lg:text-5xl leading-tight transition-all duration-700"
-            style={{ fontFamily: "'DM Serif Display', serif", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transitionDelay: "150ms" }}
+            className="text-3xl sm:text-4xl lg:text-5xl leading-tight transition-all duration-700"
+            style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transitionDelay: "150ms" }}
           >
-            What We <span className="text-gold italic">Offer</span>
+            What We <span className="italic" style={{ color: "#9A7B3C" }}>Offer</span>
           </h2>
-          <div className="gold-divider mx-auto mt-6" style={{ opacity: visible ? 1 : 0, transition: "opacity 0.7s ease 0.3s" }} />
+          <div className="w-16 h-px mx-auto mt-6" style={{ background: "linear-gradient(90deg, transparent, #C5A55A, transparent)", opacity: visible ? 1 : 0, transition: "opacity 0.7s ease 0.3s" }} />
         </div>
 
         {/* Before/After Showcase */}
         <div
-          className="mb-20 overflow-hidden rounded-sm transition-all duration-1000"
-          style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)", transitionDelay: "300ms" }}
+          className="mb-20 overflow-hidden rounded-xl transition-all duration-1000"
+          style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)", transitionDelay: "300ms", boxShadow: "0 12px 40px rgba(0,0,0,0.1)" }}
         >
           <img
             src={RENOVATION_IMG}
@@ -110,32 +115,43 @@ export default function ServicesSection() {
           {services.map((service, i) => (
             <div
               key={service.number}
-              className="group relative bg-charcoal-light/50 border border-white/5 rounded-sm p-8 hover:border-gold/30 transition-all duration-500 hover:-translate-y-1"
+              className="group relative rounded-xl p-8 hover:-translate-y-1 transition-all duration-500"
               style={{
+                background: "white",
+                border: "1px solid rgba(197, 165, 90, 0.12)",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(30px)",
                 transition: "all 0.7s ease",
                 transitionDelay: `${400 + i * 100}ms`,
               }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(197, 165, 90, 0.15)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(197, 165, 90, 0.3)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 20px rgba(0,0,0,0.04)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(197, 165, 90, 0.12)";
+              }}
             >
               {/* Number */}
               <span
-                className="absolute top-4 right-4 text-6xl font-bold text-white/[0.03] group-hover:text-gold/10 transition-colors duration-500"
-                style={{ fontFamily: "'DM Serif Display', serif" }}
+                className="absolute top-4 right-4 text-6xl font-bold transition-colors duration-500"
+                style={{ fontFamily: "'DM Serif Display', serif", color: "rgba(197, 165, 90, 0.08)" }}
               >
                 {service.number}
               </span>
 
-              <service.icon className="w-8 h-8 text-gold mb-5" />
+              <service.icon className="w-8 h-8 mb-5" style={{ color: "#9A7B3C" }} />
               <h3
-                className="text-white text-xl mb-3"
-                style={{ fontFamily: "'DM Serif Display', serif" }}
+                className="text-xl mb-3"
+                style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
               >
                 {service.title}
               </h3>
               <p
-                className="text-white/60 text-sm leading-relaxed mb-5"
-                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, lineHeight: 1.7 }}
+                className="leading-relaxed mb-5"
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, lineHeight: 1.8, color: "#5C5549", fontSize: "1rem" }}
               >
                 {service.description}
               </p>
@@ -146,8 +162,8 @@ export default function ServicesSection() {
                   setLocation(service.href);
                   window.scrollTo(0, 0);
                 }}
-                className="inline-flex items-center gap-2 text-gold text-sm tracking-wider uppercase hover:gap-3 transition-all duration-300"
-                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500 }}
+                className="inline-flex items-center gap-2 text-sm tracking-wider uppercase hover:gap-3 transition-all duration-300"
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, color: "#9A7B3C" }}
               >
                 Learn More <ArrowRight className="w-4 h-4" />
               </a>
