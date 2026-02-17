@@ -54,8 +54,8 @@ export default function FlooringServices() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="group relative overflow-hidden rounded-xl" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80"
-                  alt="Hardwood flooring installation"
+                  src="https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800&q=80"
+                  alt="Close-up of rich hardwood floor planks with natural grain"
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -67,8 +67,8 @@ export default function FlooringServices() {
 
               <div className="group relative overflow-hidden rounded-xl" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
-                  alt="Tile flooring in modern home"
+                  src="https://images.unsplash.com/photo-1619221882220-947b3d3c8861?w=800&q=80"
+                  alt="Close-up of elegant tile and stone flooring pattern"
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -80,8 +80,8 @@ export default function FlooringServices() {
 
               <div className="group relative overflow-hidden rounded-xl" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800&q=80"
-                  alt="Luxury vinyl plank flooring"
+                  src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=800&q=80"
+                  alt="Close-up of luxury vinyl plank flooring with wood-look texture"
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
