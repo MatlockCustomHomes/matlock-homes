@@ -26,6 +26,7 @@ const services = [
   { label: "Kitchen Remodeling", href: "/services/kitchen-remodeling" },
   { label: "Bathroom Renovations", href: "/services/bathroom-renovations" },
   { label: "Demolition Services", href: "/services/demolition-services" },
+  { label: "Flooring Services", href: "/services/flooring-services" },
 ];
 
 export default function Footer() {

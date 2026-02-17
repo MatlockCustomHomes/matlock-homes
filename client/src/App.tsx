@@ -14,6 +14,7 @@ import HomeRenovations from "./pages/services/HomeRenovations";
 import KitchenRemodeling from "./pages/services/KitchenRemodeling";
 import BathroomRenovations from "./pages/services/BathroomRenovations";
 import DemolitionServices from "./pages/services/DemolitionServices";
+import FlooringServices from "./pages/services/FlooringServices";
 
 function Router() {
   return (
@@ -27,6 +28,7 @@ function Router() {
       <Route path={"/services/kitchen-remodeling"} component={KitchenRemodeling} />
       <Route path={"/services/bathroom-renovations"} component={BathroomRenovations} />
       <Route path={"/services/demolition-services"} component={DemolitionServices} />
+      <Route path={"/services/flooring-services"} component={FlooringServices} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

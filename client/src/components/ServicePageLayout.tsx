@@ -1,7 +1,7 @@
 /*
- * DESIGN: Florida Coastal Luxury
+ * DESIGN: Florida Coastal Luxury — Bright Service Pages
  * ServicePageLayout: Reusable layout for individual service detail pages.
- * Hero with icon + title, features list, process steps, CTA.
+ * Light warm background with white cards, gold accents for attention-grabbing design.
  */
 import { useEffect, useState } from "react";
 import { ArrowRight, Phone, CheckCircle2, type LucideIcon } from "lucide-react";
@@ -53,17 +53,16 @@ export default function ServicePageLayout({
       <Navbar />
 
       <main className="flex-1 pt-24 lg:pt-28">
-        {/* Hero */}
+        {/* Hero — keeps dark cinematic feel */}
         <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
-          {/* Background image with overlay */}
           <div className="absolute inset-0">
             <img
               src={heroImage}
               alt={title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-charcoal/85" />
-            <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-transparent to-charcoal" />
+            <div className="absolute inset-0 bg-charcoal/80" />
+            <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-transparent to-charcoal/80" />
           </div>
 
           <div
@@ -93,7 +92,7 @@ export default function ServicePageLayout({
             </h1>
 
             <p
-              className="text-white/50 text-lg sm:text-xl max-w-2xl mx-auto mb-10"
+              className="text-white/60 text-lg sm:text-xl max-w-2xl mx-auto mb-10"
               style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
             >
               {heroDescription}
@@ -122,47 +121,50 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* Features Grid */}
-        <section className="py-20 lg:py-28 px-4">
+        {/* Features Grid — BRIGHT warm background */}
+        <section className="py-20 lg:py-28 px-4" style={{ background: "linear-gradient(180deg, #FAF7F2 0%, #F3EDE4 100%)" }}>
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <p
-                className="text-gold text-sm tracking-[0.3em] uppercase mb-3"
-                style={{ fontFamily: "'Outfit', sans-serif" }}
+                className="text-sm tracking-[0.3em] uppercase mb-3"
+                style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C" }}
               >
                 What We Offer
               </p>
               <h2
-                className="text-white text-3xl sm:text-4xl lg:text-5xl"
-                style={{ fontFamily: "'DM Serif Display', serif" }}
+                className="text-3xl sm:text-4xl lg:text-5xl"
+                style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
               >
-                Our <span className="text-gold italic">Capabilities</span>
+                Our <span className="italic" style={{ color: "#9A7B3C" }}>Capabilities</span>
               </h2>
-              <div className="gold-divider mx-auto mt-6" />
+              <div className="w-16 h-px mx-auto mt-6" style={{ background: "linear-gradient(90deg, transparent, #C5A55A, transparent)" }} />
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((feature, i) => (
                 <div
                   key={i}
-                  className="bg-white/[0.03] border border-white/5 rounded-xl p-7 hover:border-gold/20 transition-all duration-500 group"
+                  className="rounded-xl p-7 transition-all duration-500 group hover:-translate-y-1"
                   style={{
                     opacity: loaded ? 1 : 0,
                     transform: loaded ? "translateY(0)" : "translateY(20px)",
                     transition: "all 0.7s ease",
                     transitionDelay: `${200 + i * 100}ms`,
+                    background: "#FFFFFF",
+                    border: "1px solid rgba(0,0,0,0.06)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
                   }}
                 >
-                  <CheckCircle2 className="w-6 h-6 text-gold mb-4 group-hover:scale-110 transition-transform" />
+                  <CheckCircle2 className="w-6 h-6 mb-4 group-hover:scale-110 transition-transform" style={{ color: "#9A7B3C" }} />
                   <h3
-                    className="text-white text-lg mb-2"
-                    style={{ fontFamily: "'DM Serif Display', serif" }}
+                    className="text-lg mb-2"
+                    style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
                   >
                     {feature.title}
                   </h3>
                   <p
-                    className="text-white/50 text-sm leading-relaxed"
-                    style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                    className="text-sm leading-relaxed"
+                    style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
                   >
                     {feature.description}
                   </p>
@@ -172,26 +174,26 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* Process Steps */}
-        <section className="py-20 lg:py-28 px-4 bg-white/[0.02]">
+        {/* Process Steps — slightly darker warm tone */}
+        <section className="py-20 lg:py-28 px-4" style={{ background: "linear-gradient(180deg, #F3EDE4 0%, #EDE7DC 100%)" }}>
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <p
-                className="text-gold text-sm tracking-[0.3em] uppercase mb-3"
-                style={{ fontFamily: "'Outfit', sans-serif" }}
+                className="text-sm tracking-[0.3em] uppercase mb-3"
+                style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C" }}
               >
                 Our Process
               </p>
               <h2
-                className="text-white text-3xl sm:text-4xl lg:text-5xl"
-                style={{ fontFamily: "'DM Serif Display', serif" }}
+                className="text-3xl sm:text-4xl lg:text-5xl"
+                style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
               >
-                How It <span className="text-gold italic">Works</span>
+                How It <span className="italic" style={{ color: "#9A7B3C" }}>Works</span>
               </h2>
-              <div className="gold-divider mx-auto mt-6" />
+              <div className="w-16 h-px mx-auto mt-6" style={{ background: "linear-gradient(90deg, transparent, #C5A55A, transparent)" }} />
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {processSteps.map((step, i) => (
                 <div
                   key={i}
@@ -203,24 +205,30 @@ export default function ServicePageLayout({
                     transitionDelay: `${300 + i * 150}ms`,
                   }}
                 >
-                  <div className="flex-shrink-0 w-14 h-14 rounded-full border-2 border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:bg-gold/10 transition-all duration-300">
+                  <div
+                    className="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
+                    style={{
+                      border: "2px solid rgba(154,123,60,0.3)",
+                      background: "rgba(255,255,255,0.7)",
+                    }}
+                  >
                     <span
-                      className="text-gold text-lg font-bold"
-                      style={{ fontFamily: "'DM Serif Display', serif" }}
+                      className="text-lg font-bold"
+                      style={{ fontFamily: "'DM Serif Display', serif", color: "#9A7B3C" }}
                     >
                       {step.number}
                     </span>
                   </div>
-                  <div className="flex-1 pb-8 border-b border-white/5 last:border-0">
+                  <div className="flex-1 pb-6" style={{ borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                     <h3
-                      className="text-white text-xl mb-2"
-                      style={{ fontFamily: "'DM Serif Display', serif" }}
+                      className="text-xl mb-2"
+                      style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
                     >
                       {step.title}
                     </h3>
                     <p
-                      className="text-white/50 text-sm leading-relaxed"
-                      style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                      className="text-sm leading-relaxed"
+                      style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
                     >
                       {step.description}
                     </p>
@@ -234,19 +242,25 @@ export default function ServicePageLayout({
         {/* Additional Content (optional) */}
         {additionalContent}
 
-        {/* CTA Section */}
-        <section className="py-20 lg:py-28 px-4">
+        {/* CTA Section — dark contrast block */}
+        <section className="py-20 lg:py-28 px-4" style={{ background: "#EDE7DC" }}>
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white/[0.03] border border-gold/20 rounded-2xl p-8 lg:p-12 text-center">
+            <div
+              className="rounded-2xl p-8 lg:p-12 text-center"
+              style={{
+                background: "linear-gradient(135deg, #2A2520 0%, #3A3530 100%)",
+                border: "1px solid rgba(154,123,60,0.25)",
+              }}
+            >
               <h2
                 className="text-white text-2xl sm:text-3xl mb-4"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Ready to Get <span className="text-gold italic">Started?</span>
+                Ready to Get <span className="italic" style={{ color: "#C5A55A" }}>Started?</span>
               </h2>
               <p
-                className="text-white/50 text-base mb-8 max-w-lg mx-auto"
-                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                className="text-base mb-8 max-w-lg mx-auto"
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "rgba(255,255,255,0.55)" }}
               >
                 Contact us today for a free consultation and quote. We'll walk you through every step of the process.
               </p>

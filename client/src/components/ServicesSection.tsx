@@ -5,7 +5,7 @@
  * Learn More links now route to individual service pages.
  */
 import { useEffect, useRef, useState } from "react";
-import { Home, Hammer, ChefHat, Bath, Building2, ArrowRight } from "lucide-react";
+import { Home, Hammer, ChefHat, Bath, Building2, Layers, ArrowRight } from "lucide-react";
 import { useLocation } from "wouter";
 
 const RENOVATION_IMG = "https://private-us-east-1.manuscdn.com/sessionFile/6y9fRzFq5GsB9uHfgUiCJi/sandbox/b3yWrbK3BjDTJ6lUpEefON-img-3_1771267584000_na1fn_bWF0bG9jay1yZW5vdmF0aW9uLXNob3djYXNl.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvNnk5ZlJ6RnE1R3NCOXVIZmdVaUNKaS9zYW5kYm94L2IzeVdyYkszQmpEVEo2bFVwRWVmT04taW1nLTNfMTc3MTI2NzU4NDAwMF9uYTFmbl9iV0YwYkc5amF5MXlaVzV2ZG1GMGFXOXVMWE5vYjNkallYTmwuanBnP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=SiINyIuLlbHw-vJB0MaqIf~3NpiJ1Zh~Kxys~0jQc4-gJXctd9t5SnJB2shBkDp4tyEBwULvxyGBrp1OPL3849iLEIl~aRIZo1s4wADaSBjRb6fv7K3~XFW~sizQCMI58B3DTYNWd~fUVfsxdEkI7TiYXHyceuIbE7l7nTREEU8-eQ5QRY5u--CEAfmpn2v8isykZqQVD49BJJpYS5hwxM99N5vLzTigeIByM0YIT9Ee8aaz6H1n7779jpE-GtS9e-GoPTsK448wmVwonmni7P4bfjx3UgwfixdY-4lCcYNcf8Jyi6EvQraA6fVeU2OjB3amGGGev-XuKihPbTn8Jg__";
@@ -45,6 +45,13 @@ const services = [
     description: "Commercial and residential demolition with precision and professionalism. From site assessment to debris removal, we safely and efficiently dismantle structures for new developments.",
     number: "05",
     href: "/services/demolition-services",
+  },
+  {
+    icon: Layers,
+    title: "Flooring Services",
+    description: "Expert floor planning, removal, and installation services. From hardwood and tile to luxury vinyl, we deliver beautiful, durable floors that transform every room in your home.",
+    number: "06",
+    href: "/services/flooring-services",
   },
 ];
 
