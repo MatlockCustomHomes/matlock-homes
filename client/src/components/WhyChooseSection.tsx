@@ -2,11 +2,10 @@
  * DESIGN: Florida Coastal Luxury
  * Why Choose Us: Similar to VersaHomes "What makes us stress free" section.
  * Left: feature grid with icons. Right: descriptive text + images.
- * Below: Lot Feasibility Checker tool.
+ * Below images: Gold CTA button linking to the Lot Feasibility tool page.
  */
 import { useEffect, useRef, useState } from "react";
-import { DollarSign, Headphones, CalendarCheck, Camera, Wrench, ThumbsUp } from "lucide-react";
-import LotFeasibilityChecker from "./LotFeasibilityChecker";
+import { DollarSign, Headphones, CalendarCheck, Camera, Wrench, ThumbsUp, MapPin, ArrowRight } from "lucide-react";
 
 const features = [
   {
@@ -149,8 +148,42 @@ export default function WhyChooseSection() {
               </div>
             </div>
 
-            {/* Lot Feasibility Checker */}
-            <LotFeasibilityChecker />
+            {/* Lot Feasibility CTA Button */}
+            <a
+              href="/tools/lot-feasibility"
+              className="group block rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1"
+              style={{
+                background: "linear-gradient(135deg, #2A2520 0%, #3A3530 100%)",
+                border: "1px solid rgba(197,165,90,0.25)",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+              }}
+            >
+              <div className="px-6 py-5 flex items-center gap-4">
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(197,165,90,0.15)", border: "1px solid rgba(197,165,90,0.3)" }}
+                >
+                  <MapPin className="w-5 h-5 text-gold" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4
+                    className="text-white text-base mb-0.5"
+                    style={{ fontFamily: "'DM Serif Display', serif" }}
+                  >
+                    Can You Build on Your Lot?
+                  </h4>
+                  <p
+                    className="text-white/45 text-sm"
+                    style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                  >
+                    Free preliminary feasibility check with permitting insights
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gold/60 group-hover:text-gold group-hover:translate-x-1 transition-all duration-300 flex-shrink-0" />
+              </div>
+              {/* Gold accent bar at bottom */}
+              <div className="h-0.5" style={{ background: "linear-gradient(90deg, #C5A55A, rgba(197,165,90,0.3), #C5A55A)" }} />
+            </a>
           </div>
         </div>
       </div>

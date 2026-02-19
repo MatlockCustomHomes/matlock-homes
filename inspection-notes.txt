@@ -1,0 +1,20 @@
+Visual Inspection Notes - Feb 19, 2026
+
+1. Lot Feasibility Page (/tools/lot-feasibility): 
+   - Gold-themed hero with "Can You Build on Your Lot?" heading
+   - Form renders correctly with all fields
+   - Trust indicators showing at bottom
+   - Back to Home link works
+
+2. Renovate or Rebuild Page (/tools/renovate-or-rebuild):
+   - Gold-themed hero with "Is It Better to Renovate or Rebuild?" heading
+   - Form renders correctly with all 4 fields
+   - Trust indicators and info cards showing
+
+3. Why Choose Us Section (home page):
+   - CTA button "Can You Build on Your Lot?" appears below the two photos
+   - Dark card with gold accents, arrow icon, subtitle text
+   - Looks clean and professional
+
+4. All pages compile with 0 TypeScript errors
+5. All 13 vitest tests pass

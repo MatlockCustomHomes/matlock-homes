@@ -1,6 +1,5 @@
-import { Home } from "lucide-react";
+import { Home, Hammer, ArrowRight } from "lucide-react";
 import ServicePageLayout from "@/components/ServicePageLayout";
-import RenovateOrRebuild from "@/components/RenovateOrRebuild";
 
 const features = [
   { title: "Fully Custom Designs", description: "Every home is designed from scratch to match your lifestyle, preferences, and lot specifications. No cookie-cutter plans — just your vision brought to life." },
@@ -21,33 +20,62 @@ const processSteps = [
   { number: "07", title: "Final Walkthrough & Delivery", description: "A comprehensive walkthrough to ensure every detail meets your expectations. We address any items before handing over the keys to your dream home." },
 ];
 
-const renovateOrRebuildSection = (
+const renovateOrRebuildCTA = (
   <section className="py-20 lg:py-28 px-4" style={{ background: "#EDE7DC" }}>
-    <div className="max-w-4xl mx-auto">
-      <div className="text-center mb-12">
-        <p
-          className="text-sm tracking-[0.3em] uppercase mb-3"
-          style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C" }}
+    <div className="max-w-3xl mx-auto text-center">
+      <p
+        className="text-sm tracking-[0.3em] uppercase mb-3"
+        style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C" }}
+      >
+        Free Calculator
+      </p>
+      <h2
+        className="text-3xl sm:text-4xl lg:text-5xl mb-4"
+        style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
+      >
+        Not Sure Whether to <span className="italic" style={{ color: "#9A7B3C" }}>Renovate or Rebuild?</span>
+      </h2>
+      <p
+        className="text-base max-w-2xl mx-auto mb-8"
+        style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
+      >
+        Many Florida homeowners face this decision. Use our free calculator to get a side-by-side cost comparison and expert recommendation.
+      </p>
+      <div className="w-16 h-px mx-auto mb-10" style={{ background: "linear-gradient(90deg, transparent, #C5A55A, transparent)" }} />
+
+      {/* Gold CTA Card */}
+      <a
+        href="/tools/renovate-or-rebuild"
+        className="group inline-flex items-center gap-4 rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1 text-left max-w-lg mx-auto"
+        style={{
+          background: "linear-gradient(135deg, #2A2520 0%, #3A3530 100%)",
+          border: "1px solid rgba(197,165,90,0.3)",
+          boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
+          padding: "20px 28px",
+        }}
+      >
+        <div
+          className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+          style={{ background: "rgba(197,165,90,0.15)", border: "1px solid rgba(197,165,90,0.3)" }}
         >
-          Free Calculator
-        </p>
-        <h2
-          className="text-3xl sm:text-4xl lg:text-5xl mb-4"
-          style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
-        >
-          Is It Better to <span className="italic" style={{ color: "#9A7B3C" }}>Renovate or Rebuild?</span>
-        </h2>
-        <p
-          className="text-base max-w-2xl mx-auto"
-          style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
-        >
-          Many Florida homeowners face this decision. Enter your home details below and we'll show you a side-by-side cost comparison to help you decide.
-        </p>
-        <div className="w-16 h-px mx-auto mt-6" style={{ background: "linear-gradient(90deg, transparent, #C5A55A, transparent)" }} />
-      </div>
-      <div className="max-w-xl mx-auto">
-        <RenovateOrRebuild />
-      </div>
+          <Hammer className="w-6 h-6 text-gold" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <h4
+            className="text-white text-lg mb-1"
+            style={{ fontFamily: "'DM Serif Display', serif" }}
+          >
+            Renovate or Rebuild Calculator
+          </h4>
+          <p
+            className="text-white/45 text-sm"
+            style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+          >
+            Get instant cost estimates for both options
+          </p>
+        </div>
+        <ArrowRight className="w-5 h-5 text-gold/60 group-hover:text-gold group-hover:translate-x-1 transition-all duration-300 flex-shrink-0" />
+      </a>
     </div>
   </section>
 );
@@ -62,7 +90,7 @@ export default function CustomHomeBuilding() {
       heroImage="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
       features={features}
       processSteps={processSteps}
-      additionalContent={renovateOrRebuildSection}
+      additionalContent={renovateOrRebuildCTA}
     />
   );
 }

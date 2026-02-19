@@ -15,6 +15,8 @@ import KitchenRemodeling from "./pages/services/KitchenRemodeling";
 import BathroomRenovations from "./pages/services/BathroomRenovations";
 import DemolitionServices from "./pages/services/DemolitionServices";
 import FlooringServices from "./pages/services/FlooringServices";
+import LotFeasibilityPage from "./pages/tools/LotFeasibilityPage";
+import RenovateOrRebuildPage from "./pages/tools/RenovateOrRebuildPage";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -29,6 +31,8 @@ function Router() {
       <Route path={"/services/bathroom-renovations"} component={BathroomRenovations} />
       <Route path={"/services/demolition-services"} component={DemolitionServices} />
       <Route path={"/services/flooring-services"} component={FlooringServices} />
+      <Route path={"/tools/lot-feasibility"} component={LotFeasibilityPage} />
+      <Route path={"/tools/renovate-or-rebuild"} component={RenovateOrRebuildPage} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

@@ -32,4 +32,13 @@
 
 ## Phase 6: Testing & Checkpoint
 - [x] Test all forms and email delivery (13 vitest tests passing)
-- [ ] Save checkpoint
+- [x] Save checkpoint (version 587969d1)
+
+## Phase 7: Convert Tools to Dedicated Pages
+- [x] Create /tools/lot-feasibility page with gold-themed design
+- [x] Replace inline LotFeasibilityChecker in WhyChooseSection with gold CTA button/link
+- [x] Create /tools/renovate-or-rebuild page with gold-themed design
+- [x] Replace inline RenovateOrRebuild in CustomHomeBuilding with gold CTA button/link
+- [x] Replace inline RenovateOrRebuild in HomeRenovations with gold CTA button/link
+- [x] Register new routes in App.tsx
+- [x] Test and save checkpoint
