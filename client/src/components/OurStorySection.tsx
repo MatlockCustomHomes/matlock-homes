@@ -23,6 +23,7 @@ export default function OurStorySection() {
 
   return (
     <section
+      id="our-story"
       ref={ref}
       className="relative py-14 lg:py-20 px-4"
       style={{ background: "linear-gradient(180deg, #FAF7F2 0%, #F3EDE4 100%)" }}

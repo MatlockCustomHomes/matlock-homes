@@ -33,7 +33,7 @@ export default function ContactSection() {
     { icon: Phone, label: "Phone", value: "(727) 999-1959", href: "tel:7279991959" },
     { icon: Mail, label: "Email", value: "matlockhomes@icloud.com", href: "mailto:matlockhomes@icloud.com" },
     { icon: MapPin, label: "Location", value: "8219 Massachusetts Ave, New Port Richey, FL 34653", href: "https://maps.google.com/?q=8219+Massachusetts+Ave+New+Port+Richey+FL+34653" },
-    { icon: Clock, label: "Hours", value: "Mon-Sat: 7AM - 6PM", href: "#" },
+    { icon: Clock, label: "Hours", value: "Monday - Friday: 8AM - 5PM", href: "#" },
   ];
 
   return (
