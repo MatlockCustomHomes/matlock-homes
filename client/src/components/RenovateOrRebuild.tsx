@@ -1,6 +1,6 @@
 /*
  * "Is It Better to Renovate or Rebuild?" — Interactive Calculator
- * Huge in Florida where many older homes face this decision.
+ * LIGHT THEME: Cream/white background, warm gold accents, clean inputs
  * Collects: Home Age, Square Footage, Desired Addition, Budget
  * Returns: Renovation cost estimate vs Rebuild cost estimate with recommendation
  */
@@ -37,10 +37,9 @@ function calculateEstimates(data: FormData): CalcResult {
   const reasoning: string[] = [];
   const factors: string[] = [];
 
-  // Renovation cost calculation
-  let renovPerSqFt = 80; // base renovation cost per sqft
+  let renovPerSqFt = 80;
   if (age > 40) {
-    renovPerSqFt += 40; // older homes need more work (electrical, plumbing, insulation)
+    renovPerSqFt += 40;
     factors.push("Home is 40+ years old — expect significant electrical, plumbing, and insulation upgrades");
   } else if (age > 25) {
     renovPerSqFt += 20;
@@ -50,24 +49,19 @@ function calculateEstimates(data: FormData): CalcResult {
     factors.push("Home is relatively modern — renovation costs should be moderate");
   }
 
-  // Addition cost (new construction within renovation)
-  const additionCostPerSqFt = 200; // additions cost more per sqft
+  const additionCostPerSqFt = 200;
   const additionCost = addition * additionCostPerSqFt;
 
   const renovationLow = Math.round((sqft * renovPerSqFt * 0.7 + additionCost * 0.8) / 1000) * 1000;
   const renovationHigh = Math.round((sqft * renovPerSqFt * 1.3 + additionCost * 1.2) / 1000) * 1000;
 
-  // Rebuild cost calculation
   const totalNewSqFt = sqft + addition;
-  let rebuildPerSqFt = 200; // base new construction cost per sqft in Tampa Bay
-  
-  // Demolition cost
-  const demoCost = sqft * 8; // ~$8/sqft for demolition
+  const rebuildPerSqFt = 200;
+  const demoCost = sqft * 8;
 
   const rebuildLow = Math.round((totalNewSqFt * rebuildPerSqFt * 0.85 + demoCost) / 1000) * 1000;
   const rebuildHigh = Math.round((totalNewSqFt * rebuildPerSqFt * 1.4 + demoCost) / 1000) * 1000;
 
-  // Determine recommendation
   let recommendation: "renovate" | "rebuild" | "either";
 
   if (age >= 40 && addition >= sqft * 0.3) {
@@ -94,7 +88,6 @@ function calculateEstimates(data: FormData): CalcResult {
     reasoning.push("We recommend a free on-site consultation to evaluate your home's condition and provide a definitive recommendation");
   }
 
-  // Florida-specific factors
   if (age > 20) {
     factors.push("Florida homes built before 2002 may not meet current hurricane code — upgrades required during major renovation");
   }
@@ -105,7 +98,6 @@ function calculateEstimates(data: FormData): CalcResult {
     factors.push(`${addition.toLocaleString()} sq ft addition adds complexity — must tie into existing structure, roofline, and systems`);
   }
 
-  // Budget context
   if (budget > 0) {
     if (budget < renovationLow) {
       factors.push("Your budget may be below the estimated range — we can discuss phased renovation options");
@@ -136,7 +128,6 @@ export default function RenovateOrRebuild() {
     setSubmitting(false);
     setSubmitted(true);
 
-    // Send to backend
     try {
       await fetch("/api/forms/renovate-or-rebuild", {
         method: "POST",
@@ -150,25 +141,39 @@ export default function RenovateOrRebuild() {
 
   const isValid = formData.homeAge && formData.squareFootage;
 
-  const recColors = {
-    renovate: { bg: "bg-blue-500/10", border: "border-blue-500/30", text: "text-blue-400", label: "Renovation Recommended" },
-    rebuild: { bg: "bg-gold/10", border: "border-gold/30", text: "text-gold", label: "Rebuild Recommended" },
-    either: { bg: "bg-emerald-500/10", border: "border-emerald-500/30", text: "text-emerald-400", label: "Both Options Viable" },
+  const recStyles = {
+    renovate: { bg: "#EFF6FF", border: "#BFDBFE", text: "#2563EB", label: "Renovation Recommended" },
+    rebuild: { bg: "#FDF8EE", border: "#E5D5B0", text: "#9A7B3C", label: "Rebuild Recommended" },
+    either: { bg: "#ECFDF5", border: "#A7F3D0", text: "#059669", label: "Both Options Viable" },
   };
 
+  const inputClass = "w-full border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 transition-all duration-200";
+  const inputStyle = {
+    fontFamily: "'Outfit', sans-serif",
+    background: "#FFFFFF",
+    borderColor: "#E5DDD0",
+    color: "#2A2520",
+  };
+  const inputFocusRing = "focus:ring-[#C5A55A]/30 focus:border-[#C5A55A]";
+  const labelClass = "flex items-center gap-2 text-sm mb-2";
+  const labelStyle = { fontFamily: "'Outfit', sans-serif", color: "#5A5248", fontWeight: 500 as const };
+
   return (
-    <div className="bg-charcoal rounded-sm overflow-hidden">
+    <div className="rounded-xl overflow-hidden" style={{ background: "#FDFBF7" }}>
       {/* Header */}
-      <div className="px-6 sm:px-8 py-6 border-b border-white/10">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center">
-            <Home className="w-5 h-5 text-gold" />
+      <div className="px-6 sm:px-8 pt-7 pb-5" style={{ borderBottom: "1px solid #EDE7DC" }}>
+        <div className="flex items-center gap-3">
+          <div
+            className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ background: "linear-gradient(135deg, #C5A55A 0%, #D4B96A 100%)" }}
+          >
+            <Home className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-white text-xl" style={{ fontFamily: "'DM Serif Display', serif" }}>
+            <h3 className="text-xl" style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}>
               Renovate or Rebuild?
             </h3>
-            <p className="text-white/50 text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            <p className="text-sm" style={{ fontFamily: "'Outfit', sans-serif", color: "#9A8E80", fontWeight: 300 }}>
               Find out which option makes more sense for you
             </p>
           </div>
@@ -179,8 +184,8 @@ export default function RenovateOrRebuild() {
         <div className="px-6 sm:px-8 py-6 space-y-5">
           {/* Home Age */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <Home className="w-4 h-4 text-gold/70" />
+            <label className={labelClass} style={labelStyle}>
+              <Home className="w-4 h-4" style={{ color: "#C5A55A" }} />
               How old is your home? (years)
             </label>
             <input
@@ -188,15 +193,15 @@ export default function RenovateOrRebuild() {
               placeholder="e.g., 35"
               value={formData.homeAge}
               onChange={(e) => setFormData({ ...formData, homeAge: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm placeholder-white/30 focus:border-gold/50 focus:outline-none transition-colors"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className={`${inputClass} ${inputFocusRing}`}
+              style={inputStyle}
             />
           </div>
 
           {/* Square Footage */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <Ruler className="w-4 h-4 text-gold/70" />
+            <label className={labelClass} style={labelStyle}>
+              <Ruler className="w-4 h-4" style={{ color: "#C5A55A" }} />
               Current home square footage
             </label>
             <input
@@ -204,40 +209,40 @@ export default function RenovateOrRebuild() {
               placeholder="e.g., 2000"
               value={formData.squareFootage}
               onChange={(e) => setFormData({ ...formData, squareFootage: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm placeholder-white/30 focus:border-gold/50 focus:outline-none transition-colors"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className={`${inputClass} ${inputFocusRing}`}
+              style={inputStyle}
             />
           </div>
 
           {/* Desired Addition */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <PlusSquare className="w-4 h-4 text-gold/70" />
-              Desired addition (sq ft) <span className="text-white/30">— 0 if none</span>
+            <label className={labelClass} style={labelStyle}>
+              <PlusSquare className="w-4 h-4" style={{ color: "#C5A55A" }} />
+              Desired addition (sq ft) <span style={{ color: "#C0B8AD", fontWeight: 300 }}>— 0 if none</span>
             </label>
             <input
               type="number"
               placeholder="e.g., 500"
               value={formData.desiredAddition}
               onChange={(e) => setFormData({ ...formData, desiredAddition: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm placeholder-white/30 focus:border-gold/50 focus:outline-none transition-colors"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className={`${inputClass} ${inputFocusRing}`}
+              style={inputStyle}
             />
           </div>
 
           {/* Budget */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <DollarSign className="w-4 h-4 text-gold/70" />
-              Approximate budget <span className="text-white/30">(optional)</span>
+            <label className={labelClass} style={labelStyle}>
+              <DollarSign className="w-4 h-4" style={{ color: "#C5A55A" }} />
+              Approximate budget <span style={{ color: "#C0B8AD", fontWeight: 300 }}>(optional)</span>
             </label>
             <input
               type="number"
               placeholder="e.g., 300000"
               value={formData.budget}
               onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm placeholder-white/30 focus:border-gold/50 focus:outline-none transition-colors"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className={`${inputClass} ${inputFocusRing}`}
+              style={inputStyle}
             />
           </div>
 
@@ -245,12 +250,15 @@ export default function RenovateOrRebuild() {
           <button
             onClick={handleSubmit}
             disabled={!isValid || submitting}
-            className={`w-full py-3.5 rounded-sm text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 ${
-              isValid && !submitting
-                ? "btn-gold cursor-pointer"
-                : "bg-white/10 text-white/30 cursor-not-allowed"
-            }`}
-            style={{ fontFamily: "'Outfit', sans-serif" }}
+            className="w-full py-3.5 rounded-lg text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300"
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 600,
+              background: isValid && !submitting ? "linear-gradient(135deg, #C5A55A 0%, #D4B96A 100%)" : "#E5DDD0",
+              color: isValid && !submitting ? "#FFFFFF" : "#B0A898",
+              cursor: isValid && !submitting ? "pointer" : "not-allowed",
+              boxShadow: isValid && !submitting ? "0 4px 14px rgba(197,165,90,0.3)" : "none",
+            }}
           >
             {submitting ? (
               <>
@@ -270,46 +278,58 @@ export default function RenovateOrRebuild() {
           {/* Cost Comparison */}
           <div className="grid grid-cols-2 gap-4">
             {/* Renovation */}
-            <div className="bg-white/5 border border-white/10 rounded-sm p-5 text-center">
-              <Hammer className="w-6 h-6 text-blue-400 mx-auto mb-2" />
-              <p className="text-white/50 text-xs tracking-wider uppercase mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            <div
+              className="rounded-lg p-5 text-center"
+              style={{ background: "#F0F4FF", border: "1px solid #D6E0F5" }}
+            >
+              <Hammer className="w-6 h-6 mx-auto mb-2" style={{ color: "#4B7BEC" }} />
+              <p className="text-xs tracking-wider uppercase mb-2" style={{ fontFamily: "'Outfit', sans-serif", color: "#6B7C9A", fontWeight: 500 }}>
                 Renovation
               </p>
-              <p className="text-white text-lg font-semibold" style={{ fontFamily: "'DM Serif Display', serif" }}>
+              <p className="text-lg font-semibold" style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}>
                 {formatCurrency(result.renovationLow)}
               </p>
-              <p className="text-white/30 text-xs my-1">to</p>
-              <p className="text-white text-lg font-semibold" style={{ fontFamily: "'DM Serif Display', serif" }}>
+              <p className="text-xs my-1" style={{ color: "#B0A898" }}>to</p>
+              <p className="text-lg font-semibold" style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}>
                 {formatCurrency(result.renovationHigh)}
               </p>
             </div>
 
             {/* Rebuild */}
-            <div className="bg-white/5 border border-white/10 rounded-sm p-5 text-center">
-              <HardHat className="w-6 h-6 text-gold mx-auto mb-2" />
-              <p className="text-white/50 text-xs tracking-wider uppercase mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            <div
+              className="rounded-lg p-5 text-center"
+              style={{ background: "#FDF8EE", border: "1px solid #E5D5B0" }}
+            >
+              <HardHat className="w-6 h-6 mx-auto mb-2" style={{ color: "#C5A55A" }} />
+              <p className="text-xs tracking-wider uppercase mb-2" style={{ fontFamily: "'Outfit', sans-serif", color: "#9A8E80", fontWeight: 500 }}>
                 Rebuild
               </p>
-              <p className="text-white text-lg font-semibold" style={{ fontFamily: "'DM Serif Display', serif" }}>
+              <p className="text-lg font-semibold" style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}>
                 {formatCurrency(result.rebuildLow)}
               </p>
-              <p className="text-white/30 text-xs my-1">to</p>
-              <p className="text-white text-lg font-semibold" style={{ fontFamily: "'DM Serif Display', serif" }}>
+              <p className="text-xs my-1" style={{ color: "#B0A898" }}>to</p>
+              <p className="text-lg font-semibold" style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}>
                 {formatCurrency(result.rebuildHigh)}
               </p>
             </div>
           </div>
 
           {/* Recommendation Badge */}
-          <div className={`${recColors[result.recommendation].bg} ${recColors[result.recommendation].border} border rounded-sm p-4`}>
-            <p className={`${recColors[result.recommendation].text} font-semibold text-sm uppercase tracking-wider mb-2`} style={{ fontFamily: "'Outfit', sans-serif" }}>
-              {recColors[result.recommendation].label}
+          <div
+            className="rounded-lg p-4"
+            style={{
+              background: recStyles[result.recommendation].bg,
+              border: `1px solid ${recStyles[result.recommendation].border}`,
+            }}
+          >
+            <p className="font-semibold text-sm uppercase tracking-wider mb-2" style={{ fontFamily: "'Outfit', sans-serif", color: recStyles[result.recommendation].text }}>
+              {recStyles[result.recommendation].label}
             </p>
             <ul className="space-y-2">
               {result.reasoning.map((r, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-gold/60 mt-1.5 text-xs">●</span>
-                  <span className="text-white/70 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>{r}</span>
+                  <span className="mt-1.5 text-xs" style={{ color: "#C5A55A" }}>●</span>
+                  <span className="text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif", color: "#5A5248" }}>{r}</span>
                 </li>
               ))}
             </ul>
@@ -318,14 +338,14 @@ export default function RenovateOrRebuild() {
           {/* Key Factors */}
           {result.factors.length > 0 && (
             <div>
-              <h4 className="text-gold text-sm tracking-wider uppercase mb-3" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              <h4 className="text-sm tracking-wider uppercase mb-3" style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C", fontWeight: 600 }}>
                 Key Factors for Your Project
               </h4>
               <ul className="space-y-2">
                 {result.factors.map((f, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <span className="text-white/30 mt-1.5 text-xs">●</span>
-                    <span className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>{f}</span>
+                    <span className="mt-1.5 text-xs" style={{ color: "#C0B8AD" }}>●</span>
+                    <span className="text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif", color: "#5A5248" }}>{f}</span>
                   </li>
                 ))}
               </ul>
@@ -333,29 +353,29 @@ export default function RenovateOrRebuild() {
           )}
 
           {/* Disclaimer */}
-          <p className="text-white/30 text-xs leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
+          <p className="text-xs leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif", color: "#B0A898" }}>
             * These are preliminary estimates based on Tampa Bay area averages. Actual costs depend on specific conditions, materials, and design choices. Schedule a free consultation for an accurate assessment.
           </p>
 
           {/* CTA */}
           <div className="pt-2 space-y-3">
             <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.querySelector("#contact");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-                else window.location.href = "/#contact";
+              href="/#contact"
+              className="block w-full py-3 rounded-lg text-sm tracking-wider uppercase text-center transition-all duration-300"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 600,
+                background: "linear-gradient(135deg, #C5A55A 0%, #D4B96A 100%)",
+                color: "#FFFFFF",
+                boxShadow: "0 4px 14px rgba(197,165,90,0.3)",
               }}
-              className="block w-full btn-gold py-3 rounded-sm text-sm tracking-wider uppercase text-center"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               Get a Free Expert Assessment
             </a>
             <button
               onClick={() => { setSubmitted(false); setResult(null); setFormData({ homeAge: "", squareFootage: "", desiredAddition: "", budget: "" }); }}
-              className="w-full flex items-center justify-center gap-2 py-2.5 text-white/40 hover:text-white/70 text-sm transition-colors"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className="w-full flex items-center justify-center gap-2 py-2.5 text-sm transition-colors"
+              style={{ fontFamily: "'Outfit', sans-serif", color: "#9A8E80" }}
             >
               <RotateCcw className="w-3.5 h-3.5" />
               Start Over

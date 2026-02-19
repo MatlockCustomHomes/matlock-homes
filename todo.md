@@ -42,3 +42,10 @@
 - [x] Replace inline RenovateOrRebuild in HomeRenovations with gold CTA button/link
 - [x] Register new routes in App.tsx
 - [x] Test and save checkpoint
+
+## Phase 8: Redesign Tools with Lighter Aesthetic
+- [x] Redesign LotFeasibilityChecker component — light background, clean inputs, gold accents
+- [x] Redesign RenovateOrRebuild component — light background, clean inputs, gold accents
+- [x] Lighten LotFeasibilityPage hero and layout
+- [x] Lighten RenovateOrRebuildPage hero and layout
+- [x] Test and save checkpoint (13/13 tests passing)

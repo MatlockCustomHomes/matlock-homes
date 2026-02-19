@@ -1,5 +1,6 @@
 /*
  * "Can You Build on Your Lot?" — Interactive Feasibility Checker
+ * LIGHT THEME: Cream/white background, warm gold accents, clean inputs
  * Collects: Address, Flood Zone, Lot Size, HOA, Waterfront
  * Returns: Preliminary feasibility + permitting considerations
  */
@@ -26,7 +27,6 @@ function analyzeFeasibility(data: FormData): FeasibilityResult {
   const recommendations: string[] = [];
   let scorePoints = 100;
 
-  // Flood zone analysis
   if (data.floodZone === "ae" || data.floodZone === "ve") {
     scorePoints -= 30;
     permitting.push("FEMA elevation certificate required — home must be built above Base Flood Elevation (BFE)");
@@ -43,7 +43,6 @@ function analyzeFeasibility(data: FormData): FeasibilityResult {
     recommendations.push("Minimal flood risk — standard foundation options available");
   }
 
-  // Lot size analysis
   const lotAcres = parseFloat(data.lotSize);
   if (!isNaN(lotAcres)) {
     if (lotAcres < 0.15) {
@@ -57,7 +56,6 @@ function analyzeFeasibility(data: FormData): FeasibilityResult {
     }
   }
 
-  // HOA analysis
   if (data.hoa === "yes") {
     scorePoints -= 10;
     permitting.push("HOA architectural review board (ARB) approval required before construction");
@@ -67,7 +65,6 @@ function analyzeFeasibility(data: FormData): FeasibilityResult {
     recommendations.push("We recommend verifying HOA status with the county property appraiser before proceeding");
   }
 
-  // Waterfront analysis
   if (data.waterfront === "gulf" || data.waterfront === "ocean") {
     scorePoints -= 15;
     permitting.push("Coastal construction control line (CCCL) permit required from FL DEP");
@@ -84,7 +81,6 @@ function analyzeFeasibility(data: FormData): FeasibilityResult {
     permitting.push("Canal-front properties may have specific setback and seawall requirements");
   }
 
-  // Always include these Florida-specific items
   permitting.push("Florida Building Code (FBC) 7th Edition compliance required for all new construction");
   permitting.push("Soil/geotechnical report and survey required before permitting");
 
@@ -92,7 +88,6 @@ function analyzeFeasibility(data: FormData): FeasibilityResult {
     recommendations.push("We'll verify zoning, utilities, and access for your specific address during consultation");
   }
 
-  // Determine score
   let score: "high" | "moderate" | "low";
   let summary: string;
   if (scorePoints >= 75) {
@@ -123,14 +118,12 @@ export default function LotFeasibilityChecker() {
 
   const handleSubmit = async () => {
     setSubmitting(true);
-    // Simulate brief analysis delay
     await new Promise((r) => setTimeout(r, 1200));
     const analysis = analyzeFeasibility(formData);
     setResult(analysis);
     setSubmitting(false);
     setSubmitted(true);
 
-    // Send to backend
     try {
       await fetch("/api/forms/lot-feasibility", {
         method: "POST",
@@ -144,25 +137,39 @@ export default function LotFeasibilityChecker() {
 
   const isValid = formData.floodZone && formData.lotSize && formData.hoa && formData.waterfront;
 
-  const scoreColors = {
-    high: { bg: "bg-emerald-500/10", border: "border-emerald-500/30", text: "text-emerald-400", label: "High Feasibility" },
-    moderate: { bg: "bg-amber-500/10", border: "border-amber-500/30", text: "text-amber-400", label: "Moderate Feasibility" },
-    low: { bg: "bg-red-500/10", border: "border-red-500/30", text: "text-red-400", label: "Requires Careful Planning" },
+  const scoreStyles = {
+    high: { bg: "#ECFDF5", border: "#A7F3D0", text: "#059669", label: "High Feasibility" },
+    moderate: { bg: "#FFFBEB", border: "#FDE68A", text: "#D97706", label: "Moderate Feasibility" },
+    low: { bg: "#FEF2F2", border: "#FECACA", text: "#DC2626", label: "Requires Careful Planning" },
   };
 
+  const inputClass = "w-full border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 transition-all duration-200";
+  const inputStyle = {
+    fontFamily: "'Outfit', sans-serif",
+    background: "#FFFFFF",
+    borderColor: "#E5DDD0",
+    color: "#2A2520",
+  };
+  const inputFocusRing = "focus:ring-[#C5A55A]/30 focus:border-[#C5A55A]";
+  const labelClass = "flex items-center gap-2 text-sm mb-2";
+  const labelStyle = { fontFamily: "'Outfit', sans-serif", color: "#5A5248", fontWeight: 500 as const };
+
   return (
-    <div className="bg-charcoal rounded-sm overflow-hidden">
+    <div className="rounded-xl overflow-hidden" style={{ background: "#FDFBF7" }}>
       {/* Header */}
-      <div className="px-6 sm:px-8 py-6 border-b border-white/10">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center">
-            <MapPin className="w-5 h-5 text-gold" />
+      <div className="px-6 sm:px-8 pt-7 pb-5" style={{ borderBottom: "1px solid #EDE7DC" }}>
+        <div className="flex items-center gap-3">
+          <div
+            className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ background: "linear-gradient(135deg, #C5A55A 0%, #D4B96A 100%)" }}
+          >
+            <MapPin className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="text-white text-xl" style={{ fontFamily: "'DM Serif Display', serif" }}>
+            <h3 className="text-xl" style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}>
               Can You Build on Your Lot?
             </h3>
-            <p className="text-white/50 text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            <p className="text-sm" style={{ fontFamily: "'Outfit', sans-serif", color: "#9A8E80", fontWeight: 300 }}>
               Free preliminary feasibility check
             </p>
           </div>
@@ -173,47 +180,47 @@ export default function LotFeasibilityChecker() {
         <div className="px-6 sm:px-8 py-6 space-y-5">
           {/* Address */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <MapPin className="w-4 h-4 text-gold/70" />
-              Property Address <span className="text-white/30">(optional)</span>
+            <label className={labelClass} style={labelStyle}>
+              <MapPin className="w-4 h-4" style={{ color: "#C5A55A" }} />
+              Property Address <span style={{ color: "#C0B8AD", fontWeight: 300 }}>(optional)</span>
             </label>
             <input
               type="text"
               placeholder="e.g., 123 Main St, New Port Richey, FL"
               value={formData.address}
               onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm placeholder-white/30 focus:border-gold/50 focus:outline-none transition-colors"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className={`${inputClass} ${inputFocusRing}`}
+              style={{ ...inputStyle, "--tw-placeholder-opacity": 1 } as React.CSSProperties}
             />
           </div>
 
           {/* Flood Zone */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <Droplets className="w-4 h-4 text-gold/70" />
+            <label className={labelClass} style={labelStyle}>
+              <Droplets className="w-4 h-4" style={{ color: "#C5A55A" }} />
               Flood Zone
             </label>
             <select
               value={formData.floodZone}
               onChange={(e) => setFormData({ ...formData, floodZone: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-gold/50 focus:outline-none transition-colors appearance-none"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className={`${inputClass} ${inputFocusRing} appearance-none`}
+              style={inputStyle}
             >
-              <option value="" className="bg-charcoal">Select flood zone...</option>
-              <option value="x" className="bg-charcoal">Zone X (Minimal Risk)</option>
-              <option value="x_shaded" className="bg-charcoal">Zone X Shaded (Moderate Risk)</option>
-              <option value="ah" className="bg-charcoal">Zone AH (Shallow Flooding)</option>
-              <option value="ao" className="bg-charcoal">Zone AO (Sheet Flow)</option>
-              <option value="ae" className="bg-charcoal">Zone AE (High Risk)</option>
-              <option value="ve" className="bg-charcoal">Zone VE (Coastal High Risk)</option>
-              <option value="unsure" className="bg-charcoal">I'm Not Sure</option>
+              <option value="">Select flood zone...</option>
+              <option value="x">Zone X (Minimal Risk)</option>
+              <option value="x_shaded">Zone X Shaded (Moderate Risk)</option>
+              <option value="ah">Zone AH (Shallow Flooding)</option>
+              <option value="ao">Zone AO (Sheet Flow)</option>
+              <option value="ae">Zone AE (High Risk)</option>
+              <option value="ve">Zone VE (Coastal High Risk)</option>
+              <option value="unsure">I'm Not Sure</option>
             </select>
           </div>
 
           {/* Lot Size */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <Maximize className="w-4 h-4 text-gold/70" />
+            <label className={labelClass} style={labelStyle}>
+              <Maximize className="w-4 h-4" style={{ color: "#C5A55A" }} />
               Lot Size (acres)
             </label>
             <input
@@ -222,15 +229,15 @@ export default function LotFeasibilityChecker() {
               placeholder="e.g., 0.25"
               value={formData.lotSize}
               onChange={(e) => setFormData({ ...formData, lotSize: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm placeholder-white/30 focus:border-gold/50 focus:outline-none transition-colors"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className={`${inputClass} ${inputFocusRing}`}
+              style={inputStyle}
             />
           </div>
 
           {/* HOA */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <Building2 className="w-4 h-4 text-gold/70" />
+            <label className={labelClass} style={labelStyle}>
+              <Building2 className="w-4 h-4" style={{ color: "#C5A55A" }} />
               Is there an HOA?
             </label>
             <div className="grid grid-cols-3 gap-3">
@@ -242,12 +249,14 @@ export default function LotFeasibilityChecker() {
                 <button
                   key={opt.value}
                   onClick={() => setFormData({ ...formData, hoa: opt.value })}
-                  className={`py-2.5 rounded-sm text-sm border transition-all duration-200 ${
-                    formData.hoa === opt.value
-                      ? "border-gold bg-gold/10 text-gold"
-                      : "border-white/10 bg-white/5 text-white/60 hover:border-white/30"
-                  }`}
-                  style={{ fontFamily: "'Outfit', sans-serif" }}
+                  className="py-2.5 rounded-lg text-sm transition-all duration-200"
+                  style={{
+                    fontFamily: "'Outfit', sans-serif",
+                    fontWeight: 500,
+                    border: formData.hoa === opt.value ? "2px solid #C5A55A" : "1px solid #E5DDD0",
+                    background: formData.hoa === opt.value ? "rgba(197,165,90,0.08)" : "#FFFFFF",
+                    color: formData.hoa === opt.value ? "#9A7B3C" : "#7A7068",
+                  }}
                 >
                   {opt.label}
                 </button>
@@ -257,22 +266,22 @@ export default function LotFeasibilityChecker() {
 
           {/* Waterfront */}
           <div>
-            <label className="flex items-center gap-2 text-white/70 text-sm mb-2" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              <Waves className="w-4 h-4 text-gold/70" />
+            <label className={labelClass} style={labelStyle}>
+              <Waves className="w-4 h-4" style={{ color: "#C5A55A" }} />
               Waterfront Property?
             </label>
             <select
               value={formData.waterfront}
               onChange={(e) => setFormData({ ...formData, waterfront: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-sm focus:border-gold/50 focus:outline-none transition-colors appearance-none"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className={`${inputClass} ${inputFocusRing} appearance-none`}
+              style={inputStyle}
             >
-              <option value="" className="bg-charcoal">Select...</option>
-              <option value="no" className="bg-charcoal">No — Not Waterfront</option>
-              <option value="gulf" className="bg-charcoal">Yes — Gulf / Ocean</option>
-              <option value="river" className="bg-charcoal">Yes — River</option>
-              <option value="lake" className="bg-charcoal">Yes — Lake</option>
-              <option value="canal" className="bg-charcoal">Yes — Canal</option>
+              <option value="">Select...</option>
+              <option value="no">No — Not Waterfront</option>
+              <option value="gulf">Yes — Gulf / Ocean</option>
+              <option value="river">Yes — River</option>
+              <option value="lake">Yes — Lake</option>
+              <option value="canal">Yes — Canal</option>
             </select>
           </div>
 
@@ -280,12 +289,15 @@ export default function LotFeasibilityChecker() {
           <button
             onClick={handleSubmit}
             disabled={!isValid || submitting}
-            className={`w-full py-3.5 rounded-sm text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 ${
-              isValid && !submitting
-                ? "btn-gold cursor-pointer"
-                : "bg-white/10 text-white/30 cursor-not-allowed"
-            }`}
-            style={{ fontFamily: "'Outfit', sans-serif" }}
+            className="w-full py-3.5 rounded-lg text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300"
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 600,
+              background: isValid && !submitting ? "linear-gradient(135deg, #C5A55A 0%, #D4B96A 100%)" : "#E5DDD0",
+              color: isValid && !submitting ? "#FFFFFF" : "#B0A898",
+              cursor: isValid && !submitting ? "pointer" : "not-allowed",
+              boxShadow: isValid && !submitting ? "0 4px 14px rgba(197,165,90,0.3)" : "none",
+            }}
           >
             {submitting ? (
               <>
@@ -303,19 +315,25 @@ export default function LotFeasibilityChecker() {
       ) : result ? (
         <div className="px-6 sm:px-8 py-6 space-y-5">
           {/* Score Badge */}
-          <div className={`${scoreColors[result.score].bg} ${scoreColors[result.score].border} border rounded-sm p-4 flex items-start gap-3`}>
+          <div
+            className="rounded-lg p-4 flex items-start gap-3"
+            style={{
+              background: scoreStyles[result.score].bg,
+              border: `1px solid ${scoreStyles[result.score].border}`,
+            }}
+          >
             {result.score === "high" ? (
-              <CheckCircle className={`w-6 h-6 ${scoreColors[result.score].text} flex-shrink-0 mt-0.5`} />
+              <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: scoreStyles[result.score].text }} />
             ) : result.score === "moderate" ? (
-              <Info className={`w-6 h-6 ${scoreColors[result.score].text} flex-shrink-0 mt-0.5`} />
+              <Info className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: scoreStyles[result.score].text }} />
             ) : (
-              <AlertTriangle className={`w-6 h-6 ${scoreColors[result.score].text} flex-shrink-0 mt-0.5`} />
+              <AlertTriangle className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: scoreStyles[result.score].text }} />
             )}
             <div>
-              <p className={`${scoreColors[result.score].text} font-semibold text-sm uppercase tracking-wider mb-1`} style={{ fontFamily: "'Outfit', sans-serif" }}>
-                {scoreColors[result.score].label}
+              <p className="font-semibold text-sm uppercase tracking-wider mb-1" style={{ fontFamily: "'Outfit', sans-serif", color: scoreStyles[result.score].text }}>
+                {scoreStyles[result.score].label}
               </p>
-              <p className="text-white/70 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              <p className="text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif", color: "#5A5248" }}>
                 {result.summary}
               </p>
             </div>
@@ -323,14 +341,14 @@ export default function LotFeasibilityChecker() {
 
           {/* Permitting Considerations */}
           <div>
-            <h4 className="text-gold text-sm tracking-wider uppercase mb-3" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            <h4 className="text-sm tracking-wider uppercase mb-3" style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C", fontWeight: 600 }}>
               Likely Permitting Considerations
             </h4>
             <ul className="space-y-2">
               {result.permitting.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-gold/60 mt-1.5 text-xs">●</span>
-                  <span className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>{item}</span>
+                  <span className="mt-1.5 text-xs" style={{ color: "#C5A55A" }}>●</span>
+                  <span className="text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif", color: "#5A5248" }}>{item}</span>
                 </li>
               ))}
             </ul>
@@ -339,14 +357,14 @@ export default function LotFeasibilityChecker() {
           {/* Recommendations */}
           {result.recommendations.length > 0 && (
             <div>
-              <h4 className="text-gold text-sm tracking-wider uppercase mb-3" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              <h4 className="text-sm tracking-wider uppercase mb-3" style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C", fontWeight: 600 }}>
                 Our Recommendations
               </h4>
               <ul className="space-y-2">
                 {result.recommendations.map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <CheckCircle className="w-3.5 h-3.5 text-gold/60 mt-1 flex-shrink-0" />
-                    <span className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>{item}</span>
+                    <CheckCircle className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#C5A55A" }} />
+                    <span className="text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif", color: "#5A5248" }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -356,20 +374,22 @@ export default function LotFeasibilityChecker() {
           {/* CTA */}
           <div className="pt-2 space-y-3">
             <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+              href="/#contact"
+              className="block w-full py-3 rounded-lg text-sm tracking-wider uppercase text-center transition-all duration-300"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 600,
+                background: "linear-gradient(135deg, #C5A55A 0%, #D4B96A 100%)",
+                color: "#FFFFFF",
+                boxShadow: "0 4px 14px rgba(197,165,90,0.3)",
               }}
-              className="block w-full btn-gold py-3 rounded-sm text-sm tracking-wider uppercase text-center"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               Schedule a Free Consultation
             </a>
             <button
               onClick={() => { setSubmitted(false); setResult(null); setFormData({ address: "", floodZone: "", lotSize: "", hoa: "", waterfront: "" }); }}
-              className="block w-full py-2.5 text-white/40 hover:text-white/70 text-sm transition-colors text-center"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className="block w-full py-2.5 text-sm transition-colors text-center"
+              style={{ fontFamily: "'Outfit', sans-serif", color: "#9A8E80" }}
             >
               Check Another Lot
             </button>
