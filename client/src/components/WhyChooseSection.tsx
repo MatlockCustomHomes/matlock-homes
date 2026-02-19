@@ -131,16 +131,16 @@ export default function WhyChooseSection() {
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden rounded-sm">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80"
-                  alt="Luxury home interior by Matlock Custom Homes"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/NAVAtmSzCiCuIpvd.jpeg"
+                  alt="Matlock Custom Homes team reviewing blueprints on site"
                   className="w-full h-48 lg:h-56 object-cover hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
               </div>
               <div className="overflow-hidden rounded-sm">
                 <img
-                  src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80"
-                  alt="Modern bedroom renovation by Matlock Custom Homes"
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/kDhujZfRzNPRFtGx.jpeg"
+                  alt="Byron Matlock and the Matlock Custom Homes construction crew"
                   className="w-full h-48 lg:h-56 object-cover hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
