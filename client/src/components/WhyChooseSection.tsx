@@ -2,9 +2,11 @@
  * DESIGN: Florida Coastal Luxury
  * Why Choose Us: Similar to VersaHomes "What makes us stress free" section.
  * Left: feature grid with icons. Right: descriptive text + images.
+ * Below: Lot Feasibility Checker tool.
  */
 import { useEffect, useRef, useState } from "react";
 import { DollarSign, Headphones, CalendarCheck, Camera, Wrench, ThumbsUp } from "lucide-react";
+import LotFeasibilityChecker from "./LotFeasibilityChecker";
 
 const features = [
   {
@@ -128,7 +130,7 @@ export default function WhyChooseSection() {
             </p>
 
             {/* Two Images */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="overflow-hidden rounded-sm">
                 <img
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/NAVAtmSzCiCuIpvd.jpeg"
@@ -146,6 +148,9 @@ export default function WhyChooseSection() {
                 />
               </div>
             </div>
+
+            {/* Lot Feasibility Checker */}
+            <LotFeasibilityChecker />
           </div>
         </div>
       </div>

@@ -4,13 +4,14 @@
  * Left: contact info + map placeholder. Right: contact form.
  */
 import { useEffect, useRef, useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,12 +22,30 @@ export default function ContactSection() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Thank you! We'll contact you shortly.", {
-      description: "A Matlock Homes professional will reach out to discuss your project.",
-    });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/forms/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        toast.success("Thank you! We'll contact you shortly.", {
+          description: "A Matlock Homes professional will reach out to discuss your project.",
+        });
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        toast.error("Something went wrong. Please try again or call us directly.");
+      }
+    } catch {
+      toast.error("Network error. Please try again or call (727) 485-5996.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -201,10 +220,20 @@ export default function ContactSection() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full btn-gold px-8 py-4 rounded-sm text-base tracking-wider flex items-center justify-center gap-2"
+                  disabled={submitting}
+                  className="w-full btn-gold px-8 py-4 rounded-sm text-base tracking-wider flex items-center justify-center gap-2 disabled:opacity-60"
                 >
-                  <Send className="w-4 h-4" />
-                  Send Message
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </div>
             </form>

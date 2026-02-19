@@ -1,5 +1,6 @@
 import { Hammer } from "lucide-react";
 import ServicePageLayout from "@/components/ServicePageLayout";
+import RenovateOrRebuild from "@/components/RenovateOrRebuild";
 
 const features = [
   { title: "Whole-Home Remodels", description: "Complete interior and exterior transformations that modernize your living space while preserving the character and charm you love." },
@@ -115,7 +116,39 @@ export default function HomeRenovations() {
       heroImage="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1920&q=80"
       features={features}
       processSteps={processSteps}
-      additionalContent={<BeforeAfterGallery />}
+      additionalContent={
+        <>
+          <BeforeAfterGallery />
+          <section className="py-20 lg:py-28 px-4" style={{ background: "#EDE7DC" }}>
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <p
+                  className="text-sm tracking-[0.3em] uppercase mb-3"
+                  style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C" }}
+                >
+                  Free Calculator
+                </p>
+                <h2
+                  className="text-3xl sm:text-4xl lg:text-5xl mb-4"
+                  style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
+                >
+                  Is It Better to <span className="italic" style={{ color: "#9A7B3C" }}>Renovate or Rebuild?</span>
+                </h2>
+                <p
+                  className="text-base max-w-2xl mx-auto"
+                  style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
+                >
+                  Many Florida homeowners face this decision. Enter your home details below and we'll show you a side-by-side cost comparison to help you decide.
+                </p>
+                <div className="w-16 h-px mx-auto mt-6" style={{ background: "linear-gradient(90deg, transparent, #C5A55A, transparent)" }} />
+              </div>
+              <div className="max-w-xl mx-auto">
+                <RenovateOrRebuild />
+              </div>
+            </div>
+          </section>
+        </>
+      }
     />
   );
 }

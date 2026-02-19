@@ -137,9 +137,17 @@ export default function MobileIntakePopup() {
     }
   };
 
-  const handleSubmit = () => {
-    // In a real implementation, this would send data to a backend
+  const handleSubmit = async () => {
     setShowThankYou(true);
+    try {
+      await fetch("/api/forms/intake", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers, contactInfo }),
+      });
+    } catch {
+      // Silent fail — user still sees thank you
+    }
     setTimeout(() => {
       setIsOpen(false);
     }, 3000);

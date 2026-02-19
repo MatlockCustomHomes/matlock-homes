@@ -2,6 +2,7 @@
  * DESIGN: Florida Coastal Luxury
  * LiveChat: Floating chat widget for customer inquiries.
  * Gold accent bubble, dark panel, quick-reply options.
+ * Sends conversation transcripts to backend for email delivery.
  */
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Phone, Mail } from "lucide-react";
@@ -16,7 +17,7 @@ interface Message {
 const INITIAL_MESSAGES: Message[] = [
   {
     id: 1,
-    text: "Welcome to Matlock Custom Homes! 👋 How can we help you today?",
+    text: "Welcome to Matlock Custom Homes! How can we help you today?",
     sender: "bot",
     options: [
       "I want to build a custom home",
@@ -55,7 +56,7 @@ const BOT_RESPONSES: Record<string, Message> = {
   },
   "I'd like to speak with someone": {
     id: 0,
-    text: "Of course! You can reach us directly:\n\n📞 (727) 485-5996\n📧 matlockhomes@icloud.com\n\nOr leave your info below and we'll get back to you within 24 hours.",
+    text: "Of course! You can reach us directly:\n\n(727) 485-5996\nmatlockhomes@icloud.com\n\nOr leave your info below and we'll get back to you within 24 hours.",
     sender: "bot",
     options: ["Call now", "Send an email"],
   },
@@ -73,13 +74,13 @@ const BOT_RESPONSES: Record<string, Message> = {
   },
   "Tell me about the process": {
     id: 0,
-    text: "Our process is straightforward:\n\n1️⃣ Consultation — We discuss your vision & budget\n2️⃣ Design — Blueprints and material selection\n3️⃣ Build — Construction with regular updates\n4️⃣ Delivery — Final walkthrough and handover\n\nMost custom homes take 10-18 months from start to finish.",
+    text: "Our process is straightforward:\n\n1. Consultation — We discuss your vision & budget\n2. Design — Blueprints and material selection\n3. Build — Construction with regular updates\n4. Delivery — Final walkthrough and handover\n\nMost custom homes take 10-18 months from start to finish.",
     sender: "bot",
     options: ["Schedule a consultation", "Use the estimate tool", "Back to main menu"],
   },
   "Tell me about the warranty": {
     id: 0,
-    text: "Every project includes our Matlock Shield builder's warranty:\n\n🛡️ 5 Years — Workmanship & Materials\n🛡️ 10 Years — Structural Defects\n\nThis goes beyond the industry standard and is backed directly by us — not a third-party provider.",
+    text: "Every project includes our Matlock Shield builder's warranty:\n\n5 Years — Workmanship & Materials\n10 Years — Structural Defects\n\nThis goes beyond the industry standard and is backed directly by us — not a third-party provider.",
     sender: "bot",
     options: ["View warranty details", "Schedule a call", "Back to main menu"],
   },
@@ -92,11 +93,29 @@ const DEFAULT_RESPONSE: Message = {
   options: ["Call now", "Send an email", "Back to main menu"],
 };
 
+// Send chat transcript to backend
+async function sendChatTranscript(messages: Message[]) {
+  try {
+    await fetch("/api/forms/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messages: messages
+          .filter((m) => m.id !== 1) // Skip initial bot greeting
+          .map((m) => ({ sender: m.sender, text: m.text })),
+      }),
+    });
+  } catch {
+    // Silent fail — chat still works for user
+  }
+}
+
 export default function LiveChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [hasSentTranscript, setHasSentTranscript] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -107,6 +126,17 @@ export default function LiveChat() {
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
+    }
+  }, [isOpen]);
+
+  // Send transcript when user has typed at least one free-text message and closes chat
+  useEffect(() => {
+    if (!isOpen && !hasSentTranscript) {
+      const userMessages = messages.filter((m) => m.sender === "user");
+      if (userMessages.length > 0) {
+        sendChatTranscript(messages);
+        setHasSentTranscript(true);
+      }
     }
   }, [isOpen]);
 
@@ -162,6 +192,8 @@ export default function LiveChat() {
       { id: Date.now(), text, sender: "user" },
     ]);
     addBotResponse(text);
+    // Reset transcript flag so new messages get sent
+    setHasSentTranscript(false);
   };
 
   return (

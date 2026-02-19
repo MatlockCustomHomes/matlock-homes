@@ -15,8 +15,8 @@ import KitchenRemodeling from "./pages/services/KitchenRemodeling";
 import BathroomRenovations from "./pages/services/BathroomRenovations";
 import DemolitionServices from "./pages/services/DemolitionServices";
 import FlooringServices from "./pages/services/FlooringServices";
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
