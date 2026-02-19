@@ -72,7 +72,7 @@ const faqs: FAQItem[] = [
   {
     question: "What sets Matlock Custom Homes apart from other builders?",
     answer:
-      "Several things set us apart: our commitment to transparent, honest pricing with no hidden fees; our industry-leading Matlock Shield 3-6-11 warranty program; direct communication with our team throughout your project; regular photo and video progress updates; and our dedication to delivering on-time and on-budget. We build relationships before we build homes, and that philosophy guides everything we do.",
+      "Built by a structural builder, not just a sales builder. At Matlock Custom Homes, we are relationship-driven, not transaction-driven. We take the time to understand your vision, communicate transparently throughout every phase, and deliver craftsmanship that stands the test of time. Our hands-on approach means you're working directly with the people who build your home — not a middleman.",
   },
 ];
 
