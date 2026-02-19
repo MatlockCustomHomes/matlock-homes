@@ -43,7 +43,7 @@ const BOT_RESPONSES: Record<string, Message> = {
   },
   "Tell me about your services": {
     id: 0,
-    text: "We offer a full range of construction services:\n\n• Custom Home Building\n• Home Renovations\n• Kitchen Remodeling\n• Bathroom Renovations\n• Demolition Services (Commercial & Residential)\n\nEach project comes with our Matlock Shield warranty with up to 25 years of coverage. Which service interests you?",
+    text: "We offer a full range of construction services:\n\n• Custom Home Building\n• Home Renovations\n• Kitchen Remodeling\n• Bathroom Renovations\n• Demolition Services (Commercial & Residential)\n\nEach project comes with our Matlock Shield 5-10 year builder's warranty. Which service interests you?",
     sender: "bot",
     options: ["Custom Home Building", "Renovations", "Kitchen Remodeling", "Demolition Services", "Tell me about the warranty"],
   },
@@ -79,7 +79,7 @@ const BOT_RESPONSES: Record<string, Message> = {
   },
   "Tell me about the warranty": {
     id: 0,
-    text: "Every project includes our Matlock Shield warranty with up to 25 years of comprehensive coverage:\n\n🛡️ Workmanship & Materials\n🛡️ Building Envelope Protection\n🛡️ Structural Integrity\n\nThis goes far beyond the industry standard and is backed directly by us — not a third-party provider.",
+    text: "Every project includes our Matlock Shield builder's warranty:\n\n🛡️ 5 Years — Workmanship & Materials\n🛡️ 10 Years — Structural Defects\n\nThis goes beyond the industry standard and is backed directly by us — not a third-party provider.",
     sender: "bot",
     options: ["View warranty details", "Schedule a call", "Back to main menu"],
   },

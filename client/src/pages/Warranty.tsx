@@ -1,68 +1,73 @@
 /*
  * DESIGN: Florida Coastal Luxury
- * Warranty Page: "Matlock Shield" warranty program with 25-year coverage.
+ * Warranty Page: "Matlock Shield" 5-10 Year Builder's Warranty.
+ * 5 years workmanship & materials, 10 years structural defects.
  * Dark background, gold accents, editorial layout.
  */
 import { useEffect, useState } from "react";
-import { Shield, CheckCircle, Clock, Home, Wrench, Building, Hammer, Droplets, Layers } from "lucide-react";
+import { Shield, CheckCircle, Clock, Wrench, Building } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const coverageAreas = [
+const warrantyTiers = [
   {
-    icon: Wrench,
+    years: 5,
+    label: "Five-Year",
     title: "Workmanship & Materials",
-    description: "All labor and materials used in your custom home are covered for defects, ensuring the quality and precision of every detail from day one.",
-    items: [
+    icon: Wrench,
+    color: "from-gold/20 to-gold/5",
+    borderColor: "border-gold/30",
+    description:
+      "Our 5-year warranty covers all workmanship and materials used in the construction of your home. From the foundation to the finishing touches, this ensures that every element of your home meets the highest standards of quality and durability. If any defect arises due to faulty workmanship or substandard materials within the first five years, we'll make it right — no questions asked.",
+    covers: [
       "All labor and workmanship defects",
       "Material defects and failures",
       "Plumbing, electrical, and HVAC systems",
-      "Interior finishes and fixtures",
-      "Exterior paint and sealants",
+      "Interior finishes including paint, trim, and fixtures",
+      "Exterior finishes, sealants, and coatings",
+      "Cabinetry, countertops, and built-in features",
+      "Flooring installation and materials",
+      "Doors, windows, and hardware operation",
     ],
   },
   {
-    icon: Home,
-    title: "Building Envelope",
-    description: "Complete protection for the exterior shell of your home — roofing, windows, doors, and weather barriers — keeping your family safe from the elements.",
-    items: [
-      "Roofing systems and waterproofing",
-      "Exterior wall assemblies",
-      "Window and door installations",
-      "Water intrusion protection",
-      "Weather barrier and flashing systems",
-    ],
-  },
-  {
+    years: 10,
+    label: "Ten-Year",
+    title: "Structural Defects",
     icon: Building,
-    title: "Structural Integrity",
-    description: "The core stability and strength of your home is protected for the full 25 years — foundation, framing, and load-bearing elements.",
-    items: [
+    color: "from-gold/30 to-gold/10",
+    borderColor: "border-gold/40",
+    description:
+      "Our 10-year structural warranty provides long-term protection for the core integrity of your home. This covers the essential load-bearing components that form the backbone of your home's construction. If any structural defect compromises the safety or stability of your home within the first decade, we stand behind our work and will resolve it at our expense.",
+    covers: [
       "Foundation and footings",
       "Load-bearing walls and framing",
-      "Structural beams and columns",
-      "Floor and roof trusses",
+      "Structural beams, columns, and headers",
+      "Floor and roof trusses and rafters",
       "Structural concrete and masonry",
+      "Retaining walls and structural supports",
+      "Roof structure and decking",
+      "Structural subfloor systems",
     ],
   },
 ];
 
 const benefits = [
   {
-    title: "25 Years of Protection",
-    desc: "Our warranty extends far beyond the typical industry terms, providing a quarter-century of confidence in your investment.",
+    title: "Longer Than Industry Standard",
+    desc: "While many builders offer minimal 1-2 year warranties, our 5-10 year coverage gives you lasting peace of mind that your investment is protected well beyond the typical timeframe.",
   },
   {
     title: "Transparent Terms",
-    desc: "No hidden surprises or exclusions buried in the fine print. You'll know exactly what's covered from day one.",
+    desc: "No hidden surprises or exclusions buried in the fine print. You'll know exactly what's covered from day one, with clear documentation provided at closing.",
   },
   {
     title: "Superior Aftercare",
-    desc: "Responsive service and dependable solutions whenever you need us. We're just a phone call away.",
+    desc: "Responsive service and dependable solutions whenever you need us. Our dedicated warranty team is just a phone call away, ready to address any concerns promptly.",
   },
   {
     title: "Full Accountability",
-    desc: "Your builder should stand behind every detail of your home. We back our warranty directly — not through a third-party provider.",
+    desc: "Your builder should stand behind every detail of your home. We back our warranty directly — not through a third-party provider — because we're confident in our craftsmanship.",
   },
 ];
 
@@ -82,7 +87,6 @@ export default function Warranty() {
       <main className="flex-1 pt-24 lg:pt-28">
         {/* Hero */}
         <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
-          {/* Subtle background pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 25% 25%, rgba(197,165,90,0.3) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(197,165,90,0.2) 0%, transparent 50%)" }} />
           </div>
@@ -105,9 +109,9 @@ export default function Warranty() {
               className="text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              25 Years of
+              5-10 Year
               <br />
-              <span className="text-gold italic">Warranty Protection</span>
+              <span className="text-gold italic">Builder's Warranty</span>
             </h1>
 
             <p
@@ -117,21 +121,39 @@ export default function Warranty() {
               When building a custom home, a warranty should feel like protection — not a list of excuses. Matlock Shield is our promise that your home will be protected with the same precision and dedication it was built with.
             </p>
 
-            {/* 25 Year Badge */}
-            <div className="mt-12 inline-flex items-center gap-4 bg-gold/10 border border-gold/30 rounded-2xl px-8 py-5">
-              <span
-                className="text-gold text-5xl lg:text-6xl font-bold"
-                style={{ fontFamily: "'DM Serif Display', serif" }}
-              >
-                25
-              </span>
-              <div className="text-left">
-                <span className="text-gold text-lg font-semibold block" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                  Year Warranty
+            {/* Warranty Badges */}
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="inline-flex items-center gap-4 bg-gold/10 border border-gold/30 rounded-2xl px-8 py-5">
+                <span
+                  className="text-gold text-5xl lg:text-6xl font-bold"
+                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                >
+                  5
                 </span>
-                <span className="text-white/40 text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                  Comprehensive Coverage
+                <div className="text-left">
+                  <span className="text-gold text-lg font-semibold block" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                    Year Warranty
+                  </span>
+                  <span className="text-white/40 text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                    Workmanship & Materials
+                  </span>
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-4 bg-gold/10 border border-gold/30 rounded-2xl px-8 py-5">
+                <span
+                  className="text-gold text-5xl lg:text-6xl font-bold"
+                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                >
+                  10
                 </span>
+                <div className="text-left">
+                  <span className="text-gold text-lg font-semibold block" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                    Year Warranty
+                  </span>
+                  <span className="text-white/40 text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                    Structural Defects
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -151,78 +173,83 @@ export default function Warranty() {
                 className="text-white/50 text-base leading-relaxed mb-6"
                 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
               >
-                Typical warranties are designed with the builder in mind, not the homeowner. Many offer coverage that ends just as risks begin to surface, hidden clauses that limit what's actually protected, and slow or inconsistent responses when problems arise.
+                Typical warranties are designed with the builder in mind, not the homeowner. Many offer coverage that ends just as risks begin to surface, hidden clauses that limit what's actually protected, and slow or inconsistent responses when problems arise. Some builders offer as little as one year of coverage before walking away.
               </p>
               <p
                 className="text-white/50 text-base leading-relaxed"
                 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
               >
-                These gaps leave families vulnerable. You deserve more than minimal coverage — you deserve confidence that lasts. That's why we created <span className="text-gold font-medium">Matlock Shield</span> with a full 25 years of protection.
+                These gaps leave families vulnerable. You deserve more than minimal coverage — you deserve confidence that lasts. That's why we created <span className="text-gold font-medium">Matlock Shield</span> with 5 years of workmanship and materials coverage and a full 10 years of structural protection.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Coverage Areas */}
+        {/* Warranty Tiers */}
         <section className="py-16 lg:py-24 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                Your 25-Year Warranty with Matlock Homes
+                Your Warranty with Matlock Homes
               </p>
               <h2
                 className="text-white text-3xl sm:text-4xl lg:text-5xl"
                 style={{ fontFamily: "'DM Serif Display', serif" }}
               >
-                Comprehensive <span className="text-gold italic">Coverage</span>
+                Two Tiers of <span className="text-gold italic">Protection</span>
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
-              {coverageAreas.map((area, i) => {
-                const Icon = area.icon;
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10">
+              {warrantyTiers.map((tier, i) => {
+                const Icon = tier.icon;
                 return (
                   <div
-                    key={area.title}
-                    className="relative bg-gradient-to-b from-gold/20 to-gold/5 border border-gold/30 rounded-2xl p-8 lg:p-10 transition-all duration-700 hover:border-gold/50"
+                    key={tier.years}
+                    className={`relative bg-gradient-to-b ${tier.color} border ${tier.borderColor} rounded-2xl p-8 lg:p-10 transition-all duration-700`}
                     style={{
                       opacity: loaded ? 1 : 0,
                       transform: loaded ? "translateY(0)" : "translateY(40px)",
                       transitionDelay: `${300 + i * 200}ms`,
                     }}
                   >
-                    {/* Icon and title */}
+                    {/* Year badge */}
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-gold" />
+                      <div className="w-14 h-14 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center">
+                        <Icon className="w-7 h-7 text-gold" />
                       </div>
-                      <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-3 py-1">
-                        <Shield className="w-3 h-3 text-gold" />
-                        <span className="text-gold text-xs tracking-wider uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                          25 Years
+                      <div>
+                        <span
+                          className="text-gold text-4xl font-bold"
+                          style={{ fontFamily: "'DM Serif Display', serif" }}
+                        >
+                          {tier.years}
+                        </span>
+                        <span className="text-white/40 text-sm ml-1" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                          Years
                         </span>
                       </div>
                     </div>
 
                     <h3
-                      className="text-white text-xl mb-2"
+                      className="text-white text-2xl mb-3"
                       style={{ fontFamily: "'DM Serif Display', serif" }}
                     >
-                      {area.title}
+                      {tier.title}
                     </h3>
 
                     <p
-                      className="text-white/40 text-sm leading-relaxed mb-6"
+                      className="text-white/50 text-base leading-relaxed mb-8"
                       style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
                     >
-                      {area.description}
+                      {tier.description}
                     </p>
 
                     <div className="space-y-3">
-                      <p className="text-gold text-xs tracking-wider uppercase" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
+                      <p className="text-gold text-xs tracking-wider uppercase mb-4" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
                         What's Covered
                       </p>
-                      {area.items.map((item) => (
+                      {tier.covers.map((item) => (
                         <div key={item} className="flex items-start gap-2.5">
                           <CheckCircle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                           <span
@@ -254,7 +281,7 @@ export default function Warranty() {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
-              {benefits.map((benefit, i) => (
+              {benefits.map((benefit) => (
                 <div
                   key={benefit.title}
                   className="bg-white/[0.03] border border-white/10 rounded-xl p-6 lg:p-8 hover:border-gold/20 transition-all duration-300"
@@ -284,7 +311,7 @@ export default function Warranty() {
               className="text-white text-2xl sm:text-3xl mb-8"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              How Are We Able to Offer <span className="text-gold italic">25 Years?</span>
+              Why We Stand Behind <span className="text-gold italic">Our Work</span>
             </h2>
 
             <blockquote className="relative">
@@ -293,7 +320,7 @@ export default function Warranty() {
                 className="text-white/60 text-base sm:text-lg leading-relaxed italic pl-8 pr-4"
                 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
               >
-                Because we're confident in the homes we build. Matlock Custom Homes goes further than other builders. While most custom home warranties stop at 2-5-10 years of coverage, we stand behind our work for a full 25 years. That level of protection is backed directly by us — not an outside provider — because we know our builds can stand the test of time.
+                We're confident in the homes we build. That's why Matlock Custom Homes offers a 5-10 year builder's warranty — 5 years covering every aspect of workmanship and materials, and a full 10 years protecting the structural integrity of your home. This protection is backed directly by us, not an outside provider, because we know our builds can stand the test of time.
               </p>
               <p
                 className="text-white/60 text-base sm:text-lg leading-relaxed italic pl-8 pr-4 mt-4"
@@ -324,7 +351,7 @@ export default function Warranty() {
               className="text-white/50 text-base mb-8"
               style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
             >
-              Every Matlock Custom Homes project includes our Matlock Shield 25-year warranty at no additional cost.
+              Every Matlock Custom Homes project includes our Matlock Shield 5-10 year builder's warranty at no additional cost.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a

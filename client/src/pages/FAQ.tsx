@@ -37,7 +37,7 @@ const faqs: FAQItem[] = [
   {
     question: "Can we hire you and get our own sub-trades?",
     answer:
-      "We generally recommend using our vetted network of sub-trades to ensure quality control, 25-year warranty coverage, and seamless project coordination. Our sub-contractors have been carefully selected based on years of proven performance and craftsmanship. However, we're open to discussing specific situations where you may have a preferred specialist. We'll work with you to find the best solution while maintaining our quality standards.",
+      "We generally recommend using our vetted network of sub-trades to ensure quality control, 5-10 year builder's warranty coverage, and seamless project coordination. Our sub-contractors have been carefully selected based on years of proven performance and craftsmanship. However, we're open to discussing specific situations where you may have a preferred specialist. We'll work with you to find the best solution while maintaining our quality standards.",
   },
   {
     question: "Can we buy our own materials?",
@@ -47,7 +47,7 @@ const faqs: FAQItem[] = [
   {
     question: "What is your warranty?",
     answer:
-      "Every Matlock Custom Homes project includes our Matlock Shield warranty program with up to 25 years of coverage — far beyond the industry standard. Our comprehensive warranty covers workmanship, materials, building envelope, and structural integrity, giving you lasting peace of mind. This coverage is backed directly by us — not a third-party provider. Visit our Warranty page to learn more.",
+      "Every Matlock Custom Homes project includes our Matlock Shield 5-10 year builder's warranty. We provide 5 years of coverage on all workmanship and materials, plus 10 years of structural defect protection — going beyond the industry standard. This coverage is backed directly by us, not a third-party provider. Visit our Warranty page to learn more.",
   },
   {
     question: "How long does it take to build a custom home?",
