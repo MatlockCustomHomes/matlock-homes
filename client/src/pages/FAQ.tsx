@@ -37,7 +37,7 @@ const faqs: FAQItem[] = [
   {
     question: "Can we hire you and get our own sub-trades?",
     answer:
-      "We generally recommend using our vetted network of sub-trades to ensure quality control, warranty coverage, and seamless project coordination. Our sub-contractors have been carefully selected based on years of proven performance and craftsmanship. However, we're open to discussing specific situations where you may have a preferred specialist. We'll work with you to find the best solution while maintaining our quality standards.",
+      "We generally recommend using our vetted network of sub-trades to ensure quality control, 25-year warranty coverage, and seamless project coordination. Our sub-contractors have been carefully selected based on years of proven performance and craftsmanship. However, we're open to discussing specific situations where you may have a preferred specialist. We'll work with you to find the best solution while maintaining our quality standards.",
   },
   {
     question: "Can we buy our own materials?",
@@ -47,7 +47,7 @@ const faqs: FAQItem[] = [
   {
     question: "What is your warranty?",
     answer:
-      "Every Matlock Custom Homes project includes our Matlock Shield warranty program, which goes beyond the industry standard. We offer a 3-year warranty on workmanship and materials, a 6-year warranty on the building envelope (roofing, windows, exterior walls), and an 11-year warranty on structural integrity (foundation, framing, load-bearing elements). This 3-6-11 coverage is backed directly by us — not a third-party provider. Visit our Warranty page to learn more.",
+      "Every Matlock Custom Homes project includes our Matlock Shield warranty program with up to 25 years of coverage — far beyond the industry standard. Our comprehensive warranty covers workmanship, materials, building envelope, and structural integrity, giving you lasting peace of mind. This coverage is backed directly by us — not a third-party provider. Visit our Warranty page to learn more.",
   },
   {
     question: "How long does it take to build a custom home?",
@@ -57,7 +57,7 @@ const faqs: FAQItem[] = [
   {
     question: "What areas do you serve?",
     answer:
-      "Matlock Custom Homes proudly serves the greater South Florida area, including New Port Richey, Tampa, Clearwater, St. Petersburg, and the broader Pasco County region. If you're unsure whether your location falls within our service area, don't hesitate to reach out — we're happy to discuss your project regardless of location.",
+      "Matlock Custom Homes proudly serves Pasco, Hernando, Pinellas, and Hillsborough counties — including New Port Richey, Tampa, Clearwater, St. Petersburg, Spring Hill, Brooksville, and surrounding communities. If you're unsure whether your location falls within our service area, don't hesitate to reach out — we're happy to discuss your project.",
   },
   {
     question: "Do you handle permits and inspections?",

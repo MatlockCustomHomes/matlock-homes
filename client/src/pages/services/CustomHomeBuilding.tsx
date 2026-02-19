@@ -7,7 +7,7 @@ const features = [
   { title: "Energy Efficient", description: "Modern insulation, impact windows, energy-efficient HVAC systems, and smart home integration to reduce your utility costs and environmental footprint." },
   { title: "Florida-Ready Construction", description: "Built to withstand Florida's unique climate with hurricane-rated construction, proper drainage, and moisture-resistant materials." },
   { title: "Transparent Pricing", description: "Detailed cost breakdowns with no hidden fees. You'll know exactly where every dollar goes before construction begins." },
-  { title: "Matlock Shield Warranty", description: "Every custom home includes our industry-leading 3-6-11 year warranty covering workmanship, building envelope, and structural integrity." },
+  { title: "Matlock Shield Warranty", description: "Every custom home includes our industry-leading Matlock Shield warranty with up to 25 years of coverage on workmanship, building envelope, and structural integrity." },
 ];
 
 const processSteps = [
