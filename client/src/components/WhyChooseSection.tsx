@@ -158,7 +158,7 @@ export default function WhyChooseSection() {
                 boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
               }}
             >
-              <div className="px-6 py-5 flex items-center gap-4" style={{backgroundColor: '#f8f8f7'}}>
+              <div className="px-6 py-5 flex items-center gap-4" style={{backgroundColor: '#e9e9ce'}}>
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                   style={{ background: "rgba(197,165,90,0.15)", border: "1px solid rgba(197,165,90,0.3)" }}
@@ -167,14 +167,14 @@ export default function WhyChooseSection() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h4
-                    className="text-white text-base mb-0.5"
-                    style={{ fontFamily: "'DM Serif Display', serif" }}
+                    className="text-base mb-0.5"
+                    style={{ fontFamily: "'DM Serif Display', serif", color: '#2A2520' }}
                   >
                     Can You Build on Your Lot?
                   </h4>
                   <p
-                    className="text-white/45 text-sm"
-                    style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                    className="text-sm"
+                    style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: '#7A7068' }}
                   >
                     Free preliminary feasibility check with permitting insights
                   </p>
