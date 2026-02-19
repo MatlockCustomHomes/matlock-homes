@@ -75,13 +75,13 @@ const STEPS = [
   {
     id: "location",
     question: "Where is your project located?",
-    subtitle: "We serve the greater South Florida area.",
+    subtitle: "We serve the greater Tampa Bay area.",
     options: [
       { value: "new_port_richey", label: "New Port Richey", icon: "📍", desc: "New Port Richey and surrounding areas" },
       { value: "tampa", label: "Tampa Area", icon: "📍", desc: "Tampa and surrounding neighborhoods" },
       { value: "clearwater", label: "Clearwater / St. Pete", icon: "📍", desc: "Clearwater, St. Petersburg area" },
       { value: "pasco", label: "Pasco County", icon: "📍", desc: "Other Pasco County locations" },
-      { value: "other_fl", label: "Other South Florida", icon: "📍", desc: "Other locations in South Florida" },
+      { value: "other_fl", label: "Other Tampa Bay", icon: "📍", desc: "Other locations in the Tampa Bay area" },
     ],
   },
 ];
@@ -413,7 +413,7 @@ export default function Pricing() {
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                 <a
-                  href="tel:7279991959"
+                  href="tel:7274855996"
                   className="btn-gold px-8 py-3.5 rounded-sm text-base tracking-wider inline-flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4" />

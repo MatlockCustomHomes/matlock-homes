@@ -2,6 +2,7 @@
  * DESIGN: Florida Coastal Luxury
  * About: Cream background, asymmetric two-column layout.
  * Left: construction image. Right: text content with gold accents.
+ * Decorative roofline SVG in top-right corner.
  */
 import { useEffect, useRef, useState } from "react";
 import { Shield, Award, Users } from "lucide-react";
@@ -13,6 +14,25 @@ const stats = [
   { icon: Award, label: "Years of Experience", value: "6+" },
   { icon: Users, label: "Satisfied Clients", value: "100+" },
 ];
+
+/* Decorative roofline SVG — mimics the angled lines from the Matlock logo */
+function RooflineDecor() {
+  return (
+    <svg
+      className="absolute top-8 right-8 lg:top-12 lg:right-12 w-32 h-24 lg:w-48 lg:h-36 opacity-[0.12]"
+      viewBox="0 0 200 140"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Main roof peak */}
+      <path d="M10 120 L100 20 L190 120" stroke="#C5A55A" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      {/* Second inner line */}
+      <path d="M30 120 L100 40 L170 120" stroke="#C5A55A" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      {/* Third innermost line */}
+      <path d="M50 120 L100 58 L150 120" stroke="#C5A55A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    </svg>
+  );
+}
 
 export default function AboutSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -28,8 +48,11 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section id="about" ref={ref} className="relative bg-cream py-24 lg:py-32">
-      <div className="container">
+    <section id="about" ref={ref} className="relative bg-cream py-24 lg:py-32 overflow-hidden">
+      {/* Decorative roofline in top-right corner */}
+      <RooflineDecor />
+
+      <div className="container relative z-10">
         {/* Section Label */}
         <div
           className="mb-16 transition-all duration-700"

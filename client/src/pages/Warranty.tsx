@@ -378,12 +378,12 @@ export default function Warranty() {
                   Get in Touch
                 </a>
                 <a
-                  href="tel:7279991959"
+                  href="tel:7274855996"
                   className="flex items-center gap-2 text-white/80 hover:text-gold px-6 py-3.5 border border-white/20 hover:border-gold/50 rounded-sm transition-all duration-300 text-base tracking-wider"
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
                   <Clock className="w-4 h-4" />
-                  Call (727) 999-1959
+                  Call (727) 485-5996
                 </a>
               </div>
             </div>

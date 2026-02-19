@@ -142,7 +142,7 @@ export default function HeroSection() {
             transitionDelay: "1000ms",
           }}
         >
-          Building custom homes and transforming existing spaces across South Florida
+          Building custom homes and transforming existing spaces across Tampa Bay Area
           with craftsmanship, care, and precision.
         </p>
 
@@ -163,12 +163,12 @@ export default function HeroSection() {
             Get Started
           </a>
           <a
-            href="tel:7279991959"
+            href="tel:7274855996"
             className="flex items-center gap-2 text-white/80 hover:text-gold px-6 py-3.5 border border-white/20 hover:border-gold/50 rounded-sm transition-all duration-300 text-base tracking-wider"
             style={{ fontFamily: "'Outfit', sans-serif" }}
           >
             <Phone className="w-4 h-4" />
-            (727) 999-1959
+            (727) 485-5996
           </a>
         </div>
       </div>

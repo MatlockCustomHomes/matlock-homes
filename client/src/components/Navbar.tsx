@@ -262,12 +262,12 @@ export default function Navbar() {
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-5 overflow-y-auto py-24">
+        <div className="flex flex-col items-center justify-center h-full gap-3 overflow-y-auto py-24 px-6">
           {/* Home */}
           <a
             href="#home"
             onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
-            className="text-white text-2xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
+            className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
             style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "0ms" : "0ms" }}
           >
             Home
@@ -277,7 +277,7 @@ export default function Navbar() {
           <div className="flex flex-col items-center">
             <button
               onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-              className="text-white text-2xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300 flex items-center gap-2"
+              className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300 flex items-center gap-2"
               style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "80ms" : "0ms" }}
             >
               About
@@ -292,7 +292,7 @@ export default function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(item.href, item.isRoute); }}
-                  className="text-white/60 text-lg py-2 hover:text-gold transition-colors duration-200"
+                  className="text-white/60 text-base py-1.5 hover:text-gold transition-colors duration-200"
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
                   {item.label}
@@ -305,7 +305,7 @@ export default function Navbar() {
           <div className="flex flex-col items-center">
             <button
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="text-white text-2xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300 flex items-center gap-2"
+              className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300 flex items-center gap-2"
               style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "160ms" : "0ms" }}
             >
               Services
@@ -320,7 +320,7 @@ export default function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(item.href, item.isRoute); }}
-                  className="text-white/60 text-lg py-2 hover:text-gold transition-colors duration-200"
+                  className="text-white/60 text-base py-1.5 hover:text-gold transition-colors duration-200"
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
                   {item.label}
@@ -333,7 +333,7 @@ export default function Navbar() {
           <a
             href="#projects"
             onClick={(e) => { e.preventDefault(); handleNavClick("#projects"); }}
-            className="text-white text-2xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
+            className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
             style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "240ms" : "0ms" }}
           >
             Projects
@@ -343,7 +343,7 @@ export default function Navbar() {
           <a
             href="/pricing"
             onClick={(e) => { e.preventDefault(); handleNavClick("/pricing", true); }}
-            className="text-white text-2xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
+            className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
             style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "320ms" : "0ms" }}
           >
             Pricing
@@ -353,7 +353,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}
-            className="text-white text-2xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
+            className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
             style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "400ms" : "0ms" }}
           >
             Contact
@@ -361,7 +361,7 @@ export default function Navbar() {
 
           {/* Phone CTA */}
           <a
-            href="tel:7279991959"
+            href="tel:7274855996"
             className="mt-4 btn-gold px-8 py-3 rounded-sm text-lg tracking-wider flex items-center gap-3"
             style={{
               transitionDelay: mobileOpen ? "480ms" : "0ms",
@@ -369,7 +369,7 @@ export default function Navbar() {
             }}
           >
             <Phone className="w-5 h-5" />
-            (727) 999-1959
+            (727) 485-5996
           </a>
         </div>
       </div>

@@ -64,12 +64,12 @@ export default function Footer() {
             Ready to build your dream home?
           </h3>
           <a
-            href="tel:7279991959"
+            href="tel:7274855996"
             className="flex items-center gap-2 bg-charcoal text-white px-6 py-3 rounded-sm hover:bg-charcoal-light transition-colors duration-300 text-sm tracking-wider"
             style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500 }}
           >
             <Phone className="w-4 h-4" />
-            Call (727) 999-1959
+            Call (727) 485-5996
           </a>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <img src={LOGO_URL} alt="Matlock Custom Homes" className="h-14 w-auto mb-4" />
             <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
-              Premium quality custom home builder serving South Florida. Licensed and insured.
+              Premium quality custom home builder serving Tampa Bay Area. Licensed and insured.
             </p>
           </div>
 
@@ -133,9 +133,9 @@ export default function Footer() {
               Contact
             </h4>
             <div className="space-y-4">
-              <a href="tel:7279991959" className="flex items-center gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
+              <a href="tel:7274855996" className="flex items-center gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
                 <Phone className="w-4 h-4 text-gold flex-shrink-0" />
-                (727) 999-1959
+                (727) 485-5996
               </a>
               <a href="mailto:matlockhomes@icloud.com" className="flex items-center gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
                 <Mail className="w-4 h-4 text-gold flex-shrink-0" />

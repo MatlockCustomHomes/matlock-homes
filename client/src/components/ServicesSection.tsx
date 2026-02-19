@@ -95,7 +95,7 @@ export default function ServicesSection() {
             className="text-white/70 mt-6 max-w-2xl mx-auto text-lg transition-all duration-700"
             style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transitionDelay: "300ms" }}
           >
-            From custom builds to complete renovations, we bring craftsmanship and care to every project across South Florida.
+            From custom builds to complete renovations, we bring craftsmanship and care to every project across Tampa Bay Area.
           </p>
         </div>
       </div>

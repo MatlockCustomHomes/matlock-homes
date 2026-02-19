@@ -17,7 +17,7 @@ const faqs: FAQItem[] = [
   {
     question: "How much does it cost to build a custom home?",
     answer:
-      "The cost of building a custom home in South Florida varies depending on several factors including size, location, design complexity, and the level of finishes you choose. A standard custom home typically ranges from $200 to $400+ per square foot. During our initial consultation, we'll discuss your vision and budget to provide a detailed, transparent estimate tailored to your specific project. You can also use our online Pricing Estimate Tool to get a quick ballpark range.",
+      "The cost of building a custom home in Tampa Bay Area varies depending on several factors including size, location, design complexity, and the level of finishes you choose. A standard custom home typically ranges from $200 to $400+ per square foot. During our initial consultation, we'll discuss your vision and budget to provide a detailed, transparent estimate tailored to your specific project. You can also use our online Pricing Estimate Tool to get a quick ballpark range.",
   },
   {
     question: "What are your contractor fees?",
@@ -62,7 +62,7 @@ const faqs: FAQItem[] = [
   {
     question: "Do you handle permits and inspections?",
     answer:
-      "Absolutely. We handle all permitting, regulatory compliance, and inspections from start to finish. Our team is well-versed in local building codes and zoning requirements across South Florida. We manage the entire paperwork process so you can focus on the exciting parts of building your dream home — like choosing finishes and watching your vision come to life.",
+      "Absolutely. We handle all permitting, regulatory compliance, and inspections from start to finish. Our team is well-versed in local building codes and zoning requirements across Tampa Bay Area. We manage the entire paperwork process so you can focus on the exciting parts of building your dream home — like choosing finishes and watching your vision come to life.",
   },
   {
     question: "Can I make changes during construction?",
@@ -220,12 +220,12 @@ export default function FAQ() {
                   Contact Us
                 </a>
                 <a
-                  href="tel:7279991959"
+                  href="tel:7274855996"
                   className="flex items-center gap-2 text-white/80 hover:text-gold px-6 py-3.5 border border-white/20 hover:border-gold/50 rounded-sm transition-all duration-300 text-base tracking-wider"
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
                   <Phone className="w-4 h-4" />
-                  (727) 999-1959
+                  (727) 485-5996
                 </a>
               </div>
             </div>
