@@ -8,7 +8,7 @@ const TO_EMAIL = "matlockhomes@icloud.com";
 // Unique sender addresses per form type
 const FROM_CONTACT = "Matlock Custom Homes <websiteinquiry@matlockcustomhomes.com>";
 const FROM_CHAT = "Matlock Custom Homes <WebChat@matlockcustomhomes.com>";
-const FROM_ESTIMATE = "Matlock Custom Homes <WebEstimateTool@matlockcustomhomes.com>";
+const FROM_ESTIMATE = "Matlock Custom Homes <websiteinquiry@matlockcustomhomes.com>";
 const FROM_LOT_FEASIBILITY = "Matlock Custom Homes <WebFeasibilityCheck@matlockcustomhomes.com>";
 
 interface EmailOptions {

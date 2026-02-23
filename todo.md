@@ -142,3 +142,6 @@
 - [x] Chat transcripts: from WebChat@matlockcustomhomes.com
 - [x] Estimator tool: from WebEstimateTool@matlockcustomhomes.com
 - [x] Lot feasibility: from WebFeasibilityCheck@matlockcustomhomes.com
+
+## Email Sender Update: Intake Form
+- [x] Change intake/estimate form sender from WebEstimateTool to websiteinquiry@matlockcustomhomes.com
