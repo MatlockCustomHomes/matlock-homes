@@ -111,7 +111,7 @@ export default function OurStorySection() {
               className="text-base lg:text-lg leading-relaxed mb-4"
               style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248", lineHeight: 1.75 }}
             >
-              With over 20 years of experience in renovations and contracting, Byron Matlock has been immersed in the world of construction since he was a teenager, learning the trade alongside his father. What started as a family tradition became a lifelong passion — and today, Byron continues that legacy through Matlock Custom Homes.
+              With over 20 years of experience in renovations and contracting, Byron Matlock has been immersed in the world of construction since he was a teenager, learning the trade alongside his father. What started as a family tradition became a lifelong passion, and today Byron continues that legacy through Matlock Custom Homes.
             </p>
 
             <p
