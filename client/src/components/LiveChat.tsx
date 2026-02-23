@@ -38,15 +38,15 @@ const BOT_RESPONSES: Record<string, Message> = {
   },
   "I need a renovation quote": {
     id: 0,
-    text: "We handle everything from kitchen and bathroom renovations to full home remodels. To give you an accurate quote, we'd need to learn more about your project. How would you like to proceed?",
+    text: "We handle all types of home renovations — from partial updates to full home remodels. To give you an accurate quote, we'd need to learn more about your project. How would you like to proceed?",
     sender: "bot",
     options: ["Schedule a call", "Send an email", "Tell me about renovation services"],
   },
   "Tell me about your services": {
     id: 0,
-    text: "We offer a full range of construction services:\n\n• Custom Home Building\n• Home Renovations\n• Kitchen Remodeling\n• Bathroom Renovations\n• Demolition Services (Commercial & Residential)\n\nEach project comes with our Matlock Shield 5-10 year builder's warranty. Which service interests you?",
+    text: "We specialize in two core services:\n\n• Custom Home Building — From concept to keys, we design and build homes tailored to your lifestyle.\n• Home Renovations — We update, repair, and reimagine your existing space into something modern and functional.\n\nEach project comes with our Matlock Shield 5-10 year builder's warranty. Which service interests you?",
     sender: "bot",
-    options: ["Custom Home Building", "Renovations", "Kitchen Remodeling", "Demolition Services", "Tell me about the warranty"],
+    options: ["Custom Home Building", "Home Renovations", "Tell me about the warranty", "Back to main menu"],
   },
   "I have a question about pricing": {
     id: 0,
@@ -83,6 +83,42 @@ const BOT_RESPONSES: Record<string, Message> = {
     text: "Every project includes our Matlock Shield builder's warranty:\n\n5 Years — Workmanship & Materials\n10 Years — Structural Defects\n\nThis goes beyond the industry standard and is backed directly by us — not a third-party provider.",
     sender: "bot",
     options: ["View warranty details", "Schedule a call", "Back to main menu"],
+  },
+  "Custom Home Building": {
+    id: 0,
+    text: "Our custom home building service takes you from concept to keys. We handle everything — site evaluation, architectural design, permitting, construction, and final walkthrough. Every home is built to your exact specifications with premium materials and craftsmanship.",
+    sender: "bot",
+    options: ["Schedule a consultation", "Use the estimate tool", "Tell me about the process", "Back to main menu"],
+  },
+  "Home Renovations": {
+    id: 0,
+    text: "Our renovation services cover everything from single-room updates to full home remodels. Whether you want to modernize your kitchen, expand your living space, or completely transform your home — we bring the same craftsmanship and attention to detail as our custom builds.",
+    sender: "bot",
+    options: ["Schedule a call", "Use the estimate tool", "Tell me about the warranty", "Back to main menu"],
+  },
+  "Tell me about renovation services": {
+    id: 0,
+    text: "Our renovation services cover everything from single-room updates to full home remodels. Whether you want to modernize your kitchen, expand your living space, or completely transform your home — we bring the same craftsmanship and attention to detail as our custom builds.",
+    sender: "bot",
+    options: ["Schedule a call", "Use the estimate tool", "Tell me about the warranty", "Back to main menu"],
+  },
+  "Schedule a consultation": {
+    id: 0,
+    text: "You can reach us directly at (727) 999-1959 during business hours, or leave a message anytime. We typically return calls within a few hours.",
+    sender: "bot",
+    options: ["Call now", "Send an email", "Back to main menu"],
+  },
+  "What's included in the price?": {
+    id: 0,
+    text: "Our pricing is transparent and all-inclusive. A typical custom home package includes:\n\n• Architectural design & engineering\n• Permitting & site preparation\n• All construction labor & materials\n• Quality inspections throughout\n• Matlock Shield builder's warranty\n\nWant to get a personalized estimate?",
+    sender: "bot",
+    options: ["Use the estimate tool", "Schedule a call", "Back to main menu"],
+  },
+  "Schedule a call instead": {
+    id: 0,
+    text: "You can reach us directly at (727) 999-1959 during business hours, or leave a message anytime. We typically return calls within a few hours.",
+    sender: "bot",
+    options: ["Call now", "Send an email", "Back to main menu"],
   },
 };
 

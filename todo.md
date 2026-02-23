@@ -100,3 +100,6 @@
 
 ## Content Update: Keystone Property
 - [x] Remove "Near Tampa International Airport" from Keystone property neighborhood highlights
+
+## Content Update: Live Chat Services
+- [x] Update live chat quick replies and AI responses to only reference Custom Home Building and Home Renovations
