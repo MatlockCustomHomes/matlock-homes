@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { MapView } from "./Map";
 
 // Matlock Custom Homes office coordinates
-const OFFICE_LOCATION = { lat: 28.2442, lng: -82.7293 };
+const OFFICE_LOCATION = { lat: 28.259031, lng: -82.6787113 };
 
 export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
