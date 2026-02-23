@@ -97,3 +97,6 @@
 
 ## Bug Fix: Build-Ready Estates infinite loop
 - [x] Fix Maximum call stack size exceeded error on /build-ready-estates page (was HMR race condition during editing; also fixed missed phone number on this page)
+
+## Content Update: Keystone Property
+- [x] Remove "Near Tampa International Airport" from Keystone property neighborhood highlights

@@ -92,7 +92,6 @@ const properties: PropertyListing[] = [
     neighborhoodHighlights: [
       "Heart of Keystone — desirable Odessa location",
       "Private, rural homesite with country living feel",
-      "Near Tampa International Airport",
       "Convenient access to major roadways, shopping & dining",
       "Hillsborough County — top-rated school district",
     ],
