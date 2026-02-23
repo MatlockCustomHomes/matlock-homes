@@ -106,3 +106,18 @@
 
 ## Content Update: Homepage Background Video
 - [x] Upload new MHCommercial video to S3 and replace homepage hero background video
+
+## Phase 14: Consolidate to Single Service — Custom Home Building
+- [x] Remove Home Renovations service page and route
+- [x] Remove Home Renovations from navbar dropdown
+- [x] Remove Home Renovations from footer quick links
+- [x] Remove Renovate or Rebuild calculator component
+- [x] Remove renovate-or-rebuild form route from server
+- [x] Redesign Services section on homepage for single service (Custom Home Building)
+- [x] Update live chat to only reference Custom Home Building
+- [x] Update testimonials to reflect custom home building only
+- [x] Update pricing tool to remove renovation option
+- [x] Update meta tags and structured data
+- [x] Update any remaining renovation/rebuild references across site (ContactSection, MobileIntakePopup, formRoutes)
+- [x] Run tests and fix any issues (18/18 passing, zero TS errors)
+- [x] Save checkpoint

@@ -18,7 +18,6 @@ const aboutDropdown = [
 
 const servicesDropdown = [
   { label: "Custom Home Building", href: "/services/custom-home-building", isRoute: true },
-  { label: "Home Renovations", href: "/services/home-renovations", isRoute: true },
 ];
 
 export default function Navbar() {

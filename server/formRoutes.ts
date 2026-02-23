@@ -6,7 +6,7 @@
  */
 import { Router } from "express";
 import { notifyOwner } from "./_core/notification";
-import { contactEmail, intakeEmail, chatEmail, lotFeasibilityEmail, renovateOrRebuildEmail } from "./email";
+import { contactEmail, intakeEmail, chatEmail, lotFeasibilityEmail } from "./email";
 
 const router = Router();
 
@@ -84,7 +84,7 @@ router.post("/intake", async (req, res) => {
     // Map answer values to readable labels
     const purposeLabels: Record<string, string> = {
       client_build: "Looking to build a custom home",
-      client_renovate: "Looking to renovate",
+      client_rebuild: "Looking to rebuild",
       trade_professional: "Trade professional",
       vendor: "Vendor",
       just_browsing: "Just browsing",
@@ -317,70 +317,5 @@ router.post("/lot-feasibility", async (req, res) => {
   }
 });
 
-/**
- * POST /api/forms/renovate-or-rebuild
- * Renovate vs Rebuild calculator results
- */
-router.post("/renovate-or-rebuild", async (req, res) => {
-  try {
-    const { formData, result } = req.body;
-
-    if (!formData) {
-      return res.status(400).json({ error: "Form data required" });
-    }
-
-    const formatCurrency = (n: number) =>
-      new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
-
-    const recLabels: Record<string, string> = {
-      renovate: "🔨 RENOVATION RECOMMENDED",
-      rebuild: "🏗️ REBUILD RECOMMENDED",
-      either: "⚖️ BOTH OPTIONS VIABLE",
-    };
-
-    const content = [
-      `🏠 **Renovate vs Rebuild Calculator Submitted**`,
-      `📅 ${formatDate()}`,
-      ``,
-      `**Home Details:**`,
-      `• Home Age: ${formData.homeAge} years`,
-      `• Current Size: ${parseInt(formData.squareFootage).toLocaleString()} sq ft`,
-      `• Desired Addition: ${formData.desiredAddition ? `${parseInt(formData.desiredAddition).toLocaleString()} sq ft` : "None"}`,
-      `• Budget: ${formData.budget ? formatCurrency(parseInt(formData.budget)) : "Not provided"}`,
-      ``,
-      `**Result: ${recLabels[result?.recommendation] || "N/A"}**`,
-      `• Renovation Estimate: ${formatCurrency(result?.renovationLow || 0)} – ${formatCurrency(result?.renovationHigh || 0)}`,
-      `• Rebuild Estimate: ${formatCurrency(result?.rebuildLow || 0)} – ${formatCurrency(result?.rebuildHigh || 0)}`,
-      ``,
-      `**Reasoning:**`,
-      ...(result?.reasoning || []).map((r: string) => `• ${r}`),
-      ``,
-      `---`,
-      `This visitor is actively evaluating renovation/rebuild options — potential lead.`,
-    ].join("\n");
-
-    // Send both notification and email in parallel
-    await Promise.allSettled([
-      sendNotification(
-        `Renovate/Rebuild: ${formData.squareFootage} sqft, ${formData.homeAge}yr old — ${result?.recommendation?.toUpperCase() || "N/A"}`,
-        content
-      ),
-      renovateOrRebuildEmail({
-        homeAge: formData.homeAge,
-        squareFootage: formData.squareFootage,
-        desiredAddition: formData.desiredAddition || "None",
-        budget: formData.budget ? formatCurrency(parseInt(formData.budget)) : "Not provided",
-        renovationCost: `${formatCurrency(result?.renovationLow || 0)} – ${formatCurrency(result?.renovationHigh || 0)}`,
-        rebuildCost: `${formatCurrency(result?.rebuildLow || 0)} – ${formatCurrency(result?.rebuildHigh || 0)}`,
-        recommendation: recLabels[result?.recommendation] || "N/A",
-      }),
-    ]);
-
-    res.json({ success: true });
-  } catch (error) {
-    console.error("[Forms] Renovate/rebuild error:", error);
-    res.status(500).json({ error: "Failed to process submission" });
-  }
-});
 
 export default router;

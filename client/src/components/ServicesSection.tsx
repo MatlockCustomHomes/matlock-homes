@@ -1,27 +1,24 @@
 /*
- * DESIGN: Florida Coastal Luxury — Bright tone
- * Services: Background image behind title, light cards below.
- * Features: Custom Homes, Renovations.
- * Learn More links route to individual service pages.
+ * DESIGN: Florida Coastal Luxury — Single Service Showcase
+ * Services: Custom Home Building — New Builds & Full Rebuilds
+ * Full-width hero header, two approach cards, and a CTA.
  */
 import { useEffect, useRef, useState } from "react";
-import { Home, Hammer, ArrowRight } from "lucide-react";
+import { Home, Hammer, ArrowRight, Ruler, ShieldCheck } from "lucide-react";
 import { useLocation } from "wouter";
 
-const services = [
+const approaches = [
   {
     icon: Home,
-    title: "Custom Home Building",
-    description: "Your vision starts here. We create thoughtfully designed custom homes built around your lifestyle, guiding you seamlessly from concept to completion with clarity, precision, and personal attention.",
-    number: "01",
-    href: "/services/custom-home-building",
+    title: "New Construction",
+    description: "Build your dream home from the ground up on your own lot. Every detail is designed to match your lifestyle — from the foundation to the final finish.",
+    highlights: ["Fully custom floor plans", "Premium materials & finishes", "Energy-efficient systems", "Florida hurricane-rated"],
   },
   {
     icon: Hammer,
-    title: "Home Renovations",
-    description: "Love where you live again. We update, repair, and reimagine your space—turning yesterday's home into a modern reflection of your lifestyle.",
-    number: "02",
-    href: "/services/home-renovations",
+    title: "Full Home Rebuilds",
+    description: "Tear down and rebuild on your existing property. Get a brand-new, modern home with current building codes on the lot you already love.",
+    highlights: ["Complete demolition & rebuild", "Modern code compliance", "New structural systems", "Keep your existing lot"],
   },
 ];
 
@@ -54,32 +51,33 @@ export default function ServicesSection() {
             className="text-sm tracking-[0.3em] uppercase mb-3 transition-all duration-700"
             style={{ fontFamily: "'Outfit', sans-serif", color: "#C5A55A", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)" }}
           >
-            Our Services
+            What We Do
           </p>
           <h2
             className="text-white text-3xl sm:text-4xl lg:text-5xl leading-tight transition-all duration-700"
             style={{ fontFamily: "'DM Serif Display', serif", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transitionDelay: "150ms" }}
           >
-            What We <span className="italic" style={{ color: "#C5A55A" }}>Offer</span>
+            Custom Home <span className="italic" style={{ color: "#C5A55A" }}>Building</span>
           </h2>
           <div className="w-16 h-px mx-auto mt-6" style={{ background: "linear-gradient(90deg, transparent, #C5A55A, transparent)", opacity: visible ? 1 : 0, transition: "opacity 0.7s ease 0.3s" }} />
           <p
             className="text-white/70 mt-6 max-w-2xl mx-auto text-lg transition-all duration-700"
             style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transitionDelay: "300ms" }}
           >
-            From custom builds to complete renovations, we bring craftsmanship and care to every project across Tampa Bay Area.
+            Whether you're building from the ground up or rebuilding your existing home, we deliver craftsmanship and care on every project across Tampa Bay Area.
           </p>
         </div>
       </div>
 
-      {/* Service Cards on light background */}
+      {/* Two approach cards on light background */}
       <div className="relative py-20 lg:py-28" style={{ background: "#F3EDE4" }}>
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A55A' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
         <div className="container relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {services.map((service, i) => (
+          {/* Approach Cards */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+            {approaches.map((approach, i) => (
               <div
-                key={service.number}
+                key={approach.title}
                 className="group relative rounded-xl p-8 lg:p-10 hover:-translate-y-1 transition-all duration-500"
                 style={{
                   background: "white",
@@ -99,41 +97,85 @@ export default function ServicesSection() {
                   (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(197, 165, 90, 0.12)";
                 }}
               >
-                {/* Number */}
-                <span
-                  className="absolute top-4 right-4 text-6xl font-bold transition-colors duration-500"
-                  style={{ fontFamily: "'DM Serif Display', serif", color: "rgba(197, 165, 90, 0.08)" }}
-                >
-                  {service.number}
-                </span>
-
-                <service.icon className="w-8 h-8 mb-5" style={{ color: "#9A7B3C" }} />
+                <approach.icon className="w-8 h-8 mb-5" style={{ color: "#9A7B3C" }} />
                 <h3
                   className="text-xl mb-3"
                   style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
                 >
-                  {service.title}
+                  {approach.title}
                 </h3>
                 <p
-                  className="leading-relaxed mb-5"
+                  className="leading-relaxed mb-6"
                   style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, lineHeight: 1.8, color: "#5C5549", fontSize: "1rem" }}
                 >
-                  {service.description}
+                  {approach.description}
                 </p>
-                <a
-                  href={service.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setLocation(service.href);
-                    window.scrollTo(0, 0);
-                  }}
-                  className="inline-flex items-center gap-2 text-sm tracking-wider uppercase hover:gap-3 transition-all duration-300"
-                  style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, color: "#9A7B3C" }}
-                >
-                  Learn More <ArrowRight className="w-4 h-4" />
-                </a>
+                <ul className="space-y-2">
+                  {approach.highlights.map((h) => (
+                    <li key={h} className="flex items-center gap-2 text-sm" style={{ fontFamily: "'Outfit', sans-serif", color: "#5C5549" }}>
+                      <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#C5A55A" }} />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
+          </div>
+
+          {/* Bottom highlights bar */}
+          <div
+            className="max-w-5xl mx-auto rounded-xl p-8 lg:p-10 grid sm:grid-cols-3 gap-8 text-center"
+            style={{
+              background: "linear-gradient(135deg, #2A2520 0%, #3A3530 100%)",
+              border: "1px solid rgba(197,165,90,0.2)",
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0)" : "translateY(20px)",
+              transition: "all 0.7s ease 0.7s",
+            }}
+          >
+            <div>
+              <Ruler className="w-6 h-6 mx-auto mb-3" style={{ color: "#C5A55A" }} />
+              <p className="text-white text-sm font-medium mb-1" style={{ fontFamily: "'Outfit', sans-serif" }}>Fully Custom Designs</p>
+              <p className="text-white/50 text-xs" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>No cookie-cutter plans</p>
+            </div>
+            <div>
+              <ShieldCheck className="w-6 h-6 mx-auto mb-3" style={{ color: "#C5A55A" }} />
+              <p className="text-white text-sm font-medium mb-1" style={{ fontFamily: "'Outfit', sans-serif" }}>Matlock Shield Warranty</p>
+              <p className="text-white/50 text-xs" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>5-10 year builder's warranty</p>
+            </div>
+            <div>
+              <Home className="w-6 h-6 mx-auto mb-3" style={{ color: "#C5A55A" }} />
+              <p className="text-white text-sm font-medium mb-1" style={{ fontFamily: "'Outfit', sans-serif" }}>Florida-Ready</p>
+              <p className="text-white/50 text-xs" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>Hurricane-rated construction</p>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div
+            className="text-center mt-12"
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0)" : "translateY(20px)",
+              transition: "all 0.7s ease 0.9s",
+            }}
+          >
+            <a
+              href="/services/custom-home-building"
+              onClick={(e) => {
+                e.preventDefault();
+                setLocation("/services/custom-home-building");
+                window.scrollTo(0, 0);
+              }}
+              className="inline-flex items-center gap-2 text-sm tracking-wider uppercase hover:gap-3 transition-all duration-300 px-8 py-3.5 rounded-sm"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 500,
+                color: "#2A2520",
+                background: "#C5A55A",
+              }}
+            >
+              Learn More <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>

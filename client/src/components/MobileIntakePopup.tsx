@@ -19,7 +19,7 @@ const STEPS = [
     subtitle: "Select the option that best describes you.",
     options: [
       { value: "client_build", label: "I'm a client looking to build my dream home", icon: "🏠" },
-      { value: "client_renovate", label: "I'm a client looking to renovate my home", icon: "🔨" },
+      { value: "client_rebuild", label: "I'm a client looking to rebuild my home", icon: "🔨" },
       { value: "trade_professional", label: "I'm a trade professional offering services", icon: "🛠️" },
       { value: "vendor", label: "I'm a vendor with a product to sell", icon: "📦" },
       { value: "just_browsing", label: "Just browsing / exploring options", icon: "👀" },

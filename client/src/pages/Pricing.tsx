@@ -20,11 +20,7 @@ const STEPS = [
     subtitle: "Select the option that best describes your project.",
     options: [
       { value: "new_build", label: "New Custom Home Build", icon: "🏗️", desc: "Build a brand new custom home from the ground up" },
-      { value: "full_renovation", label: "Full Home Renovation", icon: "🔨", desc: "Complete renovation of an existing home" },
-      { value: "kitchen", label: "Kitchen Remodel", icon: "🍳", desc: "Kitchen upgrade, redesign, or full overhaul" },
-      { value: "bathroom", label: "Bathroom Renovation", icon: "🚿", desc: "Bathroom remodel or complete renovation" },
-      { value: "addition", label: "Home Addition", icon: "📐", desc: "Add new rooms or expand existing space" },
-      { value: "demolition", label: "Demolition Services", icon: "🏚️", desc: "Commercial or residential demolition" },
+      { value: "full_rebuild", label: "Full Home Rebuild", icon: "🔨", desc: "Tear down and rebuild a brand-new home on your existing lot" },
     ],
   },
   {
@@ -94,18 +90,10 @@ function calculateEstimate(answers: StepAnswer): { low: number; high: number } {
   switch (answers.project_type) {
     case "new_build":
       baseLow = 200000; baseHigh = 500000; break;
-    case "full_renovation":
-      baseLow = 80000; baseHigh = 250000; break;
-    case "kitchen":
-      baseLow = 25000; baseHigh = 80000; break;
-    case "bathroom":
-      baseLow = 15000; baseHigh = 50000; break;
-    case "addition":
-      baseLow = 50000; baseHigh = 200000; break;
-    case "demolition":
-      baseLow = 10000; baseHigh = 60000; break;
+    case "full_rebuild":
+      baseLow = 180000; baseHigh = 450000; break;
     default:
-      baseLow = 50000; baseHigh = 200000;
+      baseLow = 200000; baseHigh = 500000;
   }
 
   // Size multiplier

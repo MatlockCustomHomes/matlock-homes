@@ -19,7 +19,7 @@ vi.mock("./_core/env", () => ({
   },
 }));
 
-import { contactEmail, intakeEmail, chatEmail, lotFeasibilityEmail, renovateOrRebuildEmail } from "./email";
+import { contactEmail, intakeEmail, chatEmail, lotFeasibilityEmail } from "./email";
 
 describe("Email Integration (Resend)", () => {
   beforeEach(() => {
@@ -117,26 +117,7 @@ describe("Email Integration (Resend)", () => {
     });
   });
 
-  describe("renovateOrRebuildEmail", () => {
-    it("sends a formatted renovate/rebuild email", async () => {
-      const result = await renovateOrRebuildEmail({
-        homeAge: "25",
-        squareFootage: "2000",
-        desiredAddition: "500 sq ft",
-        budget: "$300,000",
-        renovationCost: "$150,000 – $200,000",
-        rebuildCost: "$400,000 – $500,000",
-        recommendation: "RENOVATION RECOMMENDED",
-      });
 
-      expect(result).toBe(true);
-      const call = mockSend.mock.calls[0][0];
-      expect(call.subject).toContain("Renovate vs Rebuild");
-      expect(call.html).toContain("RENOVATION RECOMMENDED");
-      expect(call.html).toContain("$150,000");
-      expect(call.html).toContain("$400,000");
-    });
-  });
 
   describe("error handling", () => {
     it("returns false when Resend returns an error", async () => {

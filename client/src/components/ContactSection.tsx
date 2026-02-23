@@ -104,7 +104,7 @@ export default function ContactSection() {
               className="text-slate text-base leading-relaxed mb-10"
               style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, lineHeight: 1.75 }}
             >
-              Fill out the form and a Matlock Homes professional will contact you to discuss your future project. Whether you're building new or renovating, we're here to help.
+              Fill out the form and a Matlock Homes professional will contact you to discuss your future project. Whether you're building from the ground up or rebuilding on your existing lot, we're here to help.
             </p>
 
             {/* Contact Details */}

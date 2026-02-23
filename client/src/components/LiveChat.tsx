@@ -21,7 +21,7 @@ const INITIAL_MESSAGES: Message[] = [
     sender: "bot",
     options: [
       "I want to build a custom home",
-      "I need a renovation quote",
+      "I want to rebuild my existing home",
       "Tell me about your services",
       "I have a question about pricing",
       "I'd like to speak with someone",
@@ -36,17 +36,17 @@ const BOT_RESPONSES: Record<string, Message> = {
     sender: "bot",
     options: ["Schedule a call", "Use the estimate tool", "Tell me about the process"],
   },
-  "I need a renovation quote": {
+  "I want to rebuild my existing home": {
     id: 0,
-    text: "We handle all types of home renovations — from partial updates to full home remodels. To give you an accurate quote, we'd need to learn more about your project. How would you like to proceed?",
+    text: "Great choice! We specialize in full home rebuilds — tearing down your existing structure and building a brand-new, modern home on the lot you already love. You get current building codes, energy efficiency, and hurricane-rated construction. How would you like to proceed?",
     sender: "bot",
-    options: ["Schedule a call", "Send an email", "Tell me about renovation services"],
+    options: ["Schedule a call", "Use the estimate tool", "Tell me about the process"],
   },
   "Tell me about your services": {
     id: 0,
-    text: "We specialize in two core services:\n\n• Custom Home Building — From concept to keys, we design and build homes tailored to your lifestyle.\n• Home Renovations — We update, repair, and reimagine your existing space into something modern and functional.\n\nEach project comes with our Matlock Shield 5-10 year builder's warranty. Which service interests you?",
+    text: "We specialize in Custom Home Building — both new construction and full home rebuilds:\n\n• New Construction — Build your dream home from the ground up on your own lot.\n• Full Home Rebuilds — Tear down and rebuild on your existing property with a brand-new modern home.\n\nEvery project comes with our Matlock Shield 5-10 year builder's warranty.",
     sender: "bot",
-    options: ["Custom Home Building", "Home Renovations", "Tell me about the warranty", "Back to main menu"],
+    options: ["New Construction", "Full Home Rebuilds", "Tell me about the warranty", "Back to main menu"],
   },
   "I have a question about pricing": {
     id: 0,
@@ -90,15 +90,15 @@ const BOT_RESPONSES: Record<string, Message> = {
     sender: "bot",
     options: ["Schedule a consultation", "Use the estimate tool", "Tell me about the process", "Back to main menu"],
   },
-  "Home Renovations": {
+  "New Construction": {
     id: 0,
-    text: "Our renovation services cover everything from single-room updates to full home remodels. Whether you want to modernize your kitchen, expand your living space, or completely transform your home — we bring the same craftsmanship and attention to detail as our custom builds.",
+    text: "New construction means building your dream home from the ground up on your own lot. Every detail is fully custom — floor plan, materials, finishes, and smart home features. We guide you from the first blueprint to the final walkthrough.",
     sender: "bot",
-    options: ["Schedule a call", "Use the estimate tool", "Tell me about the warranty", "Back to main menu"],
+    options: ["Schedule a consultation", "Use the estimate tool", "Tell me about the process", "Back to main menu"],
   },
-  "Tell me about renovation services": {
+  "Full Home Rebuilds": {
     id: 0,
-    text: "Our renovation services cover everything from single-room updates to full home remodels. Whether you want to modernize your kitchen, expand your living space, or completely transform your home — we bring the same craftsmanship and attention to detail as our custom builds.",
+    text: "A full home rebuild means we tear down your existing structure and build a brand-new home on the same lot. You get modern hurricane-rated construction, energy-efficient systems, and current Florida building codes — all while keeping the property you love.",
     sender: "bot",
     options: ["Schedule a call", "Use the estimate tool", "Tell me about the warranty", "Back to main menu"],
   },

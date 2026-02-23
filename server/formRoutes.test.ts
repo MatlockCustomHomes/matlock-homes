@@ -192,46 +192,7 @@ describe("Form Submission API Routes", () => {
     });
   });
 
-  describe("POST /api/forms/renovate-or-rebuild", () => {
-    it("accepts valid renovate/rebuild submission", async () => {
-      const app = createApp();
-      const res = await request(app)
-        .post("/api/forms/renovate-or-rebuild")
-        .send({
-          formData: {
-            homeAge: "30",
-            squareFootage: "2000",
-            desiredAddition: "500",
-            budget: "250000",
-          },
-          result: {
-            recommendation: "renovate",
-            renovationLow: 180000,
-            renovationHigh: 240000,
-            rebuildLow: 400000,
-            rebuildHigh: 560000,
-            reasoning: ["Budget favors renovation", "Home age is manageable"],
-          },
-        });
 
-      expect(res.status).toBe(200);
-      expect(res.body.success).toBe(true);
-      expect(mockedNotifyOwner).toHaveBeenCalledWith(
-        expect.objectContaining({
-          content: expect.stringContaining("$180,000"),
-        })
-      );
-    });
-
-    it("rejects without formData", async () => {
-      const app = createApp();
-      const res = await request(app)
-        .post("/api/forms/renovate-or-rebuild")
-        .send({});
-
-      expect(res.status).toBe(400);
-    });
-  });
 
   describe("Notification failure handling", () => {
     it("still returns success even if notification fails", async () => {
