@@ -1,11 +1,15 @@
 /*
  * DESIGN: Florida Coastal Luxury
  * Contact: Cream background, two-column layout.
- * Left: contact info + map placeholder. Right: contact form.
+ * Left: contact info + Google Maps. Right: contact form.
  */
 import { useEffect, useRef, useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { MapView } from "./Map";
+
+// Matlock Custom Homes office coordinates
+const OFFICE_LOCATION = { lat: 28.2442, lng: -82.7293 };
 
 export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,6 +52,15 @@ export default function ContactSection() {
     }
   };
 
+  const handleMapReady = (map: google.maps.Map) => {
+    // Add a marker for the office location
+    new google.maps.marker.AdvancedMarkerElement({
+      map,
+      position: OFFICE_LOCATION,
+      title: "Matlock Custom Homes",
+    });
+  };
+
   const contactInfo = [
     { icon: Phone, label: "Phone", value: "(727) 485-5996", href: "tel:7274855996" },
     { icon: Mail, label: "Email", value: "matlockhomes@icloud.com", href: "mailto:matlockhomes@icloud.com" },
@@ -76,7 +89,7 @@ export default function ContactSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Contact Info */}
+          {/* Contact Info + Map */}
           <div
             className="transition-all duration-1000"
             style={{ opacity: visible ? 1 : 0, transform: visible ? "translateX(0)" : "translateX(-30px)", transitionDelay: "300ms" }}
@@ -118,8 +131,31 @@ export default function ContactSection() {
               ))}
             </div>
 
+            {/* Google Maps */}
+            <div
+              className="mt-10 rounded-sm overflow-hidden shadow-lg shadow-black/5 border border-sand/50 transition-all duration-700"
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateY(0)" : "translateY(20px)",
+                transitionDelay: "900ms",
+              }}
+            >
+              <MapView
+                className="h-[280px] w-full"
+                initialCenter={OFFICE_LOCATION}
+                initialZoom={14}
+                onMapReady={handleMapReady}
+              />
+              <div className="bg-white px-4 py-3 flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                <p className="text-charcoal text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                  8219 Massachusetts Ave, New Port Richey, FL 34653
+                </p>
+              </div>
+            </div>
+
             {/* Social Links */}
-            <div className="mt-10 flex gap-4">
+            <div className="mt-8 flex gap-4">
               <a
                 href="https://www.facebook.com/105088618340246/"
                 target="_blank"

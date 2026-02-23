@@ -1,0 +1,10 @@
+Google Maps Embed Inspection - 2026-02-23
+==========================================
+- Google Maps is rendering correctly in the Contact section
+- Map shows the New Port Richey area with nearby landmarks (Cracker Barrel, Publix, etc.)
+- Address bar below map shows: "8219 Massachusetts Ave, New Port Richey, FL 34653"
+- Map has zoom controls (+/-), satellite toggle, and keyboard shortcuts
+- Map data shows "©2026 Google, INEGI"
+- Social links (Facebook, Instagram, LinkedIn) appear below the map
+- Footer shows Build-Ready Estates in quick links
+- Everything looks clean and properly integrated

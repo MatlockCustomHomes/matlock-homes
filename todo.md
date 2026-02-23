@@ -66,3 +66,8 @@
 - [x] Remove Projects from footer quick links (Footer.tsx)
 - [x] Add Build-Ready Estates as a footer quick link
 - [x] Test and save checkpoint (13/13 tests passing)
+
+## Phase 11: Notification Forwarding & Google Maps
+- [x] Enable notification forwarding to matlockhomes@icloud.com — already wired via notifyOwner, user needs to enable email forwarding in Settings > Notifications
+- [x] Add Google Maps embed to Contact section (8219 Massachusetts Ave, New Port Richey, FL 34653)
+- [x] Test and save checkpoint (13/13 tests passing, maps verified)
