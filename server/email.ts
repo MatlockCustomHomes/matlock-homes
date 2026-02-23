@@ -4,7 +4,7 @@ import { ENV } from "./_core/env";
 const resend = new Resend(ENV.resendApiKey);
 
 const TO_EMAIL = "matlockhomes@icloud.com";
-const FROM_EMAIL = "Matlock Custom Homes <onboarding@resend.dev>";
+const FROM_EMAIL = "Matlock Custom Homes <notifications@matlockcustomhomes.com>";
 
 interface EmailOptions {
   subject: string;
