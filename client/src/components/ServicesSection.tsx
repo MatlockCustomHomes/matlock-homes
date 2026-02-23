@@ -64,7 +64,7 @@ export default function ServicesSection() {
             className="text-white/70 mt-6 max-w-2xl mx-auto text-lg transition-all duration-700"
             style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transitionDelay: "300ms" }}
           >
-            Whether you're building from the ground up or rebuilding your existing home, we deliver craftsmanship and care on every project across Tampa Bay Area.
+            Whether you're building from the ground up or rebuilding your existing home, we deliver craftsmanship and care on every project across the Tampa Bay Area.
           </p>
         </div>
       </div>
