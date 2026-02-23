@@ -80,3 +80,6 @@
 - [x] Send formatted emails to matlockhomes@icloud.com
 - [x] Write/update tests for email integration (8 tests passing)
 - [x] Test and save checkpoint (21/21 tests passing)
+
+## Bug Fix: Google Maps API loaded multiple times
+- [x] Fix Google Maps API being included multiple times on homepage
