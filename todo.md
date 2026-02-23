@@ -124,3 +124,6 @@
 
 ## Visual Edit: ServicePageLayout
 - [x] Remove the subtitle pill badge (icon + subtitle text in rounded pill) from ServicePageLayout hero
+
+## Content Update: Custom Home Building Page
+- [x] Remove "Transparent Pricing" and "Fully Custom Designs" feature boxes from Custom Home Building page

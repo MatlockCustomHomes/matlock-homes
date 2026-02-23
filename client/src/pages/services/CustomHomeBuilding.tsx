@@ -7,8 +7,6 @@ const features = [
   { title: "Premium Materials", description: "We source only the highest quality materials from trusted suppliers, ensuring your home is built to last with superior finishes throughout." },
   { title: "Energy Efficient", description: "Modern insulation, impact windows, energy-efficient HVAC systems, and smart home integration to reduce your utility costs and environmental footprint." },
   { title: "Florida-Ready Construction", description: "Built to withstand Florida's unique climate with hurricane-rated construction, proper drainage, and moisture-resistant materials." },
-  { title: "Transparent Pricing", description: "Detailed cost breakdowns with no hidden fees. You'll know exactly where every dollar goes before construction begins." },
-  { title: "Fully Custom Designs", description: "Every home is designed from scratch to match your lifestyle, preferences, and lot specifications. Work directly with our team to bring your vision to life." },
   { title: "Matlock Shield Warranty", description: "Every custom home includes our Matlock Shield 5-10 year builder's warranty — 5 years on workmanship and materials, plus 10 years of structural defect protection." },
 ];
 
