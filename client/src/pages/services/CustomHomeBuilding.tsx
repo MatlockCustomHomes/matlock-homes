@@ -26,7 +26,7 @@ export default function CustomHomeBuilding() {
       icon={Home}
       title="Custom Home Building"
       subtitle="New Builds & Full Rebuilds"
-      heroDescription="Whether you're building from the ground up or rebuilding your existing home, we deliver custom homes designed around your lifestyle with uncompromising craftsmanship."
+      heroDescription="Whether you're building from the ground up or rebuilding your existing home, we deliver custom homes defined by your vision and executed with precision."
       heroImage="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
       features={features}
       processSteps={processSteps}
