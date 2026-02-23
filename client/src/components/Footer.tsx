@@ -13,7 +13,7 @@ const navLinks = [
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Our Process", href: "#process" },
-  { label: "Projects", href: "#projects" },
+  { label: "Build-Ready Estates", href: "/build-ready-estates", isRoute: true },
   { label: "Pricing", href: "/pricing", isRoute: true },
   { label: "Warranty", href: "/warranty", isRoute: true },
   { label: "FAQs", href: "/faq", isRoute: true },

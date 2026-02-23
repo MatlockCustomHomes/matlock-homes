@@ -222,16 +222,6 @@ export default function Navbar() {
               Build-Ready Estates
             </a>
 
-            {/* Projects */}
-            <a
-              href="#projects"
-              onClick={(e) => { e.preventDefault(); handleNavClick("#projects"); }}
-              className={linkStyle}
-              style={fontStyle}
-            >
-              Projects
-            </a>
-
             {/* Pricing */}
             <a
               href="/pricing"
@@ -349,22 +339,12 @@ export default function Navbar() {
             Build-Ready Estates
           </a>
 
-          {/* Projects */}
-          <a
-            href="#projects"
-            onClick={(e) => { e.preventDefault(); handleNavClick("#projects"); }}
-            className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
-            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "320ms" : "0ms" }}
-          >
-            Projects
-          </a>
-
           {/* Pricing */}
           <a
             href="/pricing"
             onClick={(e) => { e.preventDefault(); handleNavClick("/pricing", true); }}
             className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
-            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "400ms" : "0ms" }}
+            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "320ms" : "0ms" }}
           >
             Pricing
           </a>
@@ -374,7 +354,7 @@ export default function Navbar() {
             href="#contact"
             onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}
             className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
-            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "480ms" : "0ms" }}
+            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "400ms" : "0ms" }}
           >
             Contact
           </a>

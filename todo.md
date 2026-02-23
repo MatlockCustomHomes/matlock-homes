@@ -58,3 +58,11 @@
 - [x] Add Build-Ready Estates to navigation bar (desktop + mobile)
 - [x] Register route in App.tsx
 - [x] Test and save checkpoint (13/13 tests passing)
+
+## Phase 10: Remove Projects, Add Build-Ready Estates Quick Link
+- [x] Remove Projects section from homepage (Home.tsx)
+- [x] Remove Projects from desktop navigation (Navbar.tsx)
+- [x] Remove Projects from mobile navigation (Navbar.tsx)
+- [x] Remove Projects from footer quick links (Footer.tsx)
+- [x] Add Build-Ready Estates as a footer quick link
+- [x] Test and save checkpoint (13/13 tests passing)
