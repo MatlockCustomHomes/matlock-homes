@@ -133,3 +133,12 @@
 - [x] Rename "Custom Home Building" to "Custom Homes" and move under Quick Links
 - [x] Spread all links into two-column grid layout
 - [x] Make "Quick Links" title larger with DM Serif Display font, styled like VersaHomes footer
+
+## Bug: Contact form email not forwarding
+- [x] Investigate and fix contact form submissions not being delivered to matlockhomes@icloud.com (was in spam folder, emails sending correctly)
+
+## Email Sender Addresses Update
+- [x] Contact form: from websiteinquiry@matlockcustomhomes.com
+- [x] Chat transcripts: from WebChat@matlockcustomhomes.com
+- [x] Estimator tool: from WebEstimateTool@matlockcustomhomes.com
+- [x] Lot feasibility: from WebFeasibilityCheck@matlockcustomhomes.com

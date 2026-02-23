@@ -4,14 +4,20 @@ import { ENV } from "./_core/env";
 const resend = new Resend(ENV.resendApiKey);
 
 const TO_EMAIL = "matlockhomes@icloud.com";
-const FROM_EMAIL = "Matlock Custom Homes <notifications@matlockcustomhomes.com>";
+
+// Unique sender addresses per form type
+const FROM_CONTACT = "Matlock Custom Homes <websiteinquiry@matlockcustomhomes.com>";
+const FROM_CHAT = "Matlock Custom Homes <WebChat@matlockcustomhomes.com>";
+const FROM_ESTIMATE = "Matlock Custom Homes <WebEstimateTool@matlockcustomhomes.com>";
+const FROM_LOT_FEASIBILITY = "Matlock Custom Homes <WebFeasibilityCheck@matlockcustomhomes.com>";
 
 interface EmailOptions {
   subject: string;
   html: string;
+  from: string;
 }
 
-export async function sendEmail({ subject, html }: EmailOptions): Promise<boolean> {
+export async function sendEmail({ subject, html, from }: EmailOptions): Promise<boolean> {
   try {
     if (!ENV.resendApiKey) {
       console.warn("[Email] RESEND_API_KEY not set, skipping email");
@@ -19,7 +25,7 @@ export async function sendEmail({ subject, html }: EmailOptions): Promise<boolea
     }
 
     const { error } = await resend.emails.send({
-      from: FROM_EMAIL,
+      from,
       to: TO_EMAIL,
       subject,
       html,
@@ -42,6 +48,7 @@ export async function sendEmail({ subject, html }: EmailOptions): Promise<boolea
 
 export function contactEmail(data: { name: string; email: string; phone?: string; message: string }) {
   return sendEmail({
+    from: FROM_CONTACT,
     subject: `New Contact Form: ${data.name}`,
     html: `
       <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fff;">
@@ -66,6 +73,7 @@ export function contactEmail(data: { name: string; email: string; phone?: string
 
 export function intakeEmail(data: { name: string; phone: string; email: string; projectType: string; budget: string; timeline: string; address?: string; details?: string }) {
   return sendEmail({
+    from: FROM_ESTIMATE,
     subject: `New Estimate Request: ${data.name} — ${data.projectType}`,
     html: `
       <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fff;">
@@ -101,6 +109,7 @@ export function chatEmail(data: { messages: Array<{ role: string; content: strin
     .join("");
 
   return sendEmail({
+    from: FROM_CHAT,
     subject: `Chat Transcript${data.userInfo ? ` — ${data.userInfo}` : ""}`,
     html: `
       <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fff;">
@@ -123,6 +132,7 @@ export function lotFeasibilityEmail(data: { address: string; floodZone: string; 
   const considerationsList = data.considerations.map((c) => `<li style="padding: 4px 0; color: #2C2C2C;">${c}</li>`).join("");
 
   return sendEmail({
+    from: FROM_LOT_FEASIBILITY,
     subject: `Lot Feasibility Check: ${data.address}`,
     html: `
       <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fff;">
@@ -150,4 +160,3 @@ export function lotFeasibilityEmail(data: { address: string; floodZone: string; 
     `,
   });
 }
-
