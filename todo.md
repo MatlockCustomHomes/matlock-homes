@@ -121,3 +121,6 @@
 - [x] Update any remaining renovation/rebuild references across site (ContactSection, MobileIntakePopup, formRoutes)
 - [x] Run tests and fix any issues (18/18 passing, zero TS errors)
 - [x] Save checkpoint
+
+## Visual Edit: ServicePageLayout
+- [x] Remove the subtitle pill badge (icon + subtitle text in rounded pill) from ServicePageLayout hero

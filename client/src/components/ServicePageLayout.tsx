@@ -72,15 +72,6 @@ export default function ServicePageLayout({
               transform: loaded ? "translateY(0)" : "translateY(40px)",
             }}
           >
-            <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-5 py-2 mb-8">
-              <Icon className="w-4 h-4 text-gold" />
-              <span
-                className="text-gold text-sm tracking-wider uppercase"
-                style={{ fontFamily: "'Outfit', sans-serif" }}
-              >
-                {subtitle}
-              </span>
-            </div>
 
             <h1
               className="text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6"
