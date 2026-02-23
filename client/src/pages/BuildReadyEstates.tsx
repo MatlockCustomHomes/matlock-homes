@@ -556,11 +556,11 @@ export default function BuildReadyEstates() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:7274855996"
+                href="tel:7279991959"
                 className="btn-gold px-8 py-3.5 rounded-sm text-sm tracking-wider flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" />
-                (727) 485-5996
+                (727) 999-1959
               </a>
               <a
                 href="mailto:matlockhomes@icloud.com"

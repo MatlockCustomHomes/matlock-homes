@@ -94,3 +94,6 @@
 - [x] Remove Kitchen/Bathroom Remodeling and Demolition from navigation
 - [x] Run tests and fix any issues (21/21 passing, zero TS errors)
 - [x] Save checkpoint
+
+## Bug Fix: Build-Ready Estates infinite loop
+- [x] Fix Maximum call stack size exceeded error on /build-ready-estates page (was HMR race condition during editing; also fixed missed phone number on this page)
