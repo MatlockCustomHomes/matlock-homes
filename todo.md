@@ -71,3 +71,12 @@
 - [x] Enable notification forwarding to matlockhomes@icloud.com — already wired via notifyOwner, user needs to enable email forwarding in Settings > Notifications
 - [x] Add Google Maps embed to Contact section (8219 Massachusetts Ave, New Port Richey, FL 34653)
 - [x] Test and save checkpoint (13/13 tests passing, maps verified)
+
+## Phase 12: Resend Email Integration
+- [x] Store Resend API key securely
+- [x] Install Resend SDK
+- [x] Create email sending helper (server/email.ts)
+- [x] Update formRoutes to send emails via Resend for all 5 form types
+- [x] Send formatted emails to matlockhomes@icloud.com
+- [x] Write/update tests for email integration (8 tests passing)
+- [x] Test and save checkpoint (21/21 tests passing)

@@ -1,11 +1,12 @@
 /*
  * Form Submission API Routes
- * All form submissions are sent to the project owner via the notification system.
- * Routes: /api/forms/contact, /api/forms/intake, /api/forms/chat,
- *         /api/forms/lot-feasibility, /api/forms/renovate-or-rebuild
+ * All form submissions are sent via:
+ * 1. Manus notification system (notifyOwner) for in-app notifications
+ * 2. Resend email service for direct email to matlockhomes@icloud.com
  */
 import { Router } from "express";
 import { notifyOwner } from "./_core/notification";
+import { contactEmail, intakeEmail, chatEmail, lotFeasibilityEmail, renovateOrRebuildEmail } from "./email";
 
 const router = Router();
 
@@ -55,7 +56,11 @@ router.post("/contact", async (req, res) => {
       `Reply to: ${email}`,
     ].join("\n");
 
-    await sendNotification(`New Contact: ${name}`, content);
+    // Send both notification and email in parallel
+    await Promise.allSettled([
+      sendNotification(`New Contact: ${name}`, content),
+      contactEmail({ name, email, phone, message }),
+    ]);
 
     res.json({ success: true });
   } catch (error) {
@@ -151,7 +156,19 @@ router.post("/intake", async (req, res) => {
       `Reply to: ${contactInfo.email}`,
     ].filter(Boolean).join("\n");
 
-    await sendNotification(`New Intake: ${contactInfo.name}`, content);
+    // Send both notification and email in parallel
+    await Promise.allSettled([
+      sendNotification(`New Intake: ${contactInfo.name}`, content),
+      intakeEmail({
+        name: contactInfo.name,
+        phone: contactInfo.phone || "",
+        email: contactInfo.email,
+        projectType: purposeLabels[answers?.purpose] || answers?.purpose || "N/A",
+        budget: budgetLabels[answers?.budget] || answers?.budget || "N/A",
+        timeline: stageLabels[answers?.stage] || answers?.stage || "N/A",
+        details: contactInfo.message || undefined,
+      }),
+    ]);
 
     res.json({ success: true });
   } catch (error) {
@@ -194,7 +211,17 @@ router.post("/chat", async (req, res) => {
       `Total messages: ${messages.length}`,
     ].join("\n");
 
-    await sendNotification(`New Chat Conversation`, content);
+    // Send both notification and email in parallel
+    await Promise.allSettled([
+      sendNotification(`New Chat Conversation`, content),
+      chatEmail({
+        messages: messages.map((m: { sender: string; text: string }) => ({
+          role: m.sender === "user" ? "user" : "bot",
+          content: m.text,
+        })),
+        userInfo: contactInfo ? `${contactInfo.name || ""} ${contactInfo.email || ""}`.trim() : undefined,
+      }),
+    ]);
 
     res.json({ success: true });
   } catch (error) {
@@ -266,10 +293,22 @@ router.post("/lot-feasibility", async (req, res) => {
       `This visitor may be a potential lead — consider following up if address was provided.`,
     ].join("\n");
 
-    await sendNotification(
-      `Lot Check: ${formData.address || "No address"} — ${result?.score?.toUpperCase() || "N/A"}`,
-      content
-    );
+    // Send both notification and email in parallel
+    await Promise.allSettled([
+      sendNotification(
+        `Lot Check: ${formData.address || "No address"} — ${result?.score?.toUpperCase() || "N/A"}`,
+        content
+      ),
+      lotFeasibilityEmail({
+        address: formData.address || "Not provided",
+        floodZone: floodZoneLabels[formData.floodZone] || formData.floodZone,
+        lotSize: `${formData.lotSize} acres`,
+        hoa: hoaLabels[formData.hoa] || formData.hoa,
+        waterfront: waterfrontLabels[formData.waterfront] || formData.waterfront,
+        feasibility: scoreLabels[result?.score] || "N/A",
+        considerations: result?.permitting || [],
+      }),
+    ]);
 
     res.json({ success: true });
   } catch (error) {
@@ -320,10 +359,22 @@ router.post("/renovate-or-rebuild", async (req, res) => {
       `This visitor is actively evaluating renovation/rebuild options — potential lead.`,
     ].join("\n");
 
-    await sendNotification(
-      `Renovate/Rebuild: ${formData.squareFootage} sqft, ${formData.homeAge}yr old — ${result?.recommendation?.toUpperCase() || "N/A"}`,
-      content
-    );
+    // Send both notification and email in parallel
+    await Promise.allSettled([
+      sendNotification(
+        `Renovate/Rebuild: ${formData.squareFootage} sqft, ${formData.homeAge}yr old — ${result?.recommendation?.toUpperCase() || "N/A"}`,
+        content
+      ),
+      renovateOrRebuildEmail({
+        homeAge: formData.homeAge,
+        squareFootage: formData.squareFootage,
+        desiredAddition: formData.desiredAddition || "None",
+        budget: formData.budget ? formatCurrency(parseInt(formData.budget)) : "Not provided",
+        renovationCost: `${formatCurrency(result?.renovationLow || 0)} – ${formatCurrency(result?.renovationHigh || 0)}`,
+        rebuildCost: `${formatCurrency(result?.rebuildLow || 0)} – ${formatCurrency(result?.rebuildHigh || 0)}`,
+        recommendation: recLabels[result?.recommendation] || "N/A",
+      }),
+    ]);
 
     res.json({ success: true });
   } catch (error) {
