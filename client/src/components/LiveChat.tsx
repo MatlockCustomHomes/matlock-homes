@@ -56,13 +56,13 @@ const BOT_RESPONSES: Record<string, Message> = {
   },
   "I'd like to speak with someone": {
     id: 0,
-    text: "Of course! You can reach us directly:\n\n(727) 485-5996\nmatlockhomes@icloud.com\n\nOr leave your info below and we'll get back to you within 24 hours.",
+    text: "Of course! You can reach us directly:\n\n(727) 999-1959\nmatlockhomes@icloud.com\n\nOr leave your info below and we'll get back to you within 24 hours.",
     sender: "bot",
     options: ["Call now", "Send an email"],
   },
   "Schedule a call": {
     id: 0,
-    text: "You can reach us directly at (727) 485-5996 during business hours, or leave a message anytime. We typically return calls within a few hours.",
+    text: "You can reach us directly at (727) 999-1959 during business hours, or leave a message anytime. We typically return calls within a few hours.",
     sender: "bot",
     options: ["Call now", "Send an email", "Back to main menu"],
   },
@@ -88,7 +88,7 @@ const BOT_RESPONSES: Record<string, Message> = {
 
 const DEFAULT_RESPONSE: Message = {
   id: 0,
-  text: "Thanks for your message! For the fastest response, please call us at (727) 485-5996 or email matlockhomes@icloud.com. We'll get back to you as soon as possible.",
+  text: "Thanks for your message! For the fastest response, please call us at (727) 999-1959 or email matlockhomes@icloud.com. We'll get back to you as soon as possible.",
   sender: "bot",
   options: ["Call now", "Send an email", "Back to main menu"],
 };
@@ -155,7 +155,7 @@ export default function LiveChat() {
   const handleOptionClick = (option: string) => {
     // Handle action options
     if (option === "Call now") {
-      window.location.href = "tel:7274855996";
+      window.location.href = "tel:7279991959";
       return;
     }
     if (option === "Send an email") {
@@ -253,7 +253,7 @@ export default function LiveChat() {
             </div>
             <div className="flex gap-1">
               <a
-                href="tel:7274855996"
+                href="tel:7279991959"
                 className="w-8 h-8 rounded-full flex items-center justify-center text-white/40 hover:text-gold hover:bg-white/5 transition-all"
                 aria-label="Call"
               >

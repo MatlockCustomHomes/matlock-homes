@@ -19,10 +19,6 @@ const aboutDropdown = [
 const servicesDropdown = [
   { label: "Custom Home Building", href: "/services/custom-home-building", isRoute: true },
   { label: "Home Renovations", href: "/services/home-renovations", isRoute: true },
-  { label: "Kitchen Remodeling", href: "/services/kitchen-remodeling", isRoute: true },
-  { label: "Bathroom Renovations", href: "/services/bathroom-renovations", isRoute: true },
-  { label: "Demolition Services", href: "/services/demolition-services", isRoute: true },
-  { label: "Flooring Services", href: "/services/flooring-services", isRoute: true },
 ];
 
 export default function Navbar() {
@@ -361,7 +357,7 @@ export default function Navbar() {
 
           {/* Phone CTA */}
           <a
-            href="tel:7274855996"
+            href="tel:7279991959"
             className="mt-4 btn-gold px-8 py-3 rounded-sm text-lg tracking-wider flex items-center gap-3"
             style={{
               transitionDelay: mobileOpen ? "480ms" : "0ms",
@@ -369,7 +365,7 @@ export default function Navbar() {
             }}
           >
             <Phone className="w-5 h-5" />
-            (727) 485-5996
+            (727) 999-1959
           </a>
         </div>
       </div>

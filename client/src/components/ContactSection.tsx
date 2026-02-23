@@ -46,7 +46,7 @@ export default function ContactSection() {
         toast.error("Something went wrong. Please try again or call us directly.");
       }
     } catch {
-      toast.error("Network error. Please try again or call (727) 485-5996.");
+      toast.error("Network error. Please try again or call (727) 999-1959.");
     } finally {
       setSubmitting(false);
     }
@@ -62,7 +62,7 @@ export default function ContactSection() {
   };
 
   const contactInfo = [
-    { icon: Phone, label: "Phone", value: "(727) 485-5996", href: "tel:7274855996" },
+    { icon: Phone, label: "Phone", value: "(727) 999-1959", href: "tel:7279991959" },
     { icon: Mail, label: "Email", value: "matlockhomes@icloud.com", href: "mailto:matlockhomes@icloud.com" },
     { icon: MapPin, label: "Location", value: "8219 Massachusetts Ave, New Port Richey, FL 34653", href: "https://maps.google.com/?q=8219+Massachusetts+Ave+New+Port+Richey+FL+34653" },
     { icon: Clock, label: "Hours", value: "Monday - Friday: 8AM - 5PM", href: "#" },
@@ -104,7 +104,7 @@ export default function ContactSection() {
               className="text-slate text-base leading-relaxed mb-10"
               style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, lineHeight: 1.75 }}
             >
-              Fill out the form and a Matlock Homes professional will contact you to discuss your future project. Whether you're building new, renovating, or need demolition services, we're here to help.
+              Fill out the form and a Matlock Homes professional will contact you to discuss your future project. Whether you're building new or renovating, we're here to help.
             </p>
 
             {/* Contact Details */}

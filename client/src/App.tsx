@@ -11,10 +11,6 @@ import Warranty from "./pages/Warranty";
 import FAQ from "./pages/FAQ";
 import CustomHomeBuilding from "./pages/services/CustomHomeBuilding";
 import HomeRenovations from "./pages/services/HomeRenovations";
-import KitchenRemodeling from "./pages/services/KitchenRemodeling";
-import BathroomRenovations from "./pages/services/BathroomRenovations";
-import DemolitionServices from "./pages/services/DemolitionServices";
-import FlooringServices from "./pages/services/FlooringServices";
 import BuildReadyEstates from "./pages/BuildReadyEstates";
 import LotFeasibilityPage from "./pages/tools/LotFeasibilityPage";
 import RenovateOrRebuildPage from "./pages/tools/RenovateOrRebuildPage";
@@ -28,10 +24,6 @@ function Router() {
       <Route path={"/faq"} component={FAQ} />
       <Route path={"/services/custom-home-building"} component={CustomHomeBuilding} />
       <Route path={"/services/home-renovations"} component={HomeRenovations} />
-      <Route path={"/services/kitchen-remodeling"} component={KitchenRemodeling} />
-      <Route path={"/services/bathroom-renovations"} component={BathroomRenovations} />
-      <Route path={"/services/demolition-services"} component={DemolitionServices} />
-      <Route path={"/services/flooring-services"} component={FlooringServices} />
       <Route path={"/build-ready-estates"} component={BuildReadyEstates} />
       <Route path={"/tools/lot-feasibility"} component={LotFeasibilityPage} />
       <Route path={"/tools/renovate-or-rebuild"} component={RenovateOrRebuildPage} />

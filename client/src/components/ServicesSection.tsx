@@ -1,11 +1,11 @@
 /*
  * DESIGN: Florida Coastal Luxury — Bright tone
  * Services: Background image behind title, light cards below.
- * Features: Custom Homes, Renovations, Kitchen, Bathroom, Demolition, Flooring.
+ * Features: Custom Homes, Renovations.
  * Learn More links route to individual service pages.
  */
 import { useEffect, useRef, useState } from "react";
-import { Home, Hammer, ChefHat, Bath, Building2, Layers, ArrowRight } from "lucide-react";
+import { Home, Hammer, ArrowRight } from "lucide-react";
 import { useLocation } from "wouter";
 
 const services = [
@@ -22,34 +22,6 @@ const services = [
     description: "Love where you live again. We update, repair, and reimagine your space—turning yesterday's home into a modern reflection of your lifestyle.",
     number: "02",
     href: "/services/home-renovations",
-  },
-  {
-    icon: ChefHat,
-    title: "Kitchen Remodeling",
-    description: "Turn your vision of the perfect kitchen into reality. From backsplashes to full kitchen overhauls, we upgrade appliances, countertops, cabinetry, and much more.",
-    number: "03",
-    href: "/services/kitchen-remodeling",
-  },
-  {
-    icon: Bath,
-    title: "Bathroom Renovations",
-    description: "The bathroom is one of the most used rooms in any home. At Matlock Homes, we renovate nearly every aspect of it to create a space that is both beautiful and functional.",
-    number: "04",
-    href: "/services/bathroom-renovations",
-  },
-  {
-    icon: Building2,
-    title: "Demolition Services",
-    description: "Commercial and residential demolition with precision and professionalism. From site assessment to debris removal, we safely and efficiently dismantle structures for new developments.",
-    number: "05",
-    href: "/services/demolition-services",
-  },
-  {
-    icon: Layers,
-    title: "Flooring Services",
-    description: "Expert floor planning, removal, and installation services. From hardwood and tile to luxury vinyl, we deliver beautiful, durable floors that transform every room in your home.",
-    number: "06",
-    href: "/services/flooring-services",
   },
 ];
 
@@ -104,11 +76,11 @@ export default function ServicesSection() {
       <div className="relative py-20 lg:py-28" style={{ background: "#F3EDE4" }}>
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A55A' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
         <div className="container relative z-10">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {services.map((service, i) => (
               <div
                 key={service.number}
-                className="group relative rounded-xl p-8 hover:-translate-y-1 transition-all duration-500"
+                className="group relative rounded-xl p-8 lg:p-10 hover:-translate-y-1 transition-all duration-500"
                 style={{
                   background: "white",
                   border: "1px solid rgba(197, 165, 90, 0.12)",
@@ -116,7 +88,7 @@ export default function ServicesSection() {
                   opacity: visible ? 1 : 0,
                   transform: visible ? "translateY(0)" : "translateY(30px)",
                   transition: "all 0.7s ease",
-                  transitionDelay: `${400 + i * 100}ms`,
+                  transitionDelay: `${400 + i * 150}ms`,
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(197, 165, 90, 0.15)";

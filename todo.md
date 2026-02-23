@@ -83,3 +83,14 @@
 
 ## Bug Fix: Google Maps API loaded multiple times
 - [x] Fix Google Maps API being included multiple times on homepage
+
+## Phase 13: Phone Number, Call Button, and Services Cleanup
+- [x] Change phone number from (727) 485-5996 to (727) 999-1959 across all files
+- [x] Fix call button next to "Ready to build your dream home?" to open device dialer (tel: link) — already uses tel: link
+- [x] Remove Kitchen/Bathroom Remodeling service page and all references
+- [x] Remove Demolition Services page and all references
+- [x] Update Services section on homepage to only show Custom Home Building and Home Renovations
+- [x] Remove Kitchen/Bathroom Remodeling and Demolition from footer quick links
+- [x] Remove Kitchen/Bathroom Remodeling and Demolition from navigation
+- [x] Run tests and fix any issues (21/21 passing, zero TS errors)
+- [x] Save checkpoint
