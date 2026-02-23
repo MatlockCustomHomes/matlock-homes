@@ -25,17 +25,17 @@ const reviews: Review[] = [
     rating: 5,
   },
   {
-    quote: "I can't express how thrilled I am with Matlock Homes' work. They completely transformed our home from top to bottom — new layout, modern finishes, updated systems. The quality is top-notch, and their team is friendly and communicative. Choose Matlock Homes!",
+    quote: "I can't express how thrilled I am with Matlock Homes' work. They transformed my bathroom into a spa-like oasis. The quality is top-notch, and their team is friendly and communicative. Choose Matlock Homes!",
     name: "Satisfied Homeowner",
     location: "New Port Richey, FL",
-    project: "Whole Home Remodel",
+    project: "Bathroom Renovation",
     rating: 5,
   },
   {
-    quote: "Matlock Homes exceeded my expectations! They took our outdated home and turned it into a modern masterpiece. Their team was professional, skilled, and completed the project ahead of schedule. Highly recommend!",
+    quote: "Matlock Homes exceeded my expectations! They transformed my outdated kitchen into a modern culinary paradise. Their team was professional, skilled, and completed the project ahead of schedule. Highly recommend!",
     name: "Satisfied Homeowner",
     location: "New Port Richey, FL",
-    project: "Complete Home Remodel",
+    project: "Kitchen Renovation",
     rating: 5,
   },
 ];

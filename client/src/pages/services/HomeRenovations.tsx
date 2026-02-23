@@ -2,21 +2,21 @@ import { Hammer, ArrowRight } from "lucide-react";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 const features = [
-  { title: "Complete Home Remodels", description: "Full-scale interior and exterior transformations that modernize every aspect of your home — from the foundation to the finishes — while preserving the character you love." },
-  { title: "Structural Reconfiguration", description: "Open up floor plans, remove or add walls, raise ceilings, and completely reconfigure your home's layout to create the flow and functionality of a modern build." },
-  { title: "Full System Upgrades", description: "Comprehensive electrical rewiring, plumbing replacement, HVAC modernization, and insulation upgrades to bring your entire home up to current building standards." },
-  { title: "Complete Exterior Overhaul", description: "New siding, stucco, windows, roofing, and outdoor living spaces — a total exterior transformation that boosts curb appeal and protects your investment for decades." },
-  { title: "Modern Living Redesign", description: "Reimagine your entire living space with contemporary open-concept layouts, updated kitchens, renovated bathrooms, and cohesive design throughout every room." },
-  { title: "Aging-in-Place Conversions", description: "Full-home accessibility upgrades including wider doorways, walk-in showers, grab bars, single-floor living modifications, and universal design principles applied throughout." },
+  { title: "Whole-Home Remodels", description: "Complete interior and exterior transformations that modernize your living space while preserving the character and charm you love." },
+  { title: "Room Additions", description: "Expand your living space with seamlessly integrated additions — from extra bedrooms to sunrooms, home offices, and in-law suites." },
+  { title: "Structural Modifications", description: "Open up floor plans, remove or add walls, raise ceilings, and reconfigure layouts to create the flow and functionality you need." },
+  { title: "Exterior Upgrades", description: "New siding, stucco, windows, roofing, and outdoor living spaces that boost curb appeal and protect your investment." },
+  { title: "Electrical & Plumbing Updates", description: "Bring your home's systems up to modern standards with updated wiring, panel upgrades, re-piping, and fixture replacements." },
+  { title: "Aging-in-Place Modifications", description: "Accessible design features including wider doorways, walk-in showers, grab bars, and single-floor living modifications." },
 ];
 
 const processSteps = [
-  { number: "01", title: "Whole-Home Assessment", description: "We conduct a thorough evaluation of your entire property — structure, systems, layout, and condition — to understand the full scope of the remodel and identify opportunities." },
-  { number: "02", title: "Design & Master Plan", description: "A comprehensive remodel plan is developed covering every room, system, and finish. You'll approve the full design, materials, and project timeline before work begins." },
-  { number: "03", title: "Permitting & Engineering", description: "We handle all necessary permits, structural engineering, and inspections required by local authorities, ensuring your remodel meets all current building codes." },
-  { number: "04", title: "Demolition & Preparation", description: "Controlled demolition of existing interiors and structures with proper containment and debris removal. We prepare the entire home for its transformation." },
-  { number: "05", title: "Construction & Build-Out", description: "Expert construction across every trade — framing, electrical, plumbing, HVAC, drywall, flooring, cabinetry, and finishes — with regular progress updates throughout." },
-  { number: "06", title: "Final Walkthrough & Handover", description: "A detailed walkthrough of your fully remodeled home ensures every detail is perfect. We clean up completely and hand you the keys to what feels like a brand-new home." },
+  { number: "01", title: "Assessment & Consultation", description: "We visit your home to assess the current condition, discuss your goals, and identify opportunities. We'll provide honest recommendations on what's possible within your budget." },
+  { number: "02", title: "Design & Scope Definition", description: "Detailed plans are drawn up outlining every aspect of the renovation. You'll approve materials, finishes, and the project timeline before any work begins." },
+  { number: "03", title: "Permitting", description: "We handle all necessary permits and inspections required by local authorities, ensuring your renovation meets all building codes." },
+  { number: "04", title: "Demolition & Prep", description: "Careful demolition of existing structures with proper dust containment and debris removal. We protect the areas of your home not being renovated." },
+  { number: "05", title: "Construction & Finishing", description: "Expert construction with regular progress updates. We coordinate all trades to keep the project on schedule and minimize disruption to your daily life." },
+  { number: "06", title: "Final Inspection & Handover", description: "A thorough walkthrough ensures every detail is perfect. We clean up completely and leave your renovated space ready to enjoy." },
 ];
 
 function BeforeAfterGallery() {
@@ -42,17 +42,17 @@ function BeforeAfterGallery() {
             className="mt-6 max-w-2xl mx-auto text-lg"
             style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5C5549" }}
           >
-            See the whole-home transformations we deliver. Every remodel starts with a vision and ends with a home that feels brand new.
+            See the transformations we deliver. Every project starts with a vision and ends with a space you'll love.
           </p>
         </div>
 
         {/* Gallery Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Whole Home Before & After */}
+          {/* Kitchen Before & After */}
           <div className="group relative overflow-hidden rounded-xl" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
             <img
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/nBZGddAndSoWnTtO.jpeg"
-              alt="Whole home remodel — complete interior transformation"
+              alt="Kitchen renovation before and after — from outdated to modern white kitchen"
               className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -66,19 +66,19 @@ function BeforeAfterGallery() {
                 </span>
               </div>
               <p className="text-white text-xl" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                Complete Interior Transformation
+                Complete Kitchen Transformation
               </p>
               <p className="text-white/70 text-sm mt-1" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
-                A dated home completely reimagined with modern finishes, open-concept layout, and updated systems throughout.
+                From worn-out walls and dated tile to a sleek, modern kitchen with new cabinetry, countertops, and appliances.
               </p>
             </div>
           </div>
 
-          {/* Exterior Overhaul */}
+          {/* Bathroom Before & After */}
           <div className="group relative overflow-hidden rounded-xl" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}>
             <img
               src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80"
-              alt="Whole home remodel — complete exterior and interior overhaul"
+              alt="Bathroom renovation before and after — from outdated to modern spa-like bathroom"
               className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -88,14 +88,14 @@ function BeforeAfterGallery() {
                   className="px-3 py-1 rounded-full text-xs tracking-wider uppercase"
                   style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, background: "rgba(197, 165, 90, 0.9)", color: "#1E1A16" }}
                 >
-                  Full Remodel
+                  Renovation
                 </span>
               </div>
               <p className="text-white text-xl" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                Whole-Home Modernization
+                Spa-Inspired Bathroom Remodel
               </p>
               <p className="text-white/70 text-sm mt-1" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
-                A complete top-to-bottom remodel transforming an outdated property into a modern, move-in-ready home.
+                A dated bathroom transformed into a modern spa retreat with new tile, vanity, fixtures, and a walk-in shower.
               </p>
             </div>
           </div>
@@ -109,9 +109,9 @@ export default function HomeRenovations() {
   return (
     <ServicePageLayout
       icon={Hammer}
-      title="Whole Home Remodels"
-      subtitle="Transform Your Entire Home"
-      heroDescription="We specialize in complete home remodels — transforming your existing property from top to bottom. Not a patch here or a fix there, but a full-scale renovation that makes your home feel brand new."
+      title="Home Renovations"
+      subtitle="Transform Your Space"
+      heroDescription="Taking what is already there and customizing it exactly to your liking. We take the old and make it modern, fix what is broken and make it new."
       heroImage="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1920&q=80"
       features={features}
       processSteps={processSteps}

@@ -20,7 +20,11 @@ const STEPS = [
     subtitle: "Select the option that best describes your project.",
     options: [
       { value: "new_build", label: "New Custom Home Build", icon: "🏗️", desc: "Build a brand new custom home from the ground up" },
-      { value: "full_renovation", label: "Whole Home Remodel", icon: "🔨", desc: "Complete top-to-bottom remodel of your existing home" },
+      { value: "full_renovation", label: "Full Home Renovation", icon: "🔨", desc: "Complete renovation of an existing home" },
+      { value: "kitchen", label: "Kitchen Remodel", icon: "🍳", desc: "Kitchen upgrade, redesign, or full overhaul" },
+      { value: "bathroom", label: "Bathroom Renovation", icon: "🚿", desc: "Bathroom remodel or complete renovation" },
+      { value: "addition", label: "Home Addition", icon: "📐", desc: "Add new rooms or expand existing space" },
+      { value: "demolition", label: "Demolition Services", icon: "🏚️", desc: "Commercial or residential demolition" },
     ],
   },
   {
@@ -39,8 +43,8 @@ const STEPS = [
     question: "What is the estimated size of your project?",
     subtitle: "Select the approximate square footage.",
     options: [
-      { value: "under_1000", label: "Under 1,000 sq ft", icon: "📏", desc: "Smaller home or compact layout" },
-      { value: "1000_2000", label: "1,000 - 2,000 sq ft", icon: "📐", desc: "Medium-sized home" },
+      { value: "under_1000", label: "Under 1,000 sq ft", icon: "📏", desc: "Small project or single room" },
+      { value: "1000_2000", label: "1,000 - 2,000 sq ft", icon: "📐", desc: "Medium-sized project" },
       { value: "2000_3000", label: "2,000 - 3,000 sq ft", icon: "🏠", desc: "Standard home size" },
       { value: "3000_4000", label: "3,000 - 4,000 sq ft", icon: "🏡", desc: "Large home" },
       { value: "4000_plus", label: "4,000+ sq ft", icon: "🏰", desc: "Estate or luxury home" },

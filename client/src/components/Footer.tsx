@@ -22,7 +22,7 @@ const navLinks = [
 
 const services = [
   { label: "Custom Home Building", href: "/services/custom-home-building" },
-  { label: "Whole Home Remodels", href: "/services/home-renovations" },
+  { label: "Home Renovations", href: "/services/home-renovations" },
 ];
 
 export default function Footer() {
