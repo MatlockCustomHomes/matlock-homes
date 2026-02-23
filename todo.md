@@ -103,3 +103,6 @@
 
 ## Content Update: Live Chat Services
 - [x] Update live chat quick replies and AI responses to only reference Custom Home Building and Home Renovations
+
+## Content Update: Homepage Background Video
+- [x] Upload new MHCommercial video to S3 and replace homepage hero background video
