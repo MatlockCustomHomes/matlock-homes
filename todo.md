@@ -103,3 +103,9 @@
 
 ## Content Update: Live Chat Services
 - [x] Update live chat quick replies and AI responses to only reference Custom Home Building and Home Renovations
+
+## Content Update: Home Renovations → Whole Home Remodels Only
+- [x] Update Home Renovations service page to focus on full home remodels only (keep Renovate or Rebuild calculator)
+- [x] Update homepage Services section description for Home Renovations
+- [x] Update live chat responses referencing renovations
+- [x] Update any other copy referencing partial/single-room renovations (testimonials, pricing, navbar, footer, meta tags, structured data)

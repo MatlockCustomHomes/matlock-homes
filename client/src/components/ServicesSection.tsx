@@ -18,8 +18,8 @@ const services = [
   },
   {
     icon: Hammer,
-    title: "Home Renovations",
-    description: "Love where you live again. We update, repair, and reimagine your space—turning yesterday's home into a modern reflection of your lifestyle.",
+    title: "Whole Home Remodels",
+    description: "We specialize in complete home transformations—not patches or quick fixes. From top to bottom, we remodel your entire property to feel brand new while you keep the home you love.",
     number: "02",
     href: "/services/home-renovations",
   },
@@ -67,7 +67,7 @@ export default function ServicesSection() {
             className="text-white/70 mt-6 max-w-2xl mx-auto text-lg transition-all duration-700"
             style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transitionDelay: "300ms" }}
           >
-            From custom builds to complete renovations, we bring craftsmanship and care to every project across Tampa Bay Area.
+            From custom builds to whole home remodels, we bring craftsmanship and care to every project across Tampa Bay Area.
           </p>
         </div>
       </div>

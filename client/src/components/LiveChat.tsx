@@ -21,7 +21,7 @@ const INITIAL_MESSAGES: Message[] = [
     sender: "bot",
     options: [
       "I want to build a custom home",
-      "I need a renovation quote",
+      "I need a whole home remodel quote",
       "Tell me about your services",
       "I have a question about pricing",
       "I'd like to speak with someone",
@@ -36,17 +36,17 @@ const BOT_RESPONSES: Record<string, Message> = {
     sender: "bot",
     options: ["Schedule a call", "Use the estimate tool", "Tell me about the process"],
   },
-  "I need a renovation quote": {
+  "I need a whole home remodel quote": {
     id: 0,
-    text: "We handle all types of home renovations — from partial updates to full home remodels. To give you an accurate quote, we'd need to learn more about your project. How would you like to proceed?",
+    text: "We specialize in complete whole-home remodels — transforming your entire property from top to bottom. To give you an accurate quote, we'd need to learn more about your home and your vision. How would you like to proceed?",
     sender: "bot",
-    options: ["Schedule a call", "Send an email", "Tell me about renovation services"],
+    options: ["Schedule a call", "Send an email", "Tell me about our remodel services"],
   },
   "Tell me about your services": {
     id: 0,
-    text: "We specialize in two core services:\n\n• Custom Home Building — From concept to keys, we design and build homes tailored to your lifestyle.\n• Home Renovations — We update, repair, and reimagine your existing space into something modern and functional.\n\nEach project comes with our Matlock Shield 5-10 year builder's warranty. Which service interests you?",
+    text: "We specialize in two core services:\n\n• Custom Home Building — From concept to keys, we design and build homes tailored to your lifestyle.\n• Whole Home Remodels — Complete top-to-bottom renovations that transform your existing property into a modern home.\n\nEach project comes with our Matlock Shield 5-10 year builder's warranty. Which service interests you?",
     sender: "bot",
-    options: ["Custom Home Building", "Home Renovations", "Tell me about the warranty", "Back to main menu"],
+    options: ["Custom Home Building", "Whole Home Remodels", "Tell me about the warranty", "Back to main menu"],
   },
   "I have a question about pricing": {
     id: 0,
@@ -90,15 +90,15 @@ const BOT_RESPONSES: Record<string, Message> = {
     sender: "bot",
     options: ["Schedule a consultation", "Use the estimate tool", "Tell me about the process", "Back to main menu"],
   },
-  "Home Renovations": {
+  "Whole Home Remodels": {
     id: 0,
-    text: "Our renovation services cover everything from single-room updates to full home remodels. Whether you want to modernize your kitchen, expand your living space, or completely transform your home — we bring the same craftsmanship and attention to detail as our custom builds.",
+    text: "We specialize in complete whole-home remodels — not partial fixes or single-room updates. We transform your entire property from top to bottom: structural reconfiguration, full system upgrades, modern interiors, and complete exterior overhauls. The result is a home that feels brand new.",
     sender: "bot",
     options: ["Schedule a call", "Use the estimate tool", "Tell me about the warranty", "Back to main menu"],
   },
-  "Tell me about renovation services": {
+  "Tell me about our remodel services": {
     id: 0,
-    text: "Our renovation services cover everything from single-room updates to full home remodels. Whether you want to modernize your kitchen, expand your living space, or completely transform your home — we bring the same craftsmanship and attention to detail as our custom builds.",
+    text: "We specialize in complete whole-home remodels — not partial fixes or single-room updates. We transform your entire property from top to bottom: structural reconfiguration, full system upgrades, modern interiors, and complete exterior overhauls. The result is a home that feels brand new.",
     sender: "bot",
     options: ["Schedule a call", "Use the estimate tool", "Tell me about the warranty", "Back to main menu"],
   },
