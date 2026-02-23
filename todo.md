@@ -49,3 +49,12 @@
 - [x] Lighten LotFeasibilityPage hero and layout
 - [x] Lighten RenovateOrRebuildPage hero and layout
 - [x] Test and save checkpoint (13/13 tests passing)
+
+## Phase 9: Build-Ready Estates Page
+- [x] Gather property details from Zillow listings (6841 Oelsner St & 17524 Boy Scout Rd)
+- [x] Create premium Build-Ready Estates page with lot+home package cards
+- [x] Include lot location, proposed home design, package price, lot size, neighborhood highlights
+- [x] Add "View Full Listing" and "Inquire About This Home" CTAs
+- [x] Add Build-Ready Estates to navigation bar (desktop + mobile)
+- [x] Register route in App.tsx
+- [x] Test and save checkpoint (13/13 tests passing)

@@ -212,6 +212,16 @@ export default function Navbar() {
               </div>
             </div>
 
+            {/* Build-Ready Estates */}
+            <a
+              href="/build-ready-estates"
+              onClick={(e) => { e.preventDefault(); handleNavClick("/build-ready-estates", true); }}
+              className={linkStyle}
+              style={fontStyle}
+            >
+              Build-Ready Estates
+            </a>
+
             {/* Projects */}
             <a
               href="#projects"
@@ -329,12 +339,22 @@ export default function Navbar() {
             </div>
           </div>
 
+          {/* Build-Ready Estates */}
+          <a
+            href="/build-ready-estates"
+            onClick={(e) => { e.preventDefault(); handleNavClick("/build-ready-estates", true); }}
+            className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
+            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "240ms" : "0ms" }}
+          >
+            Build-Ready Estates
+          </a>
+
           {/* Projects */}
           <a
             href="#projects"
             onClick={(e) => { e.preventDefault(); handleNavClick("#projects"); }}
             className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
-            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "240ms" : "0ms" }}
+            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "320ms" : "0ms" }}
           >
             Projects
           </a>
@@ -344,7 +364,7 @@ export default function Navbar() {
             href="/pricing"
             onClick={(e) => { e.preventDefault(); handleNavClick("/pricing", true); }}
             className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
-            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "320ms" : "0ms" }}
+            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "400ms" : "0ms" }}
           >
             Pricing
           </a>
@@ -354,7 +374,7 @@ export default function Navbar() {
             href="#contact"
             onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}
             className="text-white text-xl font-light tracking-widest uppercase hover:text-gold transition-all duration-300"
-            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "400ms" : "0ms" }}
+            style={{ fontFamily: "'DM Serif Display', serif", opacity: mobileOpen ? 1 : 0, transform: mobileOpen ? "translateY(0)" : "translateY(20px)", transitionDelay: mobileOpen ? "480ms" : "0ms" }}
           >
             Contact
           </a>
