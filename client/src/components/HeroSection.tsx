@@ -142,7 +142,7 @@ export default function HeroSection() {
             transitionDelay: "1000ms",
           }}
         >
-          Building custom homes and transforming existing spaces across Tampa Bay Area
+          Building custom homes and transforming existing spaces across the Tampa Bay Area
           with craftsmanship, care, and precision.
         </p>
 
