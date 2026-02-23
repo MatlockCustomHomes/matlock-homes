@@ -127,3 +127,9 @@
 
 ## Content Update: Custom Home Building Page
 - [x] Remove "Transparent Pricing" and "Fully Custom Designs" feature boxes from Custom Home Building page
+
+## Footer Restructure
+- [x] Remove "Services" header/section from footer
+- [x] Rename "Custom Home Building" to "Custom Homes" and move under Quick Links
+- [x] Spread all links into two-column grid layout
+- [x] Make "Quick Links" title larger with DM Serif Display font, styled like VersaHomes footer

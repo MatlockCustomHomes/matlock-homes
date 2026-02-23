@@ -1,27 +1,23 @@
 /*
  * DESIGN: Florida Coastal Luxury
- * Footer: Dark charcoal, multi-column layout, gold accents.
- * Services now link to individual service pages.
+ * Footer: Dark charcoal, consolidated Quick Links in two-column grid, gold accents.
+ * Inspired by VersaHomes footer structure with larger title and spread links.
  */
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useLocation } from "wouter";
 
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/WSbLUJNfPYsItOKD.png";
 
-const navLinks = [
+const quickLinks = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "Custom Homes", href: "/services/custom-home-building", isRoute: true },
   { label: "Our Process", href: "#process" },
   { label: "Build-Ready Estates", href: "/build-ready-estates", isRoute: true },
   { label: "Pricing", href: "/pricing", isRoute: true },
   { label: "Warranty", href: "/warranty", isRoute: true },
   { label: "FAQs", href: "/faq", isRoute: true },
   { label: "Contact", href: "#contact" },
-];
-
-const services = [
-  { label: "Custom Home Building", href: "/services/custom-home-building" },
 ];
 
 export default function Footer() {
@@ -45,10 +41,10 @@ export default function Footer() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleServiceClick = (href: string) => {
-    setLocation(href);
-    window.scrollTo(0, 0);
-  };
+  // Split links into two rows
+  const midpoint = Math.ceil(quickLinks.length / 2);
+  const leftColumn = quickLinks.slice(0, midpoint);
+  const rightColumn = quickLinks.slice(midpoint);
 
   return (
     <footer className="bg-charcoal border-t border-white/5">
@@ -71,82 +67,13 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className="container py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div>
             <img src={LOGO_URL} alt="Matlock Custom Homes" className="h-14 w-auto mb-4" />
             <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
               Premium quality custom home builder serving Tampa Bay Area. Licensed and insured.
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-gold text-sm tracking-[0.2em] uppercase mb-5" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
-              Quick Links
-            </h4>
-            <ul className="space-y-3">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isRoute); }}
-                    className="text-white/50 hover:text-gold text-sm transition-colors duration-300"
-                    style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-gold text-sm tracking-[0.2em] uppercase mb-5" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
-              Services
-            </h4>
-            <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service.href}>
-                  <a
-                    href={service.href}
-                    onClick={(e) => { e.preventDefault(); handleServiceClick(service.href); }}
-                    className="text-white/50 hover:text-gold text-sm transition-colors duration-300"
-                    style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
-                  >
-                    {service.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-gold text-sm tracking-[0.2em] uppercase mb-5" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
-              Contact
-            </h4>
-            <div className="space-y-4">
-              <a href="tel:7279991959" className="flex items-center gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
-                <Phone className="w-4 h-4 text-gold flex-shrink-0" />
-                (727) 999-1959
-              </a>
-              <a href="mailto:matlockhomes@icloud.com" className="flex items-center gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
-                <Mail className="w-4 h-4 text-gold flex-shrink-0" />
-                matlockhomes@icloud.com
-              </a>
-              <a
-                href="https://maps.google.com/?q=8219+Massachusetts+Ave+New+Port+Richey+FL+34653"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300"
-                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
-              >
-                <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                8219 Massachusetts Ave,<br />New Port Richey, FL 34653
-              </a>
-            </div>
 
             {/* Social */}
             <div className="mt-6 flex gap-3">
@@ -185,6 +112,76 @@ export default function Footer() {
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links - Two Column Grid */}
+          <div>
+            <h4
+              className="text-gold text-xl tracking-wide mb-6"
+              style={{ fontFamily: "'DM Serif Display', serif" }}
+            >
+              Quick Links
+            </h4>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+              <div className="space-y-3">
+                {leftColumn.map((link) => (
+                  <div key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isRoute); }}
+                      className="text-white/50 hover:text-gold text-sm transition-colors duration-300"
+                      style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                    >
+                      {link.label}
+                    </a>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-3">
+                {rightColumn.map((link) => (
+                  <div key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => { e.preventDefault(); handleNavClick(link.href, link.isRoute); }}
+                      className="text-white/50 hover:text-gold text-sm transition-colors duration-300"
+                      style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+                    >
+                      {link.label}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4
+              className="text-gold text-xl tracking-wide mb-6"
+              style={{ fontFamily: "'DM Serif Display', serif" }}
+            >
+              Contact
+            </h4>
+            <div className="space-y-4">
+              <a href="tel:7279991959" className="flex items-center gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
+                <Phone className="w-4 h-4 text-gold flex-shrink-0" />
+                (727) 999-1959
+              </a>
+              <a href="mailto:matlockhomes@icloud.com" className="flex items-center gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
+                <Mail className="w-4 h-4 text-gold flex-shrink-0" />
+                matlockhomes@icloud.com
+              </a>
+              <a
+                href="https://maps.google.com/?q=8219+Massachusetts+Ave+New+Port+Richey+FL+34653"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-white/50 hover:text-gold text-sm transition-colors duration-300"
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}
+              >
+                <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                8219 Massachusetts Ave,<br />New Port Richey, FL 34653
               </a>
             </div>
           </div>
