@@ -187,3 +187,8 @@
 - [x] Substitute roofing image with new cleaner version
 - [x] Arrange gallery images in 2x2 grid layout
 - [x] Save checkpoint
+
+## Phase 18: Visual Editor Text Updates
+- [x] Update New Construction description to "Build your dream home from the ground up. From concept to completion, we create homes that feel uniquely yours."
+- [x] Update Full Home Rebuilds description to "Start over, without starting somewhere else. Turn your property into a one-of-a-kind home designed specifically for you."
+- [x] Save checkpoint

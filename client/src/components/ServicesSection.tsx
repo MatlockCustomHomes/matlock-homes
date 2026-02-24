@@ -11,13 +11,13 @@ const approaches = [
   {
     icon: Home,
     title: "New Construction",
-    description: "Build your dream home from the ground up on your own lot. Every detail is designed to match your lifestyle — from the foundation to the final finish.",
+    description: "Build your dream home from the ground up. From concept to completion, we create homes that feel uniquely yours. ",
     highlights: ["Fully custom floor plans", "Premium materials & finishes", "Energy-efficient systems", "Florida hurricane-rated"],
   },
   {
     icon: Hammer,
     title: "Full Home Rebuilds",
-    description: "Tear down and rebuild on your existing property. Get a brand-new, modern home with current building codes on the lot you already love.",
+    description: "Start over, without starting somewhere else. Turn your property into a one-of-a-kind home designed specifically for you. ",
     highlights: ["Complete demolition & rebuild", "Modern code compliance", "New structural systems", "Keep your existing lot"],
   },
 ];
