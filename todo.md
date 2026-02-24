@@ -252,3 +252,8 @@
 ## Phase 30: Remove Process Section from Custom Home Building Page
 - [x] Remove "Our Process — How It Works" section from ServicePageLayout
 - [x] Save checkpoint
+
+## Phase 31: Replace About Section Image
+- [x] Generate warm sunset Florida luxury home image with palm trees and water
+- [x] Upload to S3 and update AboutSection.tsx with new image URL
+- [x] Save checkpoint
