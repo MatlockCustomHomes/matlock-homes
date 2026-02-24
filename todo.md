@@ -217,3 +217,9 @@
 - [x] Update ServicePageLayout to support video background option
 - [x] Update CustomHomeBuilding page to use video instead of static image
 - [x] Save checkpoint
+
+## Phase 24: Build-Ready Estates Photo Updates
+- [x] Upload 3 new images to S3 (Keystone front, Keystone back, Oelsner new photo)
+- [x] Add image slider/carousel to Keystone listing (front + back photos)
+- [x] Replace Oelsner house photo with new coastal house image
+- [x] Save checkpoint

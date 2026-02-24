@@ -3,8 +3,8 @@
  * Premium page showcasing lot + custom home packages.
  * Exclusive, editorial feel with gold accents and rich property cards.
  */
-import { useEffect, useState } from "react";
-import { MapPin, Maximize, BedDouble, Bath, Ruler, Trees, Waves, Home, ArrowRight, Phone, Shield, Star, Clock, ChevronRight } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
+import { MapPin, Maximize, BedDouble, Bath, Ruler, Trees, Waves, Home, ArrowRight, Phone, Shield, Star, Clock, ChevronRight, ChevronLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -22,7 +22,7 @@ interface PropertyListing {
   lotAcres: string;
   yearBuilt: string;
   style: string;
-  image: string;
+  images: { src: string; alt: string }[];
   description: string;
   highlights: string[];
   neighborhoodHighlights: string[];
@@ -46,7 +46,12 @@ const properties: PropertyListing[] = [
     lotAcres: "0.34 Acres",
     yearBuilt: "2026",
     style: "Elevated Coastal",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/BwijdXNYwABqMBla.jpg",
+    images: [
+      {
+        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/lvXvAiptLxMkWsHz.webp",
+        alt: "The Oyster Creek Coastal — elevated coastal home with upper deck and two-car garage",
+      },
+    ],
     description: "Build your home from the ground up on this prime waterfront lot overlooking Oyster Creek. Plans have been thoughtfully created for a 3-bedroom, 2-bath residence offering over 1,800 square feet, elevated 12 feet and designed with hurricane-impact construction perfectly suited for Florida waterfront living.",
     highlights: [
       "Elevated 12 ft — hurricane-impact construction",
@@ -79,7 +84,16 @@ const properties: PropertyListing[] = [
     lotAcres: "0.42 Acres",
     yearBuilt: "2026",
     style: "Modern Farmhouse",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/VgrikiNwlrwedLSF.jpg",
+    images: [
+      {
+        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/DxHYhVrySTzycpER.webp",
+        alt: "The Keystone Modern Farmhouse — front view with wraparound porch and metal roof",
+      },
+      {
+        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/iXhsKPPuYRijkixr.webp",
+        alt: "The Keystone Modern Farmhouse — rear view with covered outdoor living and timber accents",
+      },
+    ],
     description: "Build your dream home in the heart of Keystone. This rare opportunity offers a private, rural homesite with a fully designed to-be-built custom modern farmhouse, featuring approximately 3,000 square feet of living space with a vaulted great room, gourmet kitchen, first-floor primary suite, and over 1,000 square feet of covered outdoor living.",
     highlights: [
       "Two-story custom modern farmhouse design",
@@ -106,6 +120,91 @@ const trustPoints = [
   { icon: Star, title: "Fully Customizable", desc: "Every plan can be tailored to your lifestyle, layout, and design preferences." },
   { icon: Clock, title: "Turnkey Package", desc: "Lot and home included in one transparent price. No surprises." },
 ];
+
+function ImageSlider({ images }: { images: { src: string; alt: string }[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const goNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const goPrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  if (images.length === 1) {
+    return (
+      <img
+        src={images[0].src}
+        alt={images[0].alt}
+        className="w-full h-[320px] sm:h-[400px] lg:h-[480px] object-cover"
+        loading="lazy"
+      />
+    );
+  }
+
+  return (
+    <div className="relative group">
+      <div className="overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {images.map((img, i) => (
+            <img
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              className="w-full h-[320px] sm:h-[400px] lg:h-[480px] object-cover flex-shrink-0"
+              style={{ minWidth: "100%" }}
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={(e) => { e.stopPropagation(); goPrev(); }}
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background: "rgba(255,255,255,0.9)",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+        }}
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="w-5 h-5" style={{ color: "#2A2520" }} />
+      </button>
+      <button
+        onClick={(e) => { e.stopPropagation(); goNext(); }}
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background: "rgba(255,255,255,0.9)",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+        }}
+        aria-label="Next image"
+      >
+        <ChevronRight className="w-5 h-5" style={{ color: "#2A2520" }} />
+      </button>
+
+      {/* Dots indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={(e) => { e.stopPropagation(); setCurrentIndex(i); }}
+            className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+            style={{
+              background: i === currentIndex ? "#C5A55A" : "rgba(255,255,255,0.6)",
+              transform: i === currentIndex ? "scale(1.2)" : "scale(1)",
+            }}
+            aria-label={`Go to image ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function PropertyCard({ property, index }: { property: PropertyListing; index: number }) {
   const [visible, setVisible] = useState(false);
@@ -134,18 +233,13 @@ function PropertyCard({ property, index }: { property: PropertyListing; index: n
       >
         {/* Image Section */}
         <div className="relative">
-          <img
-            src={property.image}
-            alt={property.title}
-            className="w-full h-[320px] sm:h-[400px] lg:h-[480px] object-cover"
-            loading="lazy"
-          />
+          <ImageSlider images={property.images} />
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
           
           {/* Badge */}
           <div
-            className="absolute top-6 left-6 px-4 py-1.5 rounded-sm text-xs tracking-[0.2em] uppercase font-medium"
+            className="absolute top-6 left-6 px-4 py-1.5 rounded-sm text-xs tracking-[0.2em] uppercase font-medium pointer-events-none"
             style={{
               fontFamily: "'Outfit', sans-serif",
               background: "rgba(197,165,90,0.9)",
@@ -157,7 +251,7 @@ function PropertyCard({ property, index }: { property: PropertyListing; index: n
           </div>
 
           {/* Price overlay */}
-          <div className="absolute bottom-6 left-6 right-6">
+          <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
             <p
               className="text-white/70 text-xs tracking-[0.2em] uppercase mb-1"
               style={{ fontFamily: "'Outfit', sans-serif" }}
