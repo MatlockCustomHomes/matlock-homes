@@ -248,3 +248,7 @@
 - [x] Remove poster/fallback image from Homepage hero so video loads directly without image flash
 - [x] Remove poster/fallback image from Custom Home Building hero so video loads directly without image flash
 - [x] Save checkpoint
+
+## Phase 30: Remove Process Section from Custom Home Building Page
+- [x] Remove "Our Process — How It Works" section from ServicePageLayout
+- [x] Save checkpoint
