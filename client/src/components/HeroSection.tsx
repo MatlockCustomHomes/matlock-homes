@@ -8,11 +8,10 @@ import { ChevronDown, Phone } from "lucide-react";
 
 const HERO_VIDEO = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/nEKevTaZMfIqoelH.mp4";
 
-const HERO_FALLBACK = "https://private-us-east-1.manuscdn.com/sessionFile/6y9fRzFq5GsB9uHfgUiCJi/sandbox/b3yWrbK3BjDTJ6lUpEefON-img-1_1771267569000_na1fn_bWF0bG9jay1oZXJvLW92ZXJsYXk.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvNnk5ZlJ6RnE1R3NCOXVIZmdVaUNKaS9zYW5kYm94L2IzeVdyYkszQmpEVEo2bFVwRWVmT04taW1nLTFfMTc3MTI2NzU2OTAwMF9uYTFmbl9iV0YwYkc5amF5MW9aWEp2TFc5MlpYSnNZWGsuanBnP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=rySwnzK5iLXL22x2iKIB7DMyM3y7qGpPOWu5Uc8TCqtfkqBZuubWR~or~X2tbYE8R~L73vis1h1bvxv4yuyEsxXeVQ2UeUeqnPJgYO~-PdK3hulTzEgnvSAcdQMSjalbMujhTV~bw03cY7LeulwuE8gYOqTeJUUGcBo~jZgXGBhEi-qxEaHt0MAJI5xEl0~-GmM38mSIPbyrxPEF-4HY-X8beOClKdXnRsi7G8nvwH~HAmZLRLp~DF3DBklMzvHNk2E-VjTMoXydV-hK3BC2iOrJZd90A4GDWiIi7EhbH9cN1FmfUGzrGyFwcEP7-6aSBbbOa91EnKBt8NM6tATCng__";
+
 
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -26,27 +25,14 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative w-full h-screen overflow-hidden">
-      {/* Fallback Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-        style={{
-          backgroundImage: `url(${HERO_FALLBACK})`,
-          opacity: videoReady ? 0 : 1,
-        }}
-      />
-
       {/* MP4 Video Background */}
-      <div
-        className="absolute inset-0 overflow-hidden transition-opacity duration-1000"
-        style={{ opacity: videoReady ? 1 : 0 }}
-      >
+      <div className="absolute inset-0 overflow-hidden">
         <video
           ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          onCanPlay={() => setVideoReady(true)}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
           style={{
             width: "100vw",

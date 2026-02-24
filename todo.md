@@ -243,3 +243,8 @@
 - [x] Remove lightbox click-to-open behavior from ImageSlider and single-image views
 - [x] Remove fullscreen expand icon overlay on images
 - [x] Save checkpoint
+
+## Phase 28: Remove Poster Image Flash from Hero Videos
+- [x] Remove poster/fallback image from Homepage hero so video loads directly without image flash
+- [x] Remove poster/fallback image from Custom Home Building hero so video loads directly without image flash
+- [x] Save checkpoint

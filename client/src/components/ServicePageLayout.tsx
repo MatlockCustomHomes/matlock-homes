@@ -73,7 +73,6 @@ export default function ServicePageLayout({
                 muted
                 playsInline
                 className="w-full h-full object-cover"
-                poster={heroImage}
               >
                 <source src={heroVideo} type="video/mp4" />
               </video>
