@@ -237,3 +237,9 @@
 - [x] Upload all edited/new photos to S3
 - [x] Update BuildReadyEstates with new image URLs
 - [x] Save checkpoint
+
+## Phase 27: Remove Full-Screen Lightbox from Property Sliders
+- [x] Remove FullscreenLightbox component from BuildReadyEstates
+- [x] Remove lightbox click-to-open behavior from ImageSlider and single-image views
+- [x] Remove fullscreen expand icon overlay on images
+- [x] Save checkpoint
