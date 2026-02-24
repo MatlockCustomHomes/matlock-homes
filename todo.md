@@ -209,5 +209,11 @@
 ## Phase 22: Full Website Proofread & GitHub Push
 - [x] Proofread all pages and components for spelling, grammar, and consistency
 - [x] Fix 5 issues: 2 trailing spaces, 3 missing articles, 1 brand name inconsistency
-- [ ] Save checkpoint
-- [ ] Push updated code to GitHub
+- [x] Save checkpoint (version e01d3382)
+- [ ] Push updated code to GitHub (blocked — GitHub token expired, user can push from Settings > GitHub in Management UI)
+
+## Phase 23: Video Background for Custom Home Building Page
+- [x] Upload video ad to S3 (https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/IQMchgVnBqHofOLZ.mp4)
+- [x] Update ServicePageLayout to support video background option
+- [x] Update CustomHomeBuilding page to use video instead of static image
+- [x] Save checkpoint

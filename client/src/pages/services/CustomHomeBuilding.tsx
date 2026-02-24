@@ -51,6 +51,7 @@ export default function CustomHomeBuilding() {
       subtitle="New Builds & Full Rebuilds"
       heroDescription="Whether you're building from the ground up or rebuilding your existing home, we deliver custom homes defined by your vision and executed with precision."
       heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/OYfpRlMWtbdFAqsO.png"
+      heroVideo="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/IQMchgVnBqHofOLZ.mp4"
       features={features}
       processSteps={processSteps}
       galleryImages={galleryImages}

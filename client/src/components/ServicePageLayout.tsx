@@ -31,6 +31,7 @@ interface ServicePageProps {
   subtitle: string;
   heroDescription: string;
   heroImage: string;
+  heroVideo?: string;
   features: ServiceFeature[];
   processSteps: ProcessStep[];
   galleryImages?: GalleryImage[];
@@ -43,6 +44,7 @@ export default function ServicePageLayout({
   subtitle,
   heroDescription,
   heroImage,
+  heroVideo,
   features,
   processSteps,
   galleryImages,
@@ -64,13 +66,26 @@ export default function ServicePageLayout({
         {/* Hero — keeps dark cinematic feel */}
         <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
           <div className="absolute inset-0">
-            <img
-              src={heroImage}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-charcoal/80" />
-            <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-transparent to-charcoal/80" />
+            {heroVideo ? (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+                poster={heroImage}
+              >
+                <source src={heroVideo} type="video/mp4" />
+              </video>
+            ) : (
+              <img
+                src={heroImage}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            )}
+            <div className="absolute inset-0 bg-charcoal/70" />
+            <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-transparent to-charcoal/70" />
           </div>
 
           <div
