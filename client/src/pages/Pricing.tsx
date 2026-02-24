@@ -401,7 +401,7 @@ export default function Pricing() {
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                 <a
-                  href="tel:7274855996"
+                  href="tel:7279991959"
                   className="btn-gold px-8 py-3.5 rounded-sm text-base tracking-wider inline-flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4" />

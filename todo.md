@@ -264,3 +264,9 @@
 - [x] Replace 3rd photo in process section with before/after comparison
 - [x] Keep all photos in one row
 - [x] Save checkpoint
+
+## Phase 33: Fix Phone Number on FAQ and Warranty Pages
+- [x] Fix phone number on FAQ page to 727-999-1959
+- [x] Fix phone number on Warranty page to 727-999-1959
+- [x] Also fixed phone number on Pricing page to 727-999-1959
+- [x] Save checkpoint
