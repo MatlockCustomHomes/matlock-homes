@@ -49,20 +49,20 @@ const warrantyTiers = [
 
 const benefits = [
   {
-    title: "Longer Than Industry Standard",
-    desc: "While many builders offer minimal 1-2 year warranties, our 5-10 year coverage gives you lasting peace of mind that your investment is protected well beyond the typical timeframe.",
+    title: "5-10 Year Coverage",
+    desc: "Far beyond the industry-standard 1-2 years. Your investment is protected for the long haul.",
   },
   {
     title: "Transparent Terms",
-    desc: "No hidden surprises or exclusions buried in the fine print. You'll know exactly what's covered from day one, with clear documentation provided at closing.",
+    desc: "No hidden exclusions. You'll know exactly what's covered from day one.",
   },
   {
-    title: "Superior Aftercare",
-    desc: "Responsive service and dependable solutions whenever you need us. Our dedicated warranty team is just a phone call away, ready to address any concerns promptly.",
+    title: "Responsive Aftercare",
+    desc: "Our dedicated warranty team is one call away, ready to address concerns promptly.",
   },
   {
-    title: "Full Accountability",
-    desc: "Your builder should stand behind every detail of your home. We back our warranty directly — not through a third-party provider — because we're confident in our craftsmanship.",
+    title: "Direct Accountability",
+    desc: "We back our warranty ourselves — not through a third party — because we stand behind our work.",
   },
 ];
 
@@ -324,12 +324,6 @@ export default function Warranty() {
               <div className="text-6xl absolute -top-4 left-0" style={{ fontFamily: "'DM Serif Display', serif", color: "rgba(154,123,60,0.2)" }}>"</div>
               <p
                 className="text-base sm:text-lg leading-relaxed italic pl-8 pr-4"
-                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
-              >
-                We're confident in the homes we build. That's why Matlock Custom Homes offers a 5-10 year builder's warranty — 5 years covering every aspect of workmanship and materials, and a full 10 years protecting the structural integrity of your home. This protection is backed directly by us, not an outside provider, because we know our builds can stand the test of time.
-              </p>
-              <p
-                className="text-base sm:text-lg leading-relaxed italic pl-8 pr-4 mt-4"
                 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
               >
                 Matlock Custom Homes is committed to using premium-quality materials and applying expert building practices that meet the highest standards. Our craftsmanship is designed to last, and Matlock Shield is proof of that confidence.

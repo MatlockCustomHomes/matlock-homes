@@ -196,3 +196,8 @@
 ## Phase 19: Visual Editor - Services Section Subtitle
 - [x] Update services section subtitle to "We specialize in high-quality custom residences and comprehensive rebuilds across Tampa Bay, delivering refined results at every stage."
 - [x] Save checkpoint
+
+## Phase 20: Warranty Page Updates
+- [x] Substitute existing quote with new shorter Matlock Custom Homes quote
+- [x] Shorten and restructure "Coverage That Goes Beyond the Industry Standard" section to 4 main points
+- [x] Save checkpoint
