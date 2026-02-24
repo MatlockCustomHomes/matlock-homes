@@ -64,7 +64,7 @@ export default function ServicePageLayout({
 
       <main className="flex-1 pt-24 lg:pt-28">
         {/* Hero — keeps dark cinematic feel */}
-        <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
+        <section className="relative py-20 lg:py-28 px-4 overflow-hidden" style={{ backgroundColor: "#1a1714" }}>
           <div className="absolute inset-0">
             {heroVideo ? (
               <video

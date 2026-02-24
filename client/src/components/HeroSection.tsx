@@ -24,7 +24,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative w-full h-screen overflow-hidden">
+    <section id="home" className="relative w-full h-screen overflow-hidden" style={{ backgroundColor: "#1a1714" }}>
       {/* MP4 Video Background */}
       <div className="absolute inset-0 overflow-hidden">
         <video
