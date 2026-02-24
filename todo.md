@@ -257,3 +257,10 @@
 - [x] Generate warm sunset Florida luxury home image with palm trees and water
 - [x] Upload to S3 and update AboutSection.tsx with new image URL
 - [x] Save checkpoint
+
+## Phase 32: Before/After Photo in How We Build Section
+- [x] Upload before photo to S3
+- [x] Generate after version of the same house
+- [x] Replace 3rd photo in process section with before/after comparison
+- [x] Keep all photos in one row
+- [x] Save checkpoint

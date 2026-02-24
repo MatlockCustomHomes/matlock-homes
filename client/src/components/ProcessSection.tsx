@@ -1,7 +1,7 @@
 /*
  * DESIGN: Florida Coastal Luxury
  * Process: Cream background. 4 compact steps in a single row,
- * then 3 construction photos in a row underneath.
+ * then 3 construction photos in a row underneath (3rd is before/after).
  */
 import { useEffect, useRef, useState } from "react";
 import { ClipboardList, Ruler, HardHat, KeyRound } from "lucide-react";
@@ -37,16 +37,139 @@ const photos = [
   {
     src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/UNNVfejseuGJLUrW.jpeg",
     alt: "Matlock Custom Homes team handshake with homeowners",
+    type: "single" as const,
   },
   {
     src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/KwqNxLlWYhqvrOPT.png",
     alt: "Active construction site with crane and block walls",
+    type: "single" as const,
   },
   {
-    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/ZddJzKSxNHMJJLHc.jpg",
-    alt: "Completed custom home exterior with landscaping",
+    type: "before-after" as const,
+    before: {
+      src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/IBUVnvIOFPQXgexb.jpg",
+      alt: "Before — newly constructed home with bare yard",
+    },
+    after: {
+      src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/BXhcBEvSnOMXhxkW.png",
+      alt: "After — completed home with landscaping and driveway",
+    },
   },
 ];
+
+function BeforeAfterCard({ before, after, visible, delay }: {
+  before: { src: string; alt: string };
+  after: { src: string; alt: string };
+  visible: boolean;
+  delay: number;
+}) {
+  const [sliderPos, setSliderPos] = useState(50);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+
+  const updateSlider = (clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPos(pct);
+  };
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    isDragging.current = true;
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    updateSlider(e.clientX);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging.current) return;
+    updateSlider(e.clientX);
+  };
+
+  const handlePointerUp = () => {
+    isDragging.current = false;
+  };
+
+  return (
+    <div
+      className="relative group rounded-xl overflow-hidden"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(30px)",
+        transition: "all 0.8s ease",
+        transitionDelay: `${delay}ms`,
+        boxShadow: "0 6px 24px rgba(0,0,0,0.08)",
+      }}
+    >
+      <div
+        ref={containerRef}
+        className="aspect-[4/3] relative select-none cursor-col-resize overflow-hidden"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+      >
+        {/* After image (full background) */}
+        <img
+          src={after.src}
+          alt={after.alt}
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+          draggable={false}
+        />
+
+        {/* Before image (clipped) */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{ width: `${sliderPos}%` }}
+        >
+          <img
+            src={before.src}
+            alt={before.alt}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : "100%", maxWidth: "none" }}
+            loading="lazy"
+            draggable={false}
+          />
+        </div>
+
+        {/* Slider line */}
+        <div
+          className="absolute top-0 bottom-0 w-0.5 bg-white z-10"
+          style={{ left: `${sliderPos}%`, transform: "translateX(-50%)", boxShadow: "0 0 6px rgba(0,0,0,0.4)" }}
+        />
+
+        {/* Slider handle */}
+        <div
+          className="absolute top-1/2 z-20 w-8 h-8 -translate-y-1/2 rounded-full bg-white shadow-lg flex items-center justify-center"
+          style={{ left: `${sliderPos}%`, transform: "translate(-50%, -50%)" }}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M4 2L1 7L4 12" stroke="#9A7B3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M10 2L13 7L10 12" stroke="#9A7B3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+
+        {/* Labels */}
+        <span
+          className="absolute top-3 left-3 z-10 text-xs font-semibold tracking-wider uppercase px-2 py-1 rounded bg-black/50 text-white"
+          style={{ fontFamily: "'Outfit', sans-serif" }}
+        >
+          Before
+        </span>
+        <span
+          className="absolute top-3 right-3 z-10 text-xs font-semibold tracking-wider uppercase px-2 py-1 rounded bg-black/50 text-white"
+          style={{ fontFamily: "'Outfit', sans-serif" }}
+        >
+          After
+        </span>
+      </div>
+
+      {/* Subtle gold border on hover */}
+      <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-gold/20 transition-colors duration-500 pointer-events-none" />
+    </div>
+  );
+}
 
 export default function ProcessSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -128,30 +251,43 @@ export default function ProcessSection() {
 
         {/* 3 Photos — row underneath */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6 max-w-5xl mx-auto">
-          {photos.map((photo, i) => (
-            <div
-              key={i}
-              className="relative group rounded-xl overflow-hidden"
-              style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(30px)",
-                transition: "all 0.8s ease",
-                transitionDelay: `${800 + i * 150}ms`,
-                boxShadow: "0 6px 24px rgba(0,0,0,0.08)",
-              }}
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
+          {photos.map((photo, i) => {
+            if (photo.type === "before-after") {
+              return (
+                <BeforeAfterCard
+                  key={i}
+                  before={photo.before!}
+                  after={photo.after!}
+                  visible={visible}
+                  delay={800 + i * 150}
                 />
+              );
+            }
+            return (
+              <div
+                key={i}
+                className="relative group rounded-xl overflow-hidden"
+                style={{
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? "translateY(0)" : "translateY(30px)",
+                  transition: "all 0.8s ease",
+                  transitionDelay: `${800 + i * 150}ms`,
+                  boxShadow: "0 6px 24px rgba(0,0,0,0.08)",
+                }}
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={photo.src!}
+                    alt={photo.alt!}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                {/* Subtle gold border on hover */}
+                <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-gold/20 transition-colors duration-500" />
               </div>
-              {/* Subtle gold border on hover */}
-              <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-gold/20 transition-colors duration-500" />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
