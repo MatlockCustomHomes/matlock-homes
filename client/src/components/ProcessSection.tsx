@@ -51,8 +51,8 @@ const photos = [
       alt: "Before — newly constructed home with bare yard",
     },
     after: {
-      src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/BXhcBEvSnOMXhxkW.png",
-      alt: "After — completed home with landscaping and driveway",
+      src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/rhsvNLExfhtwDXUV.png",
+      alt: "After — completed home with landscaping and green lawn",
     },
   },
 ];
