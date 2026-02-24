@@ -192,3 +192,7 @@
 - [x] Update New Construction description to "Build your dream home from the ground up. From concept to completion, we create homes that feel uniquely yours."
 - [x] Update Full Home Rebuilds description to "Start over, without starting somewhere else. Turn your property into a one-of-a-kind home designed specifically for you."
 - [x] Save checkpoint
+
+## Phase 19: Visual Editor - Services Section Subtitle
+- [x] Update services section subtitle to "We specialize in high-quality custom residences and comprehensive rebuilds across Tampa Bay, delivering refined results at every stage."
+- [x] Save checkpoint
