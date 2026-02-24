@@ -1,12 +1,14 @@
 /*
  * Form Submission API Routes
- * All form submissions are sent via:
- * 1. Manus notification system (notifyOwner) for in-app notifications
- * 2. Resend email service for direct email to matlockhomes@icloud.com
+ * All form submissions are:
+ * 1. Saved to the CRM leads database
+ * 2. Sent via Manus notification system (notifyOwner) for in-app notifications
+ * 3. Sent via Resend email service for direct email to matlockhomes@icloud.com
  */
 import { Router } from "express";
 import { notifyOwner } from "./_core/notification";
 import { contactEmail, intakeEmail, chatEmail, lotFeasibilityEmail } from "./email";
+import { createLead } from "./db";
 
 const router = Router();
 
@@ -56,8 +58,15 @@ router.post("/contact", async (req, res) => {
       `Reply to: ${email}`,
     ].join("\n");
 
-    // Send both notification and email in parallel
+    // Save to CRM, send notification, and send email in parallel
     await Promise.allSettled([
+      createLead({
+        name,
+        email,
+        phone: phone || null,
+        source: "contact",
+        message,
+      }),
       sendNotification(`New Contact: ${name}`, content),
       contactEmail({ name, email, phone, message }),
     ]);
@@ -156,8 +165,24 @@ router.post("/intake", async (req, res) => {
       `Reply to: ${contactInfo.email}`,
     ].filter(Boolean).join("\n");
 
-    // Send both notification and email in parallel
+    // Save to CRM, send notification, and send email in parallel
     await Promise.allSettled([
+      createLead({
+        name: contactInfo.name,
+        email: contactInfo.email,
+        phone: contactInfo.phone || null,
+        source: "intake",
+        projectType: purposeLabels[answers?.purpose] || answers?.purpose || null,
+        budget: budgetLabels[answers?.budget] || answers?.budget || null,
+        timeline: stageLabels[answers?.stage] || answers?.stage || null,
+        message: contactInfo.message || null,
+        metadata: {
+          homeType: homeTypeLabels[answers?.home_type] || answers?.home_type,
+          homeSize: sizeLabels[answers?.home_size] || answers?.home_size,
+          referral: referralLabels[answers?.referral] || answers?.referral,
+          rawAnswers: answers,
+        },
+      }),
       sendNotification(`New Intake: ${contactInfo.name}`, content),
       intakeEmail({
         name: contactInfo.name,
@@ -211,8 +236,29 @@ router.post("/chat", async (req, res) => {
       `Total messages: ${messages.length}`,
     ].join("\n");
 
-    // Send both notification and email in parallel
+    // Build a summary from the user messages for the lead record
+    const userMessages = messages
+      .filter((m: { sender: string }) => m.sender === "user")
+      .map((m: { text: string }) => m.text);
+    const leadName = contactInfo?.name || "Chat Visitor";
+    const leadMessage = userMessages.join(" | ").slice(0, 500);
+
+    // Save to CRM, send notification, and send email in parallel
     await Promise.allSettled([
+      createLead({
+        name: leadName,
+        email: contactInfo?.email || null,
+        phone: contactInfo?.phone || null,
+        source: "chat",
+        message: leadMessage || "Chat conversation",
+        metadata: {
+          messages: messages.map((m: { sender: string; text: string }) => ({
+            role: m.sender,
+            text: m.text,
+          })),
+          contactInfo: contactInfo || null,
+        },
+      }),
       sendNotification(`New Chat Conversation`, content),
       chatEmail({
         messages: messages.map((m: { sender: string; text: string }) => ({
@@ -293,8 +339,23 @@ router.post("/lot-feasibility", async (req, res) => {
       `This visitor may be a potential lead — consider following up if address was provided.`,
     ].join("\n");
 
-    // Send both notification and email in parallel
+    // Save to CRM, send notification, and send email in parallel
     await Promise.allSettled([
+      createLead({
+        name: formData.address || "Lot Feasibility Check",
+        source: "lot_feasibility",
+        address: formData.address || null,
+        message: `Feasibility: ${scoreLabels[result?.score] || "N/A"}`,
+        metadata: {
+          floodZone: floodZoneLabels[formData.floodZone] || formData.floodZone,
+          lotSize: `${formData.lotSize} acres`,
+          hoa: hoaLabels[formData.hoa] || formData.hoa,
+          waterfront: waterfrontLabels[formData.waterfront] || formData.waterfront,
+          feasibility: result?.score,
+          summary: result?.summary,
+          permitting: result?.permitting,
+        },
+      }),
       sendNotification(
         `Lot Check: ${formData.address || "No address"} — ${result?.score?.toUpperCase() || "N/A"}`,
         content

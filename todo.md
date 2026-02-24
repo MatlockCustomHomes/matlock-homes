@@ -145,3 +145,24 @@
 
 ## Email Sender Update: Intake Form
 - [x] Change intake/estimate form sender from WebEstimateTool to websiteinquiry@matlockcustomhomes.com
+
+## Phase 15: Built-in CRM Dashboard
+- [x] Design and create leads database table (name, email, phone, source, status, project type, budget, timeline, message, metadata)
+- [x] Design and create lead_notes table for notes/follow-up tracking
+- [x] Run database migrations (pnpm db:push)
+- [x] Create server-side query helpers for leads CRUD
+- [x] Create tRPC procedures for leads (list, getById, updateStatus, addNote, delete)
+- [x] Update contact form route to save submission to leads table
+- [x] Update Get Started intake form route to save submission to leads table
+- [x] Update chat transcript route to save submission to leads table
+- [x] Update lot feasibility route to save submission to leads table
+- [x] Build CRM dashboard page with lead list table (sortable, filterable)
+- [x] Add lead status management (New, Contacted, Qualified, Proposal, Won, Lost)
+- [x] Add lead detail view with full submission data and notes
+- [x] Add ability to add notes to leads
+- [x] Add filtering by source, status, and date range
+- [x] Add search functionality across leads
+- [x] Protect CRM dashboard with admin role check
+- [x] Add CRM link to navigation (admin only) — accessible at /admin/crm, protected by admin role check
+- [x] Write vitest tests for CRM procedures (11 tests: list, getById, updateStatus, addNote, stats, filter by source/status, delete, non-admin rejection x3)
+- [x] Save checkpoint

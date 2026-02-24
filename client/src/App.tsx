@@ -12,6 +12,7 @@ import FAQ from "./pages/FAQ";
 import CustomHomeBuilding from "./pages/services/CustomHomeBuilding";
 import BuildReadyEstates from "./pages/BuildReadyEstates";
 import LotFeasibilityPage from "./pages/tools/LotFeasibilityPage";
+import CrmDashboard from "./pages/CrmDashboard";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -23,6 +24,7 @@ function Router() {
       <Route path={"/services/custom-home-building"} component={CustomHomeBuilding} />
       <Route path={"/build-ready-estates"} component={BuildReadyEstates} />
       <Route path={"/tools/lot-feasibility"} component={LotFeasibilityPage} />
+      <Route path={"/admin/crm"} component={CrmDashboard} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
