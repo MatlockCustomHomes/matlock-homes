@@ -48,7 +48,7 @@ const properties: PropertyListing[] = [
     style: "Elevated Coastal",
     images: [
       {
-        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/lvXvAiptLxMkWsHz.webp",
+        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/vnJoaHVcqkTfTptZ.png",
         alt: "The Oyster Creek Coastal — elevated coastal home with upper deck and two-car garage",
       },
     ],
@@ -86,12 +86,16 @@ const properties: PropertyListing[] = [
     style: "Modern Farmhouse",
     images: [
       {
-        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/DxHYhVrySTzycpER.webp",
+        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/OaRgWHyOsTYfDrZU.png",
         alt: "The Keystone Modern Farmhouse — front view with wraparound porch and metal roof",
       },
       {
-        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/iXhsKPPuYRijkixr.webp",
+        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/rUaSpKlikYBjlZnT.png",
         alt: "The Keystone Modern Farmhouse — rear view with covered outdoor living and timber accents",
+      },
+      {
+        src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/CrjjAknwwPPeMzxR.png",
+        alt: "The Keystone Modern Farmhouse — sunset porch view with outdoor living area and lake views",
       },
     ],
     description: "Build your dream home in the heart of Keystone. This rare opportunity offers a private, rural homesite with a fully designed to-be-built custom modern farmhouse, featuring approximately 3,000 square feet of living space with a vaulted great room, gourmet kitchen, first-floor primary suite, and over 1,000 square feet of covered outdoor living.",

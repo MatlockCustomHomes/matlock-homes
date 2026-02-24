@@ -228,3 +228,12 @@
 - [x] Add click-to-fullscreen lightbox on Keystone property images
 - [x] Include navigation (prev/next), close button, keyboard nav, and image counter in lightbox
 - [x] Save checkpoint
+
+## Phase 26: Watermark Removal & New Keystone Photo
+- [x] Remove watermark from Keystone front photo
+- [x] Remove watermark from Keystone back photo
+- [x] Remove watermark from Oelsner photo
+- [x] Add new sunset porch photo to Keystone slider
+- [x] Upload all edited/new photos to S3
+- [x] Update BuildReadyEstates with new image URLs
+- [x] Save checkpoint
