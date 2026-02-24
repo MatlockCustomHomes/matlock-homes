@@ -11,7 +11,7 @@ const ABOUT_IMG = "https://private-us-east-1.manuscdn.com/sessionFile/6y9fRzFq5G
 
 const stats = [
   { icon: Shield, label: "Licensed & Insured", value: "Florida Certified" },
-  { icon: Award, label: "Years of Experience", value: "6+" },
+  { icon: Award, label: "Years of Experience", value: "20+" },
   { icon: Users, label: "Satisfied Clients", value: "100+" },
 ];
 
