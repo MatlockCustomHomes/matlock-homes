@@ -171,4 +171,9 @@
 - [x] Upload enhanced photos to S3
 - [x] Add photos to Custom Home Building service page (hero image + 5-photo gallery section)
 - [x] Add photos to Process section on homepage (alternating layout with photos alongside each step)
-- [ ] Save checkpoint with photo integration
+- [x] Save checkpoint with photo integration (version bf31ad8c)
+
+## Remove Process Section Images
+- [x] Remove all construction photos from homepage Process section ("How We Build")
+- [x] Update layout to work without images (2x2 card grid with icons)
+- [x] Save checkpoint
