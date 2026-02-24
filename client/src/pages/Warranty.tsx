@@ -4,7 +4,7 @@
  * 5-10 Year Builder's Warranty.
  */
 import { useEffect, useState } from "react";
-import { Shield, CheckCircle, Clock, Wrench, Building } from "lucide-react";
+import { Shield, CheckCircle, Phone, Wrench, Building } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -370,8 +370,8 @@ export default function Warranty() {
                   className="flex items-center gap-2 text-white/80 hover:text-gold px-6 py-3.5 border border-white/20 hover:border-gold/50 rounded-sm transition-all duration-300 text-base tracking-wider"
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
-                  <Clock className="w-4 h-4" />
-                  Call (727) 999-1959
+                  <Phone className="w-4 h-4" />
+                  (727) 999-1959
                 </a>
               </div>
             </div>
