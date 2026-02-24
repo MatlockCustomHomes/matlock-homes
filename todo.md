@@ -166,3 +166,9 @@
 - [x] Add CRM link to navigation (admin only) — accessible at /admin/crm, protected by admin role check
 - [x] Write vitest tests for CRM procedures (11 tests: list, getById, updateStatus, addNote, stats, filter by source/status, delete, non-admin rejection x3)
 - [x] Save checkpoint
+## Phase 16: Construction Photos Enhancement & Placement
+- [x] Enhance 5 construction photos (brightness, contrast, color balance, sharpness)
+- [x] Upload enhanced photos to S3
+- [x] Add photos to Custom Home Building service page (hero image + 5-photo gallery section)
+- [x] Add photos to Process section on homepage (alternating layout with photos alongside each step)
+- [ ] Save checkpoint with photo integration

@@ -19,6 +19,12 @@ interface ProcessStep {
   description: string;
 }
 
+interface GalleryImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 interface ServicePageProps {
   icon: LucideIcon;
   title: string;
@@ -27,6 +33,7 @@ interface ServicePageProps {
   heroImage: string;
   features: ServiceFeature[];
   processSteps: ProcessStep[];
+  galleryImages?: GalleryImage[];
   additionalContent?: React.ReactNode;
 }
 
@@ -38,6 +45,7 @@ export default function ServicePageLayout({
   heroImage,
   features,
   processSteps,
+  galleryImages,
   additionalContent,
 }: ServicePageProps) {
   const [loaded, setLoaded] = useState(false);
@@ -229,6 +237,65 @@ export default function ServicePageLayout({
             </div>
           </div>
         </section>
+
+        {/* Construction Gallery */}
+        {galleryImages && galleryImages.length > 0 && (
+          <section className="py-20 lg:py-28 px-4" style={{ background: "linear-gradient(180deg, #EDE7DC 0%, #FAF7F2 100%)" }}>
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <p
+                  className="text-sm tracking-[0.3em] uppercase mb-3"
+                  style={{ fontFamily: "'Outfit', sans-serif", color: "#9A7B3C" }}
+                >
+                  Our Work
+                </p>
+                <h2
+                  className="text-3xl sm:text-4xl lg:text-5xl"
+                  style={{ fontFamily: "'DM Serif Display', serif", color: "#2A2520" }}
+                >
+                  From the <span className="italic" style={{ color: "#9A7B3C" }}>Job Site</span>
+                </h2>
+                <div className="w-16 h-px mx-auto mt-6" style={{ background: "linear-gradient(90deg, transparent, #C5A55A, transparent)" }} />
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {galleryImages.map((img, i) => (
+                  <div
+                    key={i}
+                    className="group relative rounded-xl overflow-hidden"
+                    style={{
+                      opacity: loaded ? 1 : 0,
+                      transform: loaded ? "translateY(0)" : "translateY(20px)",
+                      transition: "all 0.7s ease",
+                      transitionDelay: `${200 + i * 120}ms`,
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div
+                      className="absolute bottom-0 left-0 right-0 p-4"
+                      style={{ background: "linear-gradient(transparent, rgba(42,37,32,0.85))" }}
+                    >
+                      <p
+                        className="text-white text-sm"
+                        style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400 }}
+                      >
+                        {img.caption}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Additional Content (optional) */}
         {additionalContent}

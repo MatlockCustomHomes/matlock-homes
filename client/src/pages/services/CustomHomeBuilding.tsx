@@ -20,6 +20,34 @@ const processSteps = [
   { number: "07", title: "Final Walkthrough & Delivery", description: "A comprehensive walkthrough to ensure every detail meets your expectations. We address any items before handing over the keys to your dream home." },
 ];
 
+const galleryImages = [
+  {
+    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/sDJygKBoYnbAYgUL.jpg",
+    alt: "Foundation pour and block work for a custom home",
+    caption: "Foundation & Site Preparation",
+  },
+  {
+    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/CUkgHfDNuiLlEZow.jpg",
+    alt: "Block wall construction with roof trusses and crew",
+    caption: "Block Construction & Framing",
+  },
+  {
+    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/SHDjuvTKBvLxGkII.jpg",
+    alt: "Crane lifting materials during construction",
+    caption: "Structural Framing & Crane Work",
+  },
+  {
+    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/TRvlSPtKELpRhHJm.jpg",
+    alt: "Interior wood framing and rough-in stage",
+    caption: "Interior Framing & Rough-Ins",
+  },
+  {
+    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/ZzDzQRWwAYHzVoJZ.jpg",
+    alt: "Roofing and exterior finishing with stone accents",
+    caption: "Roofing & Exterior Finishes",
+  },
+];
+
 export default function CustomHomeBuilding() {
   return (
     <ServicePageLayout
@@ -27,9 +55,10 @@ export default function CustomHomeBuilding() {
       title="Custom Home Building"
       subtitle="New Builds & Full Rebuilds"
       heroDescription="Whether you're building from the ground up or rebuilding your existing home, we deliver custom homes defined by your vision and executed with precision."
-      heroImage="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
+      heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/ZzDzQRWwAYHzVoJZ.jpg"
       features={features}
       processSteps={processSteps}
+      galleryImages={galleryImages}
     />
   );
 }
