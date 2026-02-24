@@ -4,7 +4,7 @@
  * Exclusive, editorial feel with gold accents and rich property cards.
  */
 import { useEffect, useState, useCallback } from "react";
-import { MapPin, Maximize, BedDouble, Bath, Ruler, Trees, Waves, Home, ArrowRight, Phone, Shield, Star, Clock, ChevronRight, ChevronLeft } from "lucide-react";
+import { MapPin, Maximize, BedDouble, Bath, Ruler, Trees, Waves, Home, ArrowRight, Phone, Shield, Star, Clock, ChevronRight, ChevronLeft, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -121,8 +121,8 @@ const trustPoints = [
   { icon: Clock, title: "Turnkey Package", desc: "Lot and home included in one transparent price. No surprises." },
 ];
 
-function ImageSlider({ images }: { images: { src: string; alt: string }[] }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+function FullscreenLightbox({ images, startIndex, onClose }: { images: { src: string; alt: string }[]; startIndex: number; onClose: () => void }) {
+  const [currentIndex, setCurrentIndex] = useState(startIndex);
 
   const goNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -132,77 +132,207 @@ function ImageSlider({ images }: { images: { src: string; alt: string }[] }) {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   }, [images.length]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose, goNext, goPrev]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center"
+      style={{ background: "rgba(0,0,0,0.92)" }}
+      onClick={onClose}
+    >
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        className="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+        style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)" }}
+        aria-label="Close fullscreen"
+      >
+        <X className="w-6 h-6 text-white" />
+      </button>
+
+      {/* Image counter */}
+      <div
+        className="absolute top-7 left-6 text-white/70 text-sm tracking-wider"
+        style={{ fontFamily: "'Outfit', sans-serif" }}
+      >
+        {currentIndex + 1} / {images.length}
+      </div>
+
+      {/* Previous arrow */}
+      {images.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); goPrev(); }}
+          className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+          style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)" }}
+          aria-label="Previous image"
+        >
+          <ChevronLeft className="w-6 h-6 text-white" />
+        </button>
+      )}
+
+      {/* Main image */}
+      <img
+        src={images[currentIndex].src}
+        alt={images[currentIndex].alt}
+        className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg select-none"
+        style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}
+        onClick={(e) => e.stopPropagation()}
+        draggable={false}
+      />
+
+      {/* Next arrow */}
+      {images.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); goNext(); }}
+          className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+          style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)" }}
+          aria-label="Next image"
+        >
+          <ChevronRight className="w-6 h-6 text-white" />
+        </button>
+      )}
+
+      {/* Dots indicator */}
+      {images.length > 1 && (
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={(e) => { e.stopPropagation(); setCurrentIndex(i); }}
+              className="w-3 h-3 rounded-full transition-all duration-300"
+              style={{
+                background: i === currentIndex ? "#C5A55A" : "rgba(255,255,255,0.4)",
+                transform: i === currentIndex ? "scale(1.3)" : "scale(1)",
+              }}
+              aria-label={`Go to image ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ImageSlider({ images }: { images: { src: string; alt: string }[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const goNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const goPrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const openLightbox = useCallback(() => {
+    setLightboxOpen(true);
+  }, []);
+
   if (images.length === 1) {
     return (
-      <img
-        src={images[0].src}
-        alt={images[0].alt}
-        className="w-full h-[320px] sm:h-[400px] lg:h-[480px] object-cover"
-        loading="lazy"
-      />
+      <>
+        <div className="relative cursor-pointer group/img" onClick={openLightbox}>
+          <img
+            src={images[0].src}
+            alt={images[0].alt}
+            className="w-full h-[320px] sm:h-[400px] lg:h-[480px] object-cover"
+            loading="lazy"
+          />
+          <div className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)" }}>
+            <Maximize className="w-4 h-4 text-white" />
+          </div>
+        </div>
+        {lightboxOpen && (
+          <FullscreenLightbox images={images} startIndex={0} onClose={() => setLightboxOpen(false)} />
+        )}
+      </>
     );
   }
 
   return (
-    <div className="relative group">
-      <div className="overflow-hidden">
-        <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+    <>
+      <div className="relative group">
+        <div className="overflow-hidden cursor-pointer" onClick={openLightbox}>
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {images.map((img, i) => (
+              <img
+                key={i}
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-[320px] sm:h-[400px] lg:h-[480px] object-cover flex-shrink-0"
+                style={{ minWidth: "100%" }}
+                loading="lazy"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Fullscreen hint */}
+        <div className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)" }}>
+          <Maximize className="w-4 h-4 text-white" />
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={(e) => { e.stopPropagation(); goPrev(); }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: "rgba(255,255,255,0.9)",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+          }}
+          aria-label="Previous image"
         >
-          {images.map((img, i) => (
-            <img
+          <ChevronLeft className="w-5 h-5" style={{ color: "#2A2520" }} />
+        </button>
+        <button
+          onClick={(e) => { e.stopPropagation(); goNext(); }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: "rgba(255,255,255,0.9)",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+          }}
+          aria-label="Next image"
+        >
+          <ChevronRight className="w-5 h-5" style={{ color: "#2A2520" }} />
+        </button>
+
+        {/* Dots indicator */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {images.map((_, i) => (
+            <button
               key={i}
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-[320px] sm:h-[400px] lg:h-[480px] object-cover flex-shrink-0"
-              style={{ minWidth: "100%" }}
-              loading="lazy"
+              onClick={(e) => { e.stopPropagation(); setCurrentIndex(i); }}
+              className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+              style={{
+                background: i === currentIndex ? "#C5A55A" : "rgba(255,255,255,0.6)",
+                transform: i === currentIndex ? "scale(1.2)" : "scale(1)",
+              }}
+              aria-label={`Go to image ${i + 1}`}
             />
           ))}
         </div>
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={(e) => { e.stopPropagation(); goPrev(); }}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: "rgba(255,255,255,0.9)",
-          boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
-        }}
-        aria-label="Previous image"
-      >
-        <ChevronLeft className="w-5 h-5" style={{ color: "#2A2520" }} />
-      </button>
-      <button
-        onClick={(e) => { e.stopPropagation(); goNext(); }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: "rgba(255,255,255,0.9)",
-          boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
-        }}
-        aria-label="Next image"
-      >
-        <ChevronRight className="w-5 h-5" style={{ color: "#2A2520" }} />
-      </button>
-
-      {/* Dots indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={(e) => { e.stopPropagation(); setCurrentIndex(i); }}
-            className="w-2.5 h-2.5 rounded-full transition-all duration-300"
-            style={{
-              background: i === currentIndex ? "#C5A55A" : "rgba(255,255,255,0.6)",
-              transform: i === currentIndex ? "scale(1.2)" : "scale(1)",
-            }}
-            aria-label={`Go to image ${i + 1}`}
-          />
-        ))}
-      </div>
-    </div>
+      {lightboxOpen && (
+        <FullscreenLightbox images={images} startIndex={currentIndex} onClose={() => setLightboxOpen(false)} />
+      )}
+    </>
   );
 }
 

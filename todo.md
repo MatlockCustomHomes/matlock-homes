@@ -223,3 +223,8 @@
 - [x] Add image slider/carousel to Keystone listing (front + back photos)
 - [x] Replace Oelsner house photo with new coastal house image
 - [x] Save checkpoint
+
+## Phase 25: Full-Screen Lightbox for Keystone Image Slider
+- [x] Add click-to-fullscreen lightbox on Keystone property images
+- [x] Include navigation (prev/next), close button, keyboard nav, and image counter in lightbox
+- [x] Save checkpoint
