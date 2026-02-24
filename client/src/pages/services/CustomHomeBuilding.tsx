@@ -13,7 +13,7 @@ const features = [
 const processSteps = [
   { number: "01", title: "Initial Consultation", description: "We meet to discuss your vision, budget, timeline, and lot details. Whether you're building new or rebuilding on your existing property, this free consultation helps us understand exactly what you're looking for." },
   { number: "02", title: "Design & Planning", description: "Our team works with architects and designers to create detailed blueprints and 3D renderings. You'll select materials, finishes, and fixtures during this phase." },
-  { number: "03", title: "Permitting & Approvals", description: "We handle all permits, zoning requirements, and regulatory approvals. Our team is well-versed in local building codes across Tampa Bay Area." },
+  { number: "03", title: "Permitting & Approvals", description: "We handle all permits, zoning requirements, and regulatory approvals. Our team is well-versed in local building codes across the Tampa Bay Area." },
   { number: "04", title: "Site Preparation", description: "Lot clearing, grading, and foundation work begins. For rebuilds, this includes demolition of the existing structure. We ensure proper drainage and a solid foundation." },
   { number: "05", title: "Construction", description: "Framing, roofing, rough-ins (plumbing, electrical, HVAC), and exterior work. You'll receive regular photo and video updates throughout." },
   { number: "06", title: "Interior Finishes", description: "Drywall, flooring, cabinetry, countertops, painting, and fixture installation. This is where your home truly comes to life." },

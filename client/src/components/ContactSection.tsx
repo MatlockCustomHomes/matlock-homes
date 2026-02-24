@@ -39,7 +39,7 @@ export default function ContactSection() {
 
       if (res.ok) {
         toast.success("Thank you! We'll contact you shortly.", {
-          description: "A Matlock Homes professional will reach out to discuss your project.",
+          description: "A Matlock Custom Homes professional will reach out to discuss your project.",
         });
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {

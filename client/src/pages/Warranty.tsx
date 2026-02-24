@@ -168,16 +168,10 @@ export default function Warranty() {
                 The Problem with <span className="italic" style={{ color: "#9A7B3C" }}>Standard Warranties</span>
               </h2>
               <p
-                className="text-base leading-relaxed mb-6"
-                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
-              >
-                Typical warranties are designed with the builder in mind, not the homeowner. Many offer coverage that ends just as risks begin to surface, hidden clauses that limit what's actually protected, and slow or inconsistent responses when problems arise. Some builders offer as little as one year of coverage before walking away.
-              </p>
-              <p
                 className="text-base leading-relaxed"
                 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 300, color: "#5A5248" }}
               >
-                These gaps leave families vulnerable. You deserve more than minimal coverage — you deserve confidence that lasts. That's why we created <span style={{ color: "#9A7B3C", fontWeight: 500 }}>Matlock Shield</span> with 5 years of workmanship and materials coverage and a full 10 years of structural protection.
+                Most builder warranties are short, vague, and full of exclusions. Coverage often ends before real issues appear, and getting a response can be a challenge. You deserve better than the bare minimum — that's why we created <span style={{ color: "#9A7B3C", fontWeight: 500 }}>Matlock Shield</span>: 5 years on workmanship and materials, 10 years on structural integrity, backed directly by us.
               </p>
             </div>
           </div>

@@ -11,13 +11,13 @@ const approaches = [
   {
     icon: Home,
     title: "New Construction",
-    description: "Build your dream home from the ground up. From concept to completion, we create homes that feel uniquely yours. ",
+    description: "Build your dream home from the ground up. From concept to completion, we create homes that feel uniquely yours.",
     highlights: ["Fully custom floor plans", "Premium materials & finishes", "Energy-efficient systems", "Florida hurricane-rated"],
   },
   {
     icon: Hammer,
     title: "Full Home Rebuilds",
-    description: "Start over, without starting somewhere else. Turn your property into a one-of-a-kind home designed specifically for you. ",
+    description: "Start over, without starting somewhere else. Turn your property into a one-of-a-kind home designed specifically for you.",
     highlights: ["Complete demolition & rebuild", "Modern code compliance", "New structural systems", "Keep your existing lot"],
   },
 ];
