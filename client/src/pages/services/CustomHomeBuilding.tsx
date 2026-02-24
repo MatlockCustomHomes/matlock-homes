@@ -32,17 +32,12 @@ const galleryImages = [
     caption: "Block Construction & Framing",
   },
   {
-    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/SHDjuvTKBvLxGkII.jpg",
-    alt: "Crane lifting materials during construction",
-    caption: "Structural Framing & Crane Work",
-  },
-  {
     src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/TRvlSPtKELpRhHJm.jpg",
     alt: "Interior wood framing and rough-in stage",
     caption: "Interior Framing & Rough-Ins",
   },
   {
-    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/ZzDzQRWwAYHzVoJZ.jpg",
+    src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/OYfpRlMWtbdFAqsO.png",
     alt: "Roofing and exterior finishing with stone accents",
     caption: "Roofing & Exterior Finishes",
   },
@@ -55,7 +50,7 @@ export default function CustomHomeBuilding() {
       title="Custom Home Building"
       subtitle="New Builds & Full Rebuilds"
       heroDescription="Whether you're building from the ground up or rebuilding your existing home, we deliver custom homes defined by your vision and executed with precision."
-      heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/ZzDzQRWwAYHzVoJZ.jpg"
+      heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310519663289223415/OYfpRlMWtbdFAqsO.png"
       features={features}
       processSteps={processSteps}
       galleryImages={galleryImages}

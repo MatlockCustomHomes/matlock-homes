@@ -177,3 +177,13 @@
 - [x] Remove all construction photos from homepage Process section ("How We Build")
 - [x] Update layout to work without images (2x2 card grid with icons)
 - [x] Save checkpoint
+
+## Phase 17: Process Section Redesign & Gallery Update
+- [x] Upload 4 new images to S3 (handshake photo, construction site, completed home, new roofing image)
+- [x] Redesign Process section: compact 4 steps into single horizontal row
+- [x] Add 3 photos (handshake, construction site, completed home) as smaller images in a row below steps
+- [x] Custom Home Building gallery: keep foundation + block construction + interior framing
+- [x] Remove structural framing/crane image from gallery
+- [x] Substitute roofing image with new cleaner version
+- [x] Arrange gallery images in 2x2 grid layout
+- [x] Save checkpoint
