@@ -277,3 +277,9 @@
 - [x] Add Twitter Card meta tags to index.html
 - [x] Updated canonical URL and structured data to matlockcustomhomes.com
 - [x] Save checkpoint
+
+## Phase 35: Links Page & QR Code
+- [x] Create branded link-in-bio page at /links with all social media links
+- [x] Add route to App.tsx
+- [x] Generate QR code pointing to matlockcustomhomes.com/links
+- [x] Save checkpoint
